@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="sidebar">
+        <ng-content select="internal-app-sidebar"></ng-content>
+    </div>
+    <div class="page-main">
+        <div class="page-header">
+            <ng-content select="internal-app-header"></ng-content>
+        </div>
+        <div class="page-breadcumb">
+            <ng-content select="internal-app-breadcumb"></ng-content>
+        </div>
+        <div class="page-content">
+            <ng-content select="router-outlet"></ng-content>
+        </div>
+        <div class="page-footer">
+            <ng-content select="internal-app-footer"></ng-content>
+        </div>
+    </div>
+</div>

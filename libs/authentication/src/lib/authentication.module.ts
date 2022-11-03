@@ -12,5 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   declarations: [AuthenticationComponent, LoginComponent],
+  exports: [AuthenticationComponent, LoginComponent]
 })
-export class AuthenticationModule {}
+export class AuthenticationModule { }

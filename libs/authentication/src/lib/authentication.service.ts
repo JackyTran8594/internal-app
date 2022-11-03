@@ -6,7 +6,7 @@ import { AuthenticationModule } from './authentication.module';
 const url = "http://10.2.6.142:9200/api";
 
 @Injectable({
-  providedIn: AuthenticationModule
+  providedIn: 'root'
 })
 export class AuthenticationService {
 
