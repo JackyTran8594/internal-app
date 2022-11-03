@@ -1,6 +1,7 @@
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { Route } from '@angular/router';
 import { LoginComponent } from 'libs/authentication/src/lib/login/login.component';
+import { AuthenticationComponent } from 'libs/authentication/src/lib/authentication.component';
 
 export const appRoutes: Route[] = [
   {
@@ -19,6 +20,6 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'login',
-    component: LoginComponent,
+    component: AuthenticationComponent,
   },
 ];

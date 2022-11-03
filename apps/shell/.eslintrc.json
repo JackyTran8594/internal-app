@@ -24,7 +24,8 @@
             "prefix": "internal-app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@nrwl/nx/enforce-module-boundaries": "off"
       }
     },
     {
