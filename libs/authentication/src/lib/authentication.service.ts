@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthenticationModule } from './authentication.module';
 
 const url = "http://10.2.6.142:9200/api";
 

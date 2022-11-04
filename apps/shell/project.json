@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/shell/src",
+  "implicitDependencies": ["dashboard", "task-management"],
   "prefix": "internal-app",
   "targets": {
     "build": {

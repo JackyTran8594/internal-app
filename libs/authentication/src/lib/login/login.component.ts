@@ -20,7 +20,9 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  constructor(private fb: FormBuilder, private authService: AuthenticationService) {
+  constructor(private fb: FormBuilder,
+    private authService: AuthenticationService
+  ) {
     // do something here
 
   }

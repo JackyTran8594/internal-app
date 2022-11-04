@@ -6,16 +6,17 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { AuthenticationModule } from 'libs/authentication/src';
-// import { ThemeModule } from 'libs/theme/src/lib/theme.module';
-import { ThemeModule } from '@internal-app/theme';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
+    CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     AuthenticationModule,
-    ThemeModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

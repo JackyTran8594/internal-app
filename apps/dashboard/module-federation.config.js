@@ -9,5 +9,4 @@ module.exports = {
     publicPath: "auto",
     scriptType: "text/javascript"
   },
- 
 };

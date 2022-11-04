@@ -16,7 +16,6 @@
     "baseUrl": ".",
     "paths": {
       "@internal-app/authentication": ["libs/authentication/src/index.ts"],
-      "@internal-app/layout": ["libs/layout/src/index.ts"],
       "@internal-app/theme": ["libs/theme/src/index.ts"]
     }
   },

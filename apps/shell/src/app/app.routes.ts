@@ -3,48 +3,23 @@ import { Route } from '@angular/router';
 import { LoginComponent } from 'libs/authentication/src/lib/login/login.component';
 import { AuthenticationComponent } from 'libs/authentication/src/lib/authentication.component';
 import { AppComponent } from './app.component';
+import { AuthenticationModule } from '@internal-app/authentication';
 
 export const appRoutes: Route[] = [
   {
-    path: '',
-    component: AppComponent,
-    children: [
-      {
-        path: 'task-management',
-        loadChildren: () =>
-          import('task-management/Module').then((m) => m.RemoteEntryModule),
-      },
-      {
-        path: 'dashboard',
-        loadChildren: () =>
-          import('dashboard/Module').then((m) => m.RemoteEntryModule),
-      }
-    ]
+    path: 'pages',
+    loadChildren: () =>
+      import('./pages/pages.module').then((m) => m.PagesModule),
   },
-
-
-  // {
-  //   path: 'task-management',
-  //   loadChildren: () =>
-  //     import('task-management/Module').then((m) => m.RemoteEntryModule),
-  // },
-  // {
-  //   path: 'dashboard',
-  //   loadChildren: () =>
-  //     import('dashboard/Module').then((m) => m.RemoteEntryModule),
-  // },
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('@internal-app/authentication').then((m) => m.AuthenticationModule),
+  },
   // {
   //   path: '',
-  //   // component: NxWelcomeComponent,
   //   component: AppComponent
   // },
-  {
-    path: 'login',
-    component: AuthenticationComponent,
-  },
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full'
-  }
+  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '**', redirectTo: '' },
 ];
