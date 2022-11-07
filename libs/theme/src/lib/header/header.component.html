@@ -1,11 +1,14 @@
 <div class="page-header">
      <div class="d-flex flex-row">
           <div class="header-icon">
-               <span nz-icon nzType="menu" nzTheme="outline"></span>
+               <span>
+                    <i class="trigger" nz-icon [nzTheme]="'outline'"
+                         [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+               </span>
           </div>
           <div class="header-user">
-     
+
           </div>
      </div>
- 
+
 </div>
