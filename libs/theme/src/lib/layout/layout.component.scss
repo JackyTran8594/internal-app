@@ -1,23 +1,38 @@
-.sidebar {
-  width: 30%;
-  height: 100%;
-}
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
 
-.page-main {
-  width: calc(100vw - 30%);
-  height: 100%;
-  display: flex;
+  .page-wrapper {
+    display: flex;
 
-  .page-header {
-    height: 10%;
-  }
+    .sidebar {
+      width: 20%;
+      min-height: 100vh;
+      display: flex;
+      background-color: #FF6600;
 
-  .page-footer {
-    height: 10%;
-  }
+      ::ng-deep internal-app-sidebar {
+        width: 100% 
+      }
+    }
 
-  .page-content {
-    width: 100%;
-    height: calc(100vh - 10% - 10%);
+    .page-main {
+      width: calc(100vw - 20%);
+      height: 100%;
+
+      .page-header {
+        height: 64px;
+      }
+
+      .page-footer {
+        height: 64px;
+      }
+
+      .page-content {
+        width: 100%;
+        // toàn màn trừ header và footer
+        height: calc(100vh - 64px - 64px);
+      }
+    }
   }
 }

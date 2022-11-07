@@ -1,19 +1,23 @@
 <div class="container-fluid">
-    <div class="sidebar">
-        <ng-content select="internal-app-sidebar"></ng-content>
-    </div>
-    <div class="page-main">
-        <div class="page-header">
-            <ng-content select="internal-app-header"></ng-content>
+    <div class="page-wrapper">
+        <div class="sidebar">
+            <ng-content select="internal-app-sidebar"></ng-content>
         </div>
-        <div class="page-breadcumb">
-            <ng-content select="internal-app-breadcumb"></ng-content>
-        </div>
-        <div class="page-content">
-            <ng-content select="router-outlet"></ng-content>
-        </div>
-        <div class="page-footer">
-            <ng-content select="internal-app-footer"></ng-content>
+        <div class="page-main">
+            <div class="d-flex flex-column">
+                <div class="page-header p-2">
+                    <ng-content select="internal-app-header"></ng-content>
+                </div>
+                <div class="page-breadcumb p-2">
+                    <ng-content select="internal-app-breadcrumb"></ng-content>
+                </div>
+                <div class="page-content p-2">
+                    <ng-content select="router-outlet"></ng-content>
+                </div>
+                <div class="page-footer p-2">
+                    <ng-content select="internal-app-footer"></ng-content>
+                </div>
+            </div>
         </div>
     </div>
 </div>
