@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    // CommonModule,
+    CommonModule,
     RouterModule.forRoot(
       [
         {
@@ -22,9 +22,7 @@ import { AppComponent } from './app.component';
       { initialNavigation: 'enabledBlocking' }
     ),
   ],
-  providers: [
-    
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
