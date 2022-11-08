@@ -15,5 +15,15 @@ export class BreadcrumbComponent implements OnInit {
 
   ngOnInit(): void {
     // do something
+    this.breadcrumbs = [
+      {
+        label: 'Home',
+        path:'home'
+      },
+      {
+        label: 'link 1',
+        path:'home'
+      },
+    ]
   }
 }

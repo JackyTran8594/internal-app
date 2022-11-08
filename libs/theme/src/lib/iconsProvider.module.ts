@@ -2,9 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 
 // ng zorro
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { registerLocaleData } from '@angular/common';
 import { NZ_ICONS } from 'ng-zorro-antd/icon';
-import vi from '@angular/common/locales/vi';
 
 
 import {
