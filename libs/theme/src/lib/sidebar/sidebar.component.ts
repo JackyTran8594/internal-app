@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShareService } from '../shared/share.service';
 
 @Component({
   selector: 'internal-app-sidebar',
@@ -9,11 +10,13 @@ export class SidebarComponent implements OnInit {
 
   isCollapsed = false;
   
-  constructor() {
+  constructor(private shareService: ShareService) {
     // do something
   }
 
   ngOnInit(): void {
     // do something
+    
+    
   }
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { ShareService } from '../shared/share.service';
 
 @Component({
   selector: 'internal-app-header',
@@ -7,14 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  isCollapsed: boolean;
+  public isCollapsed: boolean
+  public menu: any[] = []
 
-  constructor() {
+  constructor(private shareService: ShareService) {
     this.isCollapsed = false;
     // do something
+  }
+
+  toggleSidebar() {
+    this.isCollapsed = !this.isCollapsed;
+    this.shareService.isCollapsed.next(this.isCollapsed);
+    // console.log(this.isCollapsed);
   }
 
   ngOnInit(): void {
     // do something
   }
+
 }

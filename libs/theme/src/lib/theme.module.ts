@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { IconsProviderModule } from './iconsProvider.module';
 import { NZ_I18N, vi_VN } from 'ng-zorro-antd/i18n';
 import vi from '@angular/common/locales/vi';
+import { NgZorroModule } from './ng-zorro.module';
+import { ShareModule } from './shared/share.module';
 
 registerLocaleData(vi);
 
@@ -16,7 +18,9 @@ registerLocaleData(vi);
   imports: [
     CommonModule,
     RouterModule,
-    IconsProviderModule
+    IconsProviderModule,
+    NgZorroModule,
+    ShareModule
   ],
   declarations: [LayoutComponent, SidebarComponent, HeaderComponent, FooterComponent, BreadcrumbComponent],
   exports: [ IconsProviderModule, LayoutComponent, SidebarComponent, HeaderComponent, FooterComponent, BreadcrumbComponent],
