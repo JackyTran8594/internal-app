@@ -1,3 +1,40 @@
-.page-header {
-    
+.header-icon {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+
+  span {
+    // padding: 16px 0 16px 0;
+    font-size: 24px;
+  }
+
+  span:hover {
+    cursor: pointer;
+  }
+}
+
+.header-user {
+  [class*='border rounded-circle'] {
+    float: right;
+    margin-right: 20px;
+    padding: 6px 0 12px 0;
+    width: 40px;
+    height: 40px;
+
+    span {
+      width: 100%;
+      height: 100%;
+      justify-items: center;
+      font-size: 28px;
+
+    //   svg {
+    //     max-width: 24px;
+    //     max-height: 24px;
+    //   }
+    }
+
+    [class*='dropdown-menu'] {
+      margin-right: 20px;
+    }
+  }
 }

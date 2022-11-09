@@ -8,6 +8,7 @@ import { appRoutes } from './app.routes';
 import { AuthenticationModule } from 'libs/authentication/src';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
+import { IconsProviderModule } from '@internal-app/theme';
 
 // ng zorro
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -37,16 +38,9 @@ import * as AllIcons from '@ant-design/icons-angular/icons';
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     AuthenticationModule,
-    // ...NZ_MODULES
+    IconsProviderModule.forRoot(),
   ],
-  providers: [
-    // {
-    //   provide: NZ_I18N, useValue: en_US
-    // },
-    // {
-    //   provide: NZ_ICONS, useValue: icons
-    // }
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

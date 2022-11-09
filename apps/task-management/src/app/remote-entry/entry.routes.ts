@@ -11,6 +11,10 @@ export const remoteRoutes: Route[] = [
         path: 'welcome',
         component: NxWelcomeComponent,
       },
+      {
+        path: 'test',
+        loadChildren: () => import('./welcome/welcome.module').then((m) => m.WelcomeModule)
+      }
       
     ]
   },
