@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { HttpClientModule } from '@angular/common/http';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 @NgModule({
   declarations: [AppComponent, MainComponent],
@@ -12,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     NzIconModule,
     HttpClientModule,
+    HighchartsChartModule,
     RouterModule.forRoot(
       [
         {

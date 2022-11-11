@@ -18,6 +18,7 @@ import { NZ_ICONS } from 'ng-zorro-antd/icon';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 // const NZ_MODULES = [
 //   NzIconModule,
@@ -34,6 +35,7 @@ import * as AllIcons from '@ant-design/icons-angular/icons';
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     CommonModule,
+    HighchartsChartModule,
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
