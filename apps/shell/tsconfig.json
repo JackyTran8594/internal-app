@@ -11,6 +11,11 @@
     },
     {
       "path": "./tsconfig.editor.json"
+    },
+    {
+      "paths": {
+        "@app/svg/*": ["src/app/svg/*"]
+      }
     }
   ],
   "compilerOptions": {

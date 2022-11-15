@@ -87,8 +87,8 @@
   </section>
 
   <!-- Main Content Area -->
-  <div class="container section1">
-    <div class="row pb-5 pt-5">
+  <div class="container section1 py-3">
+    <div class="row">
       <div class="col-12 col-lg-7">
         <div class="image-contain">
           <img
@@ -119,7 +119,7 @@
   </div>
 
   <!-- Phase -->
-  <div class="phase">
+  <div class="phase py-3">
     <div class="container">
       <div class="row">
         <div class="timeline-head col-sm-12">
@@ -161,7 +161,7 @@
   </div>
 
   <!-- Service -->
-  <div class="container section2 pt-5 pb-5">
+  <div class="container section2 py-3">
     <div class="row">
       <div class="service-head col-sm-12">
         <h4>Web design</h4>
@@ -248,12 +248,67 @@
     </div>
   </div>
 
-  <!-- Test -->
-  <highcharts-chart
-    [Highcharts]="Highcharts"
-    [options]="chartOptions"
-    style="width: 100%; height: 400px; display: block"
-  ></highcharts-chart>
+  <!-- Weather -->
+  <div class="container py-3">
+    <div class="row">
+      <highcharts-chart
+        *ngIf="chartOptions"
+        [Highcharts]="Highcharts"
+        [options]="chartOptions"
+        style="width: 100%; height: 400px; display: block"
+      ></highcharts-chart>
+    </div>
+  </div>
+
+  <!-- Table "HN ăn gì" -->
+  <div class="table-HN">
+    <div class="container py-3">
+      <div class="row">
+        <nz-table #basicTable>
+          <thead>
+            <tr>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+              <th>6</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <!-- <img src="../../assets/rice-svgrepo-com.svg" alt="" /> -->
+              </td>
+              <td>
+                <!-- <img
+                  src="https://www.svgrepo.com/show/26783/rice.svg"
+                  alt="rice"
+                /> -->
+              </td>
+              <td>
+                <!-- <img
+                  src="https://www.svgrepo.com/show/26783/rice.svg"
+                  alt="rice"
+                /> -->
+              </td>
+              <td>
+                <!-- <img
+                  src="https://www.svgrepo.com/show/26783/rice.svg"
+                  alt="rice"
+                /> -->
+              </td>
+              <td>
+                <!-- <img
+                  src="https://www.svgrepo.com/show/26783/rice.svg"
+                  alt="rice"
+                /> -->
+              </td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer id="footer">

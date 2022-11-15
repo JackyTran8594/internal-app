@@ -6,6 +6,8 @@ import { MainComponent } from './main/main.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { provideSvgIcons } from '@ngneat/svg-icon';
 
 @NgModule({
   declarations: [AppComponent, MainComponent],
@@ -14,6 +16,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
     NzIconModule,
     HttpClientModule,
     HighchartsChartModule,
+    NzTableModule,
     RouterModule.forRoot(
       [
         {
@@ -27,7 +30,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
       { initialNavigation: 'enabledBlocking' }
     ),
   ],
-  providers: [],
+  providers: [provideSvgIcons([])],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
