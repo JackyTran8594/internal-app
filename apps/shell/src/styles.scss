@@ -6,6 +6,10 @@
 // @import '../../../node_modules/@ant-design/icons-angular/src/inline-svg/'
 // @import '../../../node_modules/ng-zorro-antd/icon/style/index.css';
 // @import '../../../node_modules/bootstrap/scss/';
+.ant-table-content{ overflow: auto; }
+.ant-empty {
+  display: none;
+}
 
 // highcharts
 @import '../../../node_modules/highcharts/css/highcharts.scss';

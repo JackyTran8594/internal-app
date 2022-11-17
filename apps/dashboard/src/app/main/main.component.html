@@ -1,7 +1,7 @@
 <body>
   <!-- Navbar  -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-lg-2 header">
-    <div class="container">
+    <div class="d-flex align-items-center w-100 contain">
       <a href="#" style="background: transparent">
         <img
           class="col-12"
@@ -18,7 +18,7 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon" style="color: #f27700"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -46,10 +46,10 @@
 
   <!-- Banner section  -->
   <section class="banner">
-    <div class="banner-image w-100 vh-100"></div>
+    <div class="banner-image w-100"></div>
     <div class="content">
       <div class="container">
-        <div class="row vh-100">
+        <div class="row">
           <div class="col-12 col-lg-7 d-flex align-items-center">
             <div class="wrap">
               <h1 class="text-white my-4">
@@ -73,9 +73,7 @@
               </div>
             </div>
           </div>
-          <div
-            class="col-12 col-lg-5 d-flex align-items-end justify-content-center image"
-          >
+          <div class="col-12 col-lg-5 image">
             <img
               src="https://odoocdn.com/openerp_website/static/src/img/2020/home/homepage-desktop.png"
               alt=""
@@ -249,7 +247,7 @@
   </div>
 
   <!-- Weather -->
-  <div class="container py-3">
+  <div class="container py-5">
     <div class="row">
       <highcharts-chart
         *ngIf="chartOptions"
@@ -261,53 +259,216 @@
   </div>
 
   <!-- Table "HN ăn gì" -->
-  <div class="table-HN">
-    <div class="container py-3">
+  <div class="table-HNAG py-5">
+    <div class="container">
       <div class="row">
-        <nz-table #basicTable>
+        <div class="table-head col-sm-12">
+          <h4>Thực đơn tuần này</h4>
+        </div>
+        <nz-table #borderedTable nzBordered id="basicTable">
           <thead>
             <tr>
-              <th>2</th>
-              <th>3</th>
-              <th>4</th>
-              <th>5</th>
-              <th>6</th>
+              <th style="text-align: center">Thứ 2</th>
+              <th style="text-align: center">Thứ 3</th>
+              <th style="text-align: center">Thứ 4</th>
+              <th style="text-align: center">Thứ 5</th>
+              <th style="text-align: center">Thứ 6</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>
-                <!-- <img src="../../assets/rice-svgrepo-com.svg" alt="" /> -->
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
               </td>
-              <td>
-                <!-- <img
-                  src="https://www.svgrepo.com/show/26783/rice.svg"
-                  alt="rice"
-                /> -->
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
               </td>
-              <td>
-                <!-- <img
-                  src="https://www.svgrepo.com/show/26783/rice.svg"
-                  alt="rice"
-                /> -->
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
               </td>
-              <td>
-                <!-- <img
-                  src="https://www.svgrepo.com/show/26783/rice.svg"
-                  alt="rice"
-                /> -->
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
               </td>
-              <td>
-                <!-- <img
-                  src="https://www.svgrepo.com/show/26783/rice.svg"
-                  alt="rice"
-                /> -->
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
+              </td>
+              <td style="text-align: center">
+                <div class="dish">
+                  <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                  <span>Cơm</span>
+                </div>
               </td>
             </tr>
           </tbody>
         </nz-table>
       </div>
     </div>
+  </div>
+
+  <!-- Popup Chat -->
+
+  <button
+    class="open-button d-flex justify-content-center align-items-center"
+    (click)="popupStatus === true ? openForm() : closeForm()"
+  >
+    <i nz-icon nzType="message" nzTheme="outline" style="font-size: 26px"></i>
+  </button>
+
+  <div class="chat-popup" id="myForm" [style.display]="popup">
+    <div class="bar-close d-flex">
+      <span class="circle-status"></span>
+      <span>Online chat</span>
+      <i
+        nz-icon
+        nzType="close"
+        nzTheme="outline"
+        style="margin-left: auto; margin-right: 10px; cursor: pointer"
+        (click)="closeForm()"
+      ></i>
+    </div>
+    <form action="/action_page.php" class="form-container">
+      <label for="msg"><b>Message</b></label>
+      <textarea placeholder="Type message.." name="msg" required></textarea>
+
+      <button type="submit" class="btn">Send</button>
+    </form>
   </div>
 
   <!-- Footer -->

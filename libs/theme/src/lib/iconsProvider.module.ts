@@ -14,6 +14,7 @@ import {
   EnterOutline,
   InboxOutline,
   PhoneOutline,
+  MessageOutline,
 } from '@ant-design/icons-angular/icons';
 
 const icons = [
@@ -26,6 +27,7 @@ const icons = [
   EnterOutline,
   InboxOutline,
   PhoneOutline,
+  MessageOutline,
 ];
 
 @NgModule({

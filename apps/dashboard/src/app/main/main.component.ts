@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Weather } from './service/main';
 import { MainService } from './service/main.service';
@@ -12,6 +19,8 @@ export class MainComponent implements OnInit {
   Highcharts: typeof Highcharts = Highcharts;
   chardata: any[] = [];
   chartOptions: any;
+  popup = 'none';
+  popupStatus = true;
 
   constructor(private service: MainService) {}
 
@@ -21,6 +30,8 @@ export class MainComponent implements OnInit {
     // console.log('on init');
     // this.getChart();
     this.getData();
+    this.openForm();
+    this.closeForm();
   }
 
   public async getData() {
@@ -38,6 +49,21 @@ export class MainComponent implements OnInit {
     //     console.log(err);
     //   },
     // });
+  }
+
+  openForm() {
+    console.log(this.popup);
+    if (this.popupStatus == true) {
+      this.popup = 'block';
+      this.popupStatus = false;
+    }
+  }
+
+  closeForm() {
+    if (this.popupStatus == false) {
+      this.popup = 'none';
+      this.popupStatus = true;
+    }
   }
 
   getChart() {
@@ -83,7 +109,6 @@ export class MainComponent implements OnInit {
           dataLabels: {
             enabled: true,
           },
-          enableMouseTracking: false,
         },
       },
       series: [
