@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { provideSvgIcons } from '@ngneat/svg-icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, MainComponent],
@@ -17,6 +18,8 @@ import { provideSvgIcons } from '@ngneat/svg-icon';
     HttpClientModule,
     HighchartsChartModule,
     NzTableModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       [
         {

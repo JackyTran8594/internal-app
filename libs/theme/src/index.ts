@@ -1,4 +1,5 @@
 export * from './lib/theme.module';
+export * from './lib/shared/share.service';
 export * from './lib/iconsProvider.module';
 export * from './lib/layout/layout.component';
 export * from './lib/breadcrumb/breadcrumb.component';

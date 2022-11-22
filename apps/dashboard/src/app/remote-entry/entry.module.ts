@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { RemoteEntryComponent } from './entry.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { remoteRoutes } from './entry.routes';
-import { IconsProviderModule } from '@internal-app/theme';
+import { IconsProviderModule, ThemeModule } from '@internal-app/theme';
 import { NzTableModule } from 'ng-zorro-antd/table';
 
 @NgModule({
@@ -15,6 +15,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     RouterModule.forChild(remoteRoutes),
     IconsProviderModule,
     NzTableModule,
+    ThemeModule.forRoot(),
   ],
   providers: [],
 })

@@ -1,10 +1,14 @@
 * {
   font-size: 16px;
   box-sizing: border-box;
+  scroll-behavior: smooth !important;
+  // overflow-x: hidden;
 }
 
-body {
-  overflow-x: hidden;
+body,
+html {
+  // overflow-x: hidden;
+  scroll-behavior: smooth !important;
 }
 
 ul {
@@ -15,13 +19,9 @@ a:hover {
   text-decoration: none;
 }
 
-// .hidden {
-//   display: none;
-// }
-
-// .block {
-//   display: block;
-// }
+.hide {
+  animation: modalFadeOut 0.5s ease;
+}
 
 .container::before,
 .container::after,
@@ -41,34 +41,35 @@ a:hover {
   background-color: #fff;
   box-shadow: 0px 2px 15px rgb(0 0 0 / 10%);
 
-    a {
-      width: 40%;
-      font-size: 1.2rem;
-      color: #000;
-    }
+  a {
+    font-size: 1.2rem;
+    color: #000;
+  }
 
-    img {
-      float: right;
-      width: 60%;
-      max-height: 40px;
-      cursor: pointer;
-    }
+  img {
+    max-height: 40px;
+    max-width: 300px;
+    cursor: pointer;
+  }
 
-    ul {
-      width: 90%;
-      justify-content: center;
+  ul {
+    width: 90%;
+    justify-content: space-around;
 
-      li {
-        padding: 0 1em;
-        display: block;
-      }
+    li {
+      padding: 0 1em;
+      display: block;
 
-      li a:hover {
-        color: #f27700;
-        transition: all 0.3s ease 70ms;
+      a {
+        width: 100%;
       }
     }
 
+    li a:hover {
+      color: #f27700;
+      transition: all 0.3s ease 70ms;
+    }
+  }
 }
 
 // Banner img
@@ -105,7 +106,6 @@ a:hover {
     }
 
     .image {
-
       padding-bottom: 4em;
       display: flex;
       justify-content: center;
@@ -119,8 +119,7 @@ a:hover {
 }
 
 // Main content
-.section1 {
-
+.about-us {
   margin-top: 2em;
 
   .image-contain {
@@ -170,6 +169,10 @@ a:hover {
     justify-content: center;
     padding: 100px 0;
     background-color: white;
+
+    .row {
+      margin: 0;
+    }
   }
 
   .timeline-head {
@@ -245,6 +248,7 @@ a:hover {
     margin-bottom: 10px;
     letter-spacing: 2px;
   }
+
   @media only screen and (min-width: 768px) {
     .timeline:before {
       content: '';
@@ -382,6 +386,44 @@ a:hover {
   }
 }
 
+// Weather
+
+.weather {
+  .weather-head {
+    margin-bottom: 3em;
+
+    h4 {
+      position: relative;
+      padding: 0;
+      color: #0a093d;
+      line-height: 1;
+      letter-spacing: 0.3px;
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      text-transform: none;
+      margin-bottom: 1em;
+    }
+
+    h4::after {
+      content: '';
+      width: 60px;
+      height: 3px;
+      background: #000;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    p {
+      color: #000;
+      line-height: 1.2rem;
+      text-align: center;
+    }
+  }
+}
+
 // Table HNAG
 
 .table-HNAG {
@@ -443,101 +485,141 @@ a:hover {
       }
     }
   }
+
+  // .editable-cell {
+  //   position: relative;
+  //   padding: 5px 12px;
+  //   cursor: pointer;
+  // }
+
+  // .editable-row:hover .editable-cell {
+  //   border: 1px solid #d9d9d9;
+  //   border-radius: 4px;
+  //   padding: 4px 11px;
+  // }
 }
 
 // Popup chat
 
-  .bar-close {
-    height: 40px;
-    background: #f27700;
-    color: #fff;
-    align-items: center;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-  }
+.bar-close {
+  height: 40px;
+  background: #f27700;
+  color: #fff;
+  align-items: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
 
-  .circle-status {
-    height: 8px;
-    width: 8px;
-    border-radius: 50%;
-    background: red;
-    margin-left: 8px;
-    margin-right: 8px;
-    margin-top: 3px;
-  }
+.circle-status {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: red;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 3px;
+}
 
-  .open-button {
-    background-color: #f27700;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    opacity: 0.8;
-    position: fixed;
-    bottom: 23px;
-    right: 32px;
-    width: 55px;
-    height: 55px;
-    transition: 0.3s;
-  }
+.open-button {
+  background-color: #f27700;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 32px;
+  width: 55px;
+  height: 55px;
+  transition: 0.3s;
+}
 
-  /* The popup chat - hidden by default */
-  .chat-popup {
-    transition: 0.5s;
-    display: none;
-    position: fixed;
-    bottom: 90px;
-    right: 15px;
-    z-index: 9;
-    // box-shadow: 0px 2px 15px #ccc;
-    border-radius: 5px;
-    box-shadow: 0px 2px 15px rgb(0 0 0 / 10%);
-  }
+/* The popup chat - hidden by default */
+.chat-popup {
+  opacity: 0;
+  position: fixed;
+  bottom: 100px;
+  right: 15px;
+  z-index: 8;
+  border-radius: 5px;
+  box-shadow: 0px 2px 15px rgb(0 0 0 / 10%);
+  transition: all 0.4s ease-out;
+}
 
-  /* Add styles to the form container */
-  .form-container {
-    max-width: 300px;
-    padding: 10px;
-    background-color: white;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
+.expand {
+  transition: all 0.4s ease-in;
+  opacity: 1;
+}
 
-  /* Full-width textarea */
-  .form-container textarea {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    border: none;
-    background: #f1f1f1;
-    resize: none;
-    min-height: 200px;
-  }
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 
-  /* When the textarea gets focus, do something */
-  .form-container textarea:focus {
-    background-color: #ddd;
-    outline: none;
-  }
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
 
-  /* Set a style for the submit/send button */
-  .form-container .btn {
-    background-color: #f27700;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom:10px;
-    opacity: 0.8;
-    transition: 0.3s;
-  }
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
 
-  /* Add some hover effects to buttons */
-  .form-container .btn:hover, .open-button:hover {
-    opacity: 1;
-  }
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #f27700;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover,
+.open-button:hover {
+  opacity: 1;
+}
+
+// Back to top
+
+.back-to-top {
+  background-color: #f27700;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 90px;
+  right: 32px;
+  width: 55px;
+  height: 55px;
+  transition: 0.3s;
+  z-index: 9;
+}
+
+.back-to-top:hover {
+  opacity: 1;
+}
 
 // Footer
 
@@ -625,45 +707,37 @@ a:hover {
   }
 }
 
-
 // Tablet
 
 @media only screen and (max-width: 992px) and (min-width: 465px) {
-
   // Header
 
   .header {
-
     .contain {
-
       justify-content: space-between;
 
       button {
         margin-right: 1em;
       }
 
-      a {
-        width: 70%;
-      }
+      // a {
+      //   width: 70%;
+      // }
 
       img {
-        float: left;
-        width: 60%;
+        max-width: none;
       }
-
     }
   }
 
   // Banner
   .banner {
-
     .banner-image {
       transform: none;
       height: 50vh;
     }
 
     .content {
-      max-height: 50%;
       display: flex;
       justify-content: center;
 
@@ -691,43 +765,46 @@ a:hover {
     }
   }
 
+  // About-us
 
+  .about-us {
+    .content1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+  }
 }
 
 // Mobile
 
 @media only screen and (max-width: 464px) {
-
   // Header
 
   .header {
-
     .contain {
-
       justify-content: space-between;
 
-      button {
-        margin-right: 1em;
-      }
-
-      a {
-        width: 70%;
-      }
+      // a {
+      //   width: 70%;
+      // }
 
       img {
-        float: left;
-        width: 80%;
+        width: 120%;
       }
-
     }
   }
 
   // Banner
-  .banner {
 
+  .banner {
     .banner-image {
       transform: none;
-      height: 60vh;
+      height: 55vh;
     }
 
     .content {
@@ -736,7 +813,7 @@ a:hover {
       justify-content: center;
 
       .row {
-        height: 60vh;
+        height: 55vh;
       }
 
       .wrap {
@@ -759,15 +836,90 @@ a:hover {
     }
   }
 
+  // About-us
+
+  .about-us {
+    .content1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+  }
+
   // Table HNAG
+
   #basicTable {
-
     .dish {
-
       span {
         font-size: 0.8rem !important;
       }
     }
   }
+}
 
+// TH đặc biệt
+@media only screen and (height: 636px) {
+  .banner {
+    .banner-image {
+      height: 60vh;
+    }
+
+    .content {
+      .row {
+        height: 60vh;
+      }
+    }
+  }
+}
+
+// Nav responsive
+
+@media only screen and (max-width: 992px) {
+  .mobile-nav {
+    position: fixed;
+    top: 49px;
+    z-index: 1030;
+    background-color: white;
+    width: 100%;
+    display: block !important;
+    opacity: 0;
+    transition: all 0.4s ease-out;
+
+    a {
+      color: #000;
+    }
+
+    a:hover {
+      color: #f27700;
+    }
+  }
+
+  .show {
+    transition: all 0.4s ease-in;
+    opacity: 1;
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
