@@ -10,34 +10,40 @@ import { IconsProviderModule } from './iconsProvider.module';
 import { NZ_I18N, vi_VN } from 'ng-zorro-antd/i18n';
 import vi from '@angular/common/locales/vi';
 import { NgZorroModule } from './ng-zorro.module';
+import { ShareService } from './shared/share.service';
 
 registerLocaleData(vi);
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    IconsProviderModule,
-    NgZorroModule,
+  imports: [CommonModule, RouterModule, IconsProviderModule, NgZorroModule],
+  declarations: [
+    LayoutComponent,
+    SidebarComponent,
+    HeaderComponent,
+    FooterComponent,
+    BreadcrumbComponent,
   ],
-  declarations: [LayoutComponent, SidebarComponent, HeaderComponent, FooterComponent, BreadcrumbComponent],
-  exports: [ IconsProviderModule, LayoutComponent, SidebarComponent, HeaderComponent, FooterComponent, BreadcrumbComponent],
+  exports: [
+    IconsProviderModule,
+    LayoutComponent,
+    SidebarComponent,
+    HeaderComponent,
+    FooterComponent,
+    BreadcrumbComponent,
+  ],
   providers: [
     {
-      provide: NZ_I18N, useValue: vi_VN
+      provide: NZ_I18N,
+      useValue: vi_VN,
     },
-    // ShareService
+    ShareService,
   ],
-
 })
 export class ThemeModule {
   static forRoot(): ModuleWithProviders<ThemeModule> {
     return {
       ngModule: ThemeModule,
-      providers: [
-        
-      ]
-    }
+      providers: [],
+    };
   }
-
 }

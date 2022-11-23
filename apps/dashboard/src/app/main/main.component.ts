@@ -1,14 +1,24 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
+  HostListener,
   OnInit,
-  QueryList,
-  ViewChildren,
+  Renderer2,
 } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Weather } from './service/main';
 import { MainService } from './service/main.service';
+import { DOCUMENT } from '@angular/common';
+import { Inject } from '@angular/core';
+import { ShareService } from '@internal-app/theme';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+
+interface ItemData {
+  id: string;
+  name: string;
+  age: string;
+  address: string;
+}
 
 @Component({
   selector: 'internal-app-main',
@@ -17,14 +27,29 @@ import { MainService } from './service/main.service';
 })
 export class MainComponent implements OnInit {
   Highcharts: typeof Highcharts = Highcharts;
-  chardata: any[] = [];
-  chartOptions: any;
-  popup = 'none';
+  chardata: unknown[] = [];
+  chartOptions: unknown;
   popupStatus = true;
+  i = 0;
+  editId: string | null = null;
+  listOfData: ItemData[] = [];
+  public isCollapsed: boolean;
 
-  constructor(private service: MainService) {}
+  constructor(
+    private service: MainService,
+    private shareService: ShareService,
+    // @Inject(DOCUMENT) private document: Document,
+    private element: ElementRef,
+    private renderer2: Renderer2
+  ) {
+    this.isCollapsed = false;
+  }
 
+  public navbarCollapsed = true;
   public listData!: Weather;
+  public changeIcon = false;
+  offsetFlag = false;
+  public isNavOpen = false;
 
   ngOnInit(): void {
     // console.log('on init');
@@ -32,6 +57,7 @@ export class MainComponent implements OnInit {
     this.getData();
     this.openForm();
     this.closeForm();
+    this.toggleSidebar();
   }
 
   public async getData() {
@@ -51,19 +77,52 @@ export class MainComponent implements OnInit {
     // });
   }
 
+  @HostListener('window:scroll', ['$event'])
+  getScrollHeight(event: any) {
+    console.log(window.pageYOffset, event);
+    if (window.pageYOffset < 300) this.offsetFlag = false;
+    else this.offsetFlag = true;
+
+    console.log('ok');
+  }
+
+  toggleSidebar() {
+    this.isNavOpen = !this.isNavOpen;
+    console.log(this.isNavOpen);
+  }
+
   openForm() {
-    console.log(this.popup);
-    if (this.popupStatus == true) {
-      this.popup = 'block';
-      this.popupStatus = false;
+    // console.log(this.popup);
+    if (this.changeIcon == false) {
+      this.changeIcon = true;
     }
   }
 
   closeForm() {
-    if (this.popupStatus == false) {
-      this.popup = 'none';
-      this.popupStatus = true;
+    if (this.changeIcon == true) {
+      this.changeIcon = false;
     }
+  }
+
+  startEdit(id: string): void {
+    this.editId = id;
+  }
+
+  stopEdit(): void {
+    this.editId = null;
+  }
+
+  addRow(): void {
+    this.listOfData = [
+      ...this.listOfData,
+      {
+        id: `${this.i}`,
+        name: `Edward King ${this.i}`,
+        age: '32',
+        address: `London, Park Lane no. ${this.i}`,
+      },
+    ];
+    this.i++;
   }
 
   getChart() {
@@ -92,7 +151,8 @@ export class MainComponent implements OnInit {
         // },
       },
       title: {
-        text: 'Average Temperature in Days',
+        // text: 'Average Temperature in Days',
+        text: '',
       },
       tooltip: {
         shared: true,

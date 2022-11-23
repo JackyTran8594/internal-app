@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { IconsProviderModule } from '@internal-app/theme';
 import { HighchartsChartModule } from 'highcharts-angular';
-import { provideSvgIcons } from '@ngneat/svg-icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // ng zorro
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -44,6 +44,8 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     AuthenticationModule,
     NzTableModule,
     IconsProviderModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
