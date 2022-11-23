@@ -896,6 +896,15 @@ a:hover {
     a:hover {
       color: #f27700;
     }
+
+    li {
+      margin-top: 5px;
+      padding: 5px 0 5px 10px;
+    }
+
+    li:last-child {
+      margin-bottom: 5px;
+    }
   }
 
   .show {

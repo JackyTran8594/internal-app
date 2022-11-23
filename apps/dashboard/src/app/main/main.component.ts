@@ -82,7 +82,6 @@ export class MainComponent implements OnInit {
     console.log(window.pageYOffset, event);
     if (window.pageYOffset < 300) this.offsetFlag = false;
     else this.offsetFlag = true;
-
     console.log('ok');
   }
 
