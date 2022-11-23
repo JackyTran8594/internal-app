@@ -16,7 +16,10 @@
     "outputPath": "./src/app/svg",
     "srcPath": "./src/assets/svg",
     "svgoConfig": {
-      "plugins": ["removeDimensions", "cleanupAttrs"]
+      "plugins": [
+        "removeDimensions",
+        "cleanupAttrs"
+      ]
     }
   },
   "private": true,

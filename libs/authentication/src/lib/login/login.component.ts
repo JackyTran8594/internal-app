@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { pipe, take } from 'rxjs';
 import { AuthenticationService } from '../authentication.service';
 
 
@@ -21,7 +23,8 @@ export class LoginComponent implements OnInit {
   }
 
   constructor(private fb: FormBuilder,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private router: Router,
   ) {
     // do something here
 
@@ -36,7 +39,20 @@ export class LoginComponent implements OnInit {
 
   login() {
     // do something here
+    const formData: any = this.loginForm.value;
+    this.authService.login(formData).pipe(take(1)).subscribe({
+      next: (res) => {
+           console.log(res)
+           if(res) {
+              this.router.navigate(['/pages/dashboard']);
+           }
+      }, 
+      error: (err) => {
+         console.log(err);
+      }
+    })
   }
+
 
 
 }

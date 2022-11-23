@@ -7,6 +7,11 @@ const routes: Routes = [
     path: 'login',
     component: AuthenticationComponent,
   },
+  {
+    path: '**',
+    redirectTo: 'auth/login',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({

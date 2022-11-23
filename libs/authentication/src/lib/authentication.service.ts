@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-const url = "http://10.2.6.142:9200/api";
+// url cua gateway
+const url = "http://localhost:8051/authorization";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class AuthenticationService {
   }
 
   login(formData: any): Observable<any> {
-    return this.http.post(url + "/auth", formData);
+    console.log(formData);
+    return this.http.post(url + "/login", formData);
   }
 
   getUser(id: string): Observable<any> {
