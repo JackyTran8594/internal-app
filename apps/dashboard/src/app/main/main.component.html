@@ -1,719 +1,774 @@
-<body>
-  <div class="wrapper">
-    <!-- Navbar  -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-lg-2 header">
-      <div class="d-flex align-items-center w-100 contain">
-        <a
-          href="#"
-          style="background: transparent"
-          class="d-flex justify-content-center col-5"
-        >
-          <img
-            class="col-12"
-            src="https://ansv.vn/ANSV/assets/user/img/header/logo_and_slogan_2.png"
-            alt=""
-          />
-        </a>
-        <div class="collapse navbar-collapse col-7" id="navbarNav">
-          <!-- <div class="mx-auto"></div> -->
-          <ul class="navbar-nav mr-auto" style="max-height: 100px">
-            <li class="nav-item">
-              <a class="nav-link" href="./pages/dashboard/main#aboutUs"
-                >About Us</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./pages/dashboard/main#Phase">Phase</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./pages/dashboard/main#Service"
-                >Service</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./pages/dashboard/main#Weather"
-                >Weather</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./pages/dashboard/main#Menu">Menu</a>
-            </li>
-          </ul>
-        </div>
-        <button
-          class="navbar-toggler custom-toggler"
-          type="button"
-          (click)="toggleSidebar()"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-    </nav>
-
-    <!-- Mobile Nav -->
-    <ng-container>
-      <ul
-        style="display: none"
-        class="nav flex-column justify-content-center mobile-nav"
-        [ngClass]="isNavOpen ? '' : 'show'"
-      >
-        <li class="nav-item">
+<html>
+  <body>
+    <div class="wrapper">
+      <!-- Navbar  -->
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-lg-2 header">
+        <div class="d-flex align-items-center w-100 contain">
           <a
-            class="nav-link"
-            href="./pages/dashboard/main#aboutUs"
-            (click)="toggleSidebar()"
-            >About Us</a
+            href="#"
+            style="background: transparent"
+            class="d-flex justify-content-center col-5"
           >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            href="./pages/dashboard/main#Phase"
-            (click)="toggleSidebar()"
-            >Phase</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            href="./pages/dashboard/main#Service"
-            (click)="toggleSidebar()"
-            >Service</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            href="./pages/dashboard/main#Weather"
-            (click)="toggleSidebar()"
-            >Weather</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            href="./pages/dashboard/main#Menu"
-            (click)="toggleSidebar()"
-            >Menu</a
-          >
-        </li>
-      </ul>
-    </ng-container>
-
-    <!-- Banner section  -->
-    <section class="banner" id="banner">
-      <div class="banner-image w-100"></div>
-      <div class="content">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 col-lg-7 d-flex align-items-center">
-              <div class="wrap">
-                <h1 class="text-white my-4">
-                  <span style="font-size: 3.5rem">Phần mềm ưu việt</span>
-                  <br />
-                  <span style="font-size: 2.5rem">cho nhân viên ưu tú</span>
-                </h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Ipsam, illum delectus nihil voluptates sit asperiores
-                  accusantium enim, ut distinctio, quo neque perspiciatis?
-                  Suscipit, libero voluptatem?
-                </p>
-                <div class="my-4">
-                  <a href="" class="btn btn-primary btn-lg mr-3 mt-1"
-                    >Bắt đầu ngay. Hoàn toàn miễn phí</a
-                  >
-                  <a href="" class="mt-1 btn btn-primary btn-lg"
-                    >Gặp chuyên gia
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-lg-5 image">
-              <img
-                src="https://odoocdn.com/openerp_website/static/src/img/2020/home/homepage-desktop.png"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Us -->
-    <span id="aboutUs"></span>
-    <div class="container about-us py-lg-5 py-md-2 py-2">
-      <div class="row">
-        <div class="col-12 col-lg-7">
-          <div class="image-contain">
             <img
-              src="https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg"
+              class="col-12"
+              src="https://ansv.vn/ANSV/assets/user/img/header/logo_and_slogan_2.png"
               alt=""
-              class="img1"
             />
-            <img
-              src="https://www.pikpng.com/pngl/m/210-2107074_cartoon-office-building-clip-art-office-building-png.png"
-              alt=""
-              class="img2"
-            />
-          </div>
-        </div>
-        <div class="col-12 col-lg-5 content1">
-          <h2>About us</h2>
-          <h1 class="mb-3">Landing Page</h1>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga ut
-            deserunt exercitationem inventore suscipit labore accusamus dolores
-            est ipsum illo? Mollitia alias, pariatur perferendis cupiditate nemo
-            qui earum saepe officia aspernatur illo delectus at repudiandae
-            nulla adipisci aut iusto, quaerat ipsam rerum optio, recusandae
-            ratione. Non, explicabo. Amet, magni earum.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Phase -->
-    <span id="Phase"></span>
-    <div class="phase py-lg-3 py-md-2 py-2">
-      <div class="container">
-        <div class="row">
-          <div class="timeline-head col-sm-12">
-            <h4>Phase</h4>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-          </div>
-          <div class="timeline">
-            <ul>
-              <li>
-                <div class="timeline-content">
-                  <!-- <h3 class="date">20th may, 2010</h3> -->
-                  <h1>Giai đoạn 1: Chỉnh lý</h1>
-                </div>
+          </a>
+          <div class="collapse navbar-collapse col-7" id="navbarNav">
+            <!-- <div class="mx-auto"></div> -->
+            <ul class="navbar-nav mr-auto" style="max-height: 100px">
+              <li class="nav-item">
+                <a class="nav-link" href="./pages/dashboard/main#aboutUs"
+                  >About Us</a
+                >
               </li>
-              <li>
-                <div class="timeline-content">
-                  <h1>Giai đoạn 2: Số hóa</h1>
-                </div>
+              <li class="nav-item">
+                <a class="nav-link" href="./pages/dashboard/main#Phase"
+                  >Phase</a
+                >
               </li>
-              <li>
-                <div class="timeline-content">
-                  <h1>Giai đoạn 3: Lưu trữ trên nền tảng số</h1>
-                </div>
+              <li class="nav-item">
+                <a class="nav-link" href="./pages/dashboard/main#Service"
+                  >Service</a
+                >
               </li>
-              <li>
-                <div class="timeline-content">
-                  <h1>Giai đoạn 4: Tự động hóa</h1>
-                </div>
+              <li class="nav-item">
+                <a class="nav-link" href="./pages/dashboard/main#Weather"
+                  >Weather</a
+                >
               </li>
-              <li>
-                <div class="timeline-content">
-                  <h1>Giai đoạn 5: Khai phá</h1>
-                </div>
+              <li class="nav-item">
+                <a class="nav-link" href="./pages/dashboard/main#Menu">Menu</a>
               </li>
             </ul>
           </div>
+          <button
+            class="navbar-toggler custom-toggler"
+            type="button"
+            (click)="toggleSidebar()"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
         </div>
-      </div>
-    </div>
+      </nav>
 
-    <!-- Service -->
-    <span id="Service"></span>
-    <div class="container section2 py-lg-3 py-md-2 py-2">
-      <div class="row">
-        <div class="service-head col-sm-12">
-          <h4>Service</h4>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a href="#">
-            <div class="item">
-              <span class="icon">
-                <i nz-icon nzType="money-collect" nzTheme="outline"></i>
-              </span>
-              <p style="font-size: 1rem; font-weight: 600">Quản lý tài sản</p>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
-                sapiente cum dolor neque similique velit voluptate quod
-                molestias. Sequi, in!
-              </p>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a href="#">
-            <div class="item">
-              <span class="icon">
-                <i nz-icon nzType="file" nzTheme="outline"></i>
-              </span>
-              <p style="font-size: 1rem; font-weight: 600">
-                Quản lý và tạo hồ sơ thầu
-              </p>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
-                sapiente cum dolor neque similique velit voluptate quod
-                molestias. Sequi, in!
-              </p>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a href="#">
-            <div class="item">
-              <span class="icon">
-                <i nz-icon nzType="solution" nzTheme="outline"></i>
-              </span>
-              <p style="font-size: 1rem; font-weight: 600">Quản lý tác vụ</p>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
-                sapiente cum dolor neque similique velit voluptate quod
-                molestias. Sequi, in!
-              </p>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a href="#">
-            <div class="item">
-              <span class="icon">
-                <i nz-icon nzType="question-circle" nzTheme="outline"></i>
-              </span>
-              <p style="font-size: 1rem; font-weight: 600">Test Service</p>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
-                sapiente cum dolor neque similique velit voluptate quod
-                molestias. Sequi, in!
-              </p>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a href="#">
-            <div class="item">
-              <span class="icon">
-                <i nz-icon nzType="question-circle" nzTheme="outline"></i>
-              </span>
-              <p style="font-size: 1rem; font-weight: 600">Test Service</p>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
-                sapiente cum dolor neque similique velit voluptate quod
-                molestias. Sequi, in!
-              </p>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a href="#">
-            <div class="item">
-              <span class="icon">
-                <i nz-icon nzType="question-circle" nzTheme="outline"></i>
-              </span>
-              <p style="font-size: 1rem; font-weight: 600">Test Service</p>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
-                sapiente cum dolor neque similique velit voluptate quod
-                molestias. Sequi, in!
-              </p>
-            </div>
-          </a>
-        </div>
+      <!-- Mobile Nav -->
+      <div class="mobile-nav" [ngClass]="isNavOpen ? 'hide' : 'show'">
+        <ul class="nav flex-column justify-content-center fade-bottom">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="./pages/dashboard/main#aboutUs"
+              (click)="toggleSidebar()"
+              >About Us</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="./pages/dashboard/main#Phase"
+              (click)="toggleSidebar()"
+              >Phase</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="./pages/dashboard/main#Service"
+              (click)="toggleSidebar()"
+              >Service</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="./pages/dashboard/main#Weather"
+              (click)="toggleSidebar()"
+              >Weather</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="./pages/dashboard/main#Menu"
+              (click)="toggleSidebar()"
+              >Menu</a
+            >
+          </li>
+        </ul>
       </div>
-    </div>
 
-    <!-- Weather -->
-    <span id="Weather"></span>
-    <div class="container py-lg-5 py-md-4 py-4 weather">
-      <div class="row">
-        <div class="weather-head col-sm-12">
-          <h4>Weather</h4>
-          <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p> -->
-        </div>
-        <highcharts-chart
-          *ngIf="chartOptions"
-          [Highcharts]="Highcharts"
-          [options]="chartOptions"
-          style="width: 100%; height: 400px; display: block"
-        ></highcharts-chart>
-      </div>
-    </div>
-
-    <!-- Table "HN ăn gì" -->
-    <span id="Menu"></span>
-    <div class="table-HNAG py-lg-5 py-md-5 py-5">
-      <div class="container">
-        <div class="row">
-          <div class="table-head col-sm-12">
-            <h4>Menu</h4>
+      <!-- Banner section  -->
+      <section class="banner" id="banner">
+        <div class="banner-image w-100"></div>
+        <div class="content">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-lg-7 d-flex align-items-center">
+                <div class="wrap">
+                  <h1 class="text-white my-4">
+                    <span style="font-size: 3.5rem">Phần mềm ưu việt</span>
+                    <br />
+                    <span style="font-size: 2.5rem">cho nhân viên ưu tú</span>
+                  </h1>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Ipsam, illum delectus nihil voluptates sit asperiores
+                    accusantium enim, ut distinctio, quo neque perspiciatis?
+                    Suscipit, libero voluptatem?
+                  </p>
+                  <div class="my-4">
+                    <a href="" class="btn btn-primary btn-lg mr-3 mt-1"
+                      >Bắt đầu ngay. Hoàn toàn miễn phí</a
+                    >
+                    <a href="" class="mt-1 btn btn-primary btn-lg"
+                      >Gặp chuyên gia
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-5 image">
+                <img
+                  src="https://odoocdn.com/openerp_website/static/src/img/2020/home/homepage-desktop.png"
+                  alt=""
+                />
+              </div>
+            </div>
           </div>
-          <nz-table #borderedTable nzBordered id="basicTable">
+        </div>
+      </section>
+
+      <!-- About Us -->
+      <span id="aboutUs"></span>
+      <div class="container about-us py-lg-5 py-md-2 py-2 reveal fade-bottom">
+        <div class="row">
+          <div class="col-12 col-lg-7">
+            <div class="image-contain">
+              <img
+                src="https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg"
+                alt=""
+                class="img1"
+              />
+              <img
+                src="https://www.pikpng.com/pngl/m/210-2107074_cartoon-office-building-clip-art-office-building-png.png"
+                alt=""
+                class="img2"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-lg-5 content1">
+            <h2>About us</h2>
+            <h1 class="mb-3">Landing Page</h1>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga ut
+              deserunt exercitationem inventore suscipit labore accusamus
+              dolores est ipsum illo? Mollitia alias, pariatur perferendis
+              cupiditate nemo qui earum saepe officia aspernatur illo delectus
+              at repudiandae nulla adipisci aut iusto, quaerat ipsam rerum
+              optio, recusandae ratione. Non, explicabo. Amet, magni earum.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase -->
+      <span id="Phase"></span>
+      <div class="phase py-lg-4 py-md-2 py-2 reveal fade-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="timeline-head col-sm-12">
+              <h4>Phase</h4>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            </div>
+            <div class="timeline">
+              <ul>
+                <li>
+                  <div class="timeline-content">
+                    <!-- <h3 class="date">20th may, 2010</h3> -->
+                    <h1>Giai đoạn 1: Chỉnh lý</h1>
+                  </div>
+                </li>
+                <li>
+                  <div class="timeline-content">
+                    <h1>Giai đoạn 2: Số hóa</h1>
+                  </div>
+                </li>
+                <li>
+                  <div class="timeline-content">
+                    <h1>Giai đoạn 3: Lưu trữ trên nền tảng số</h1>
+                  </div>
+                </li>
+                <li>
+                  <div class="timeline-content">
+                    <h1>Giai đoạn 4: Tự động hóa</h1>
+                  </div>
+                </li>
+                <li>
+                  <div class="timeline-content">
+                    <h1>Giai đoạn 5: Khai phá</h1>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service -->
+      <span id="Service"></span>
+      <div class="container section2 py-lg-3 py-md-2 py-2 reveal fade-bottom">
+        <div class="row">
+          <div class="service-head col-sm-12">
+            <h4>Service</h4>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a href="#">
+              <div class="item">
+                <span class="icon">
+                  <i nz-icon nzType="money-collect" nzTheme="outline"></i>
+                </span>
+                <p style="font-size: 1rem; font-weight: 600">Quản lý tài sản</p>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
+                  sapiente cum dolor neque similique velit voluptate quod
+                  molestias. Sequi, in!
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a href="#">
+              <div class="item">
+                <span class="icon">
+                  <i nz-icon nzType="file" nzTheme="outline"></i>
+                </span>
+                <p style="font-size: 1rem; font-weight: 600">
+                  Quản lý và tạo hồ sơ thầu
+                </p>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
+                  sapiente cum dolor neque similique velit voluptate quod
+                  molestias. Sequi, in!
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a href="#">
+              <div class="item">
+                <span class="icon">
+                  <i nz-icon nzType="solution" nzTheme="outline"></i>
+                </span>
+                <p style="font-size: 1rem; font-weight: 600">Quản lý tác vụ</p>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
+                  sapiente cum dolor neque similique velit voluptate quod
+                  molestias. Sequi, in!
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a href="#">
+              <div class="item">
+                <span class="icon">
+                  <i nz-icon nzType="question-circle" nzTheme="outline"></i>
+                </span>
+                <p style="font-size: 1rem; font-weight: 600">Test Service</p>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
+                  sapiente cum dolor neque similique velit voluptate quod
+                  molestias. Sequi, in!
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a href="#">
+              <div class="item">
+                <span class="icon">
+                  <i nz-icon nzType="question-circle" nzTheme="outline"></i>
+                </span>
+                <p style="font-size: 1rem; font-weight: 600">Test Service</p>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
+                  sapiente cum dolor neque similique velit voluptate quod
+                  molestias. Sequi, in!
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a href="#">
+              <div class="item">
+                <span class="icon">
+                  <i nz-icon nzType="question-circle" nzTheme="outline"></i>
+                </span>
+                <p style="font-size: 1rem; font-weight: 600">Test Service</p>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
+                  sapiente cum dolor neque similique velit voluptate quod
+                  molestias. Sequi, in!
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weather -->
+      <span id="Weather"></span>
+      <div class="container py-lg-5 py-md-4 py-4 weather reveal fade-bottom">
+        <div class="row">
+          <div class="weather-head col-sm-12">
+            <h4>Weather</h4>
+            <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p> -->
+          </div>
+          <highcharts-chart
+            *ngIf="chartOptions"
+            [Highcharts]="Highcharts"
+            [options]="chartOptions"
+            style="width: 100%; height: 400px; display: block"
+          ></highcharts-chart>
+        </div>
+      </div>
+
+      <!-- Table "HN ăn gì" -->
+      <span id="Menu"></span>
+      <div class="table-HNAG py-lg-5 py-md-5 py-5 reveal fade-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="table-head col-sm-12">
+              <h4>Menu</h4>
+            </div>
+            <nz-table #borderedTable nzBordered id="basicTable">
+              <thead>
+                <tr>
+                  <th style="text-align: center">Thứ 2</th>
+                  <th style="text-align: center">Thứ 3</th>
+                  <th style="text-align: center">Thứ 4</th>
+                  <th style="text-align: center">Thứ 5</th>
+                  <th style="text-align: center">Thứ 6</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                  <td style="text-align: center">
+                    <div class="dish">
+                      <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
+                      <span>Cơm</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </nz-table>
+
+            <!-- <button nz-button (click)="addRow()" nzType="primary">Add</button>
+          <br />
+          <br />
+          <nz-table #editRowTable nzBordered [nzData]="listOfData">
             <thead>
               <tr>
-                <th style="text-align: center">Thứ 2</th>
-                <th style="text-align: center">Thứ 3</th>
-                <th style="text-align: center">Thứ 4</th>
-                <th style="text-align: center">Thứ 5</th>
-                <th style="text-align: center">Thứ 6</th>
+                <th nzWidth="30%">Name</th>
+                <th>Age</th>
+                <th>Address</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
+              <tr *ngFor="let data of editRowTable.data" class="editable-row">
+                <td>
+                  <div
+                    class="editable-cell"
+                    [hidden]="editId === data.id"
+                    (click)="startEdit(data.id)"
+                  >
+                    {{ data.name }}
                   </div>
+                  <input
+                    [hidden]="editId !== data.id"
+                    type="text"
+                    nz-input
+                    [(ngModel)]="data.name"
+                    (blur)="stopEdit()"
+                    (keyup.enter)="stopEdit()"
+                  />
                 </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
-                <td style="text-align: center">
-                  <div class="dish">
-                    <img src="../../assets/rice-svgrepo-com.svg" alt="rice" />
-                    <span>Cơm</span>
-                  </div>
-                </td>
+                <td>{{ data.age }}</td>
+                <td>{{ data.address }}</td>
               </tr>
             </tbody>
-          </nz-table>
-
-          <!-- <button nz-button (click)="addRow()" nzType="primary">Add</button>
-        <br />
-        <br />
-        <nz-table #editRowTable nzBordered [nzData]="listOfData">
-          <thead>
-            <tr>
-              <th nzWidth="30%">Name</th>
-              <th>Age</th>
-              <th>Address</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let data of editRowTable.data" class="editable-row">
-              <td>
-                <div
-                  class="editable-cell"
-                  [hidden]="editId === data.id"
-                  (click)="startEdit(data.id)"
-                >
-                  {{ data.name }}
-                </div>
-                <input
-                  [hidden]="editId !== data.id"
-                  type="text"
-                  nz-input
-                  [(ngModel)]="data.name"
-                  (blur)="stopEdit()"
-                  (keyup.enter)="stopEdit()"
-                />
-              </td>
-              <td>{{ data.age }}</td>
-              <td>{{ data.address }}</td>
-            </tr>
-          </tbody>
-        </nz-table> -->
+          </nz-table> -->
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Back to top -->
+      <!-- Back to top -->
 
-    <!-- <a
-    href="./pages/dashboard/#banner"
-    class="back-to-top"
-    style="display: inline"
-  >
-    <i nz-icon nzType="up" nzTheme="outline" style="font-size: 26px"></i>
-  </a> -->
-    <ng-container *ngIf="!changeIcon">
-      <ng-container *ngIf="offsetFlag">
-        <a
-          href="./pages/dashboard/main#banner"
-          class="back-to-top d-flex justify-content-center align-items-center"
-          id="scrollTop"
-        >
-          <i nz-icon nzType="up" nzTheme="outline" style="font-size: 26px"></i>
-        </a>
-      </ng-container>
-    </ng-container>
-    <!-- Popup Chat -->
-
-    <button
-      class="open-button d-flex justify-content-center align-items-center"
-      (click)="changeIcon === false ? openForm() : closeForm()"
+      <!-- <a
+      href="./pages/dashboard/#banner"
+      class="back-to-top"
+      style="display: inline"
     >
-      <ng-container *ngIf="changeIcon">
-        <i nz-icon nzType="close" nzTheme="outline" style="font-size: 26px"></i>
-      </ng-container>
+      <i nz-icon nzType="up" nzTheme="outline" style="font-size: 26px"></i>
+    </a> -->
       <ng-container *ngIf="!changeIcon">
-        <i
-          nz-icon
-          nzType="message"
-          nzTheme="outline"
-          style="font-size: 26px"
-        ></i>
+        <ng-container *ngIf="offsetFlag">
+          <a
+            href="./pages/dashboard/main#banner"
+            class="back-to-top d-flex justify-content-center align-items-center"
+            id="scrollTop"
+          >
+            <i
+              nz-icon
+              nzType="up"
+              nzTheme="outline"
+              style="font-size: 26px"
+            ></i>
+          </a>
+        </ng-container>
       </ng-container>
-    </button>
+      <!-- Popup Chat -->
 
-    <div class="chat-popup" id="myForm" [ngClass]="!changeIcon ? '' : 'expand'">
-      <div class="bar-close d-flex">
-        <span class="circle-status"></span>
-        <span>Online chat</span>
-        <i
-          nz-icon
-          nzType="close"
-          nzTheme="outline"
-          style="margin-left: auto; margin-right: 10px; cursor: pointer"
-          (click)="closeForm()"
-        ></i>
+      <button
+        class="open-button d-flex justify-content-center align-items-center"
+        (click)="changeIcon === false ? openForm() : closeForm()"
+      >
+        <ng-container *ngIf="changeIcon">
+          <i
+            nz-icon
+            nzType="close"
+            nzTheme="outline"
+            style="font-size: 26px"
+          ></i>
+        </ng-container>
+        <ng-container *ngIf="!changeIcon">
+          <i
+            nz-icon
+            nzType="message"
+            nzTheme="outline"
+            style="font-size: 26px"
+          ></i>
+        </ng-container>
+      </button>
+
+      <div
+        class="chat-popup"
+        id="myForm"
+        [ngClass]="!changeIcon ? 'shrink' : 'expand'"
+      >
+        <div class="bar-close d-flex">
+          <span class="circle-status"></span>
+          <span>Online chat</span>
+          <i
+            nz-icon
+            nzType="close"
+            nzTheme="outline"
+            style="margin-left: auto; margin-right: 10px; cursor: pointer"
+            (click)="closeForm()"
+          ></i>
+        </div>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+        <div class="chat-bottom">
+          <input type="text" class="sendText" />
+          <button class="sendBtn" type="button">
+            <i nz-icon nzType="send" nzTheme="outline" aria-hidden="true"></i>
+          </button>
+        </div>
       </div>
-      <form action="/action_page.php" class="form-container">
-        <!-- <label for="msg"><b>Message</b></label> -->
-        <textarea placeholder="Type message.." name="msg" required></textarea>
 
-        <button type="submit" class="btn">Send</button>
-      </form>
-    </div>
-
-    <!-- Footer -->
-    <footer id="footer">
-      <div class="footer-top">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-7 col-md-12 col-sm-12 footer-contact">
-              <h3>CÔNG TY TNHH THIẾT BỊ VIỄN THÔNG ANSV</h3>
-              <div class="row">
-                <div class="col-md-6">
-                  <p>
-                    <i nz-icon nzTheme="outline" nzType="environment"></i>
-                    &ensp; 124 Hoàng Quốc <br />
-                    Việt, Cầu Giấy, Hà Nội
-                    <br />
-                    <br />
-                    <i nz-icon nzType="inbox" nzTheme="outline"></i>
-                    <strong>Fax:</strong>
-                    (+84) 24 3836 2915 <br />
-                    <i nz-icon nzType="phone" nzTheme="outline"></i>
-                    <strong>Phone:</strong>
-                    (+84) 24 3836 2094
-                    <br />
-                  </p>
-                </div>
-                <div class="col-md-6">
-                  <p>
-                    <i nz-icon nzTheme="outline" nzType="environment"></i>
-                    &ensp; 124 Hoàng Quốc <br />
-                    Việt, Cầu Giấy, Hà Nội
-                    <br />
-                    <br />
-                    <i nz-icon nzType="inbox" nzTheme="outline"></i>
-                    <strong>Fax:</strong>
-                    (+84) 24 3836 2915 <br />
-                    <i nz-icon nzType="phone" nzTheme="outline"></i>
-                    <strong>Phone:</strong>
-                    (+84) 24 3836 2094
-                    <br />
-                  </p>
+      <!-- Footer -->
+      <footer id="footer">
+        <div class="footer-top">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-7 col-md-12 col-sm-12 footer-contact">
+                <h3>CÔNG TY TNHH THIẾT BỊ VIỄN THÔNG ANSV</h3>
+                <div class="row">
+                  <div class="col-md-6">
+                    <p>
+                      <span class="d-flex align-items-center">
+                        <i
+                          nz-icon
+                          nzTheme="outline"
+                          nzType="environment"
+                          style="margin-right: 3px"
+                        ></i>
+                        &ensp; <span>124 Hoàng Quốc</span>
+                      </span>
+                      Việt, Cầu Giấy, Hà Nội
+                      <br />
+                      <br />
+                      <span class="d-flex align-items-center">
+                        <i
+                          nz-icon
+                          nzType="inbox"
+                          nzTheme="outline"
+                          style="margin-right: 3px"
+                        ></i>
+                        <strong>Fax:</strong>&nbsp;(+84) 24 3836 2915
+                      </span>
+                      <span class="d-flex align-items-center">
+                        <i
+                          nz-icon
+                          nzType="phone"
+                          nzTheme="outline"
+                          style="margin-right: 3px"
+                        ></i>
+                        <strong>Phone:</strong>&nbsp;(+84) 24 3836 2094
+                      </span>
+                    </p>
+                  </div>
+                  <div class="col-md-6">
+                    <p>
+                      <span class="d-flex align-items-center">
+                        <i
+                          nz-icon
+                          nzTheme="outline"
+                          nzType="environment"
+                          style="margin-right: 3px"
+                        ></i>
+                        &ensp; <span>124 Hoàng Quốc</span>
+                      </span>
+                      Việt, Cầu Giấy, Hà Nội
+                      <br />
+                      <br />
+                      <span class="d-flex align-items-center">
+                        <i
+                          nz-icon
+                          nzType="inbox"
+                          nzTheme="outline"
+                          style="margin-right: 3px"
+                        ></i>
+                        <strong>Fax:</strong>&nbsp;(+84) 24 3836 2915
+                      </span>
+                      <span class="d-flex align-items-center">
+                        <i
+                          nz-icon
+                          nzType="phone"
+                          nzTheme="outline"
+                          style="margin-right: 3px"
+                        ></i>
+                        <strong>Phone:</strong>&nbsp;(+84) 24 3836 2094
+                      </span>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-2 col-md-6 col-sm-6 footer-links">
-              <h4>Liên kết</h4>
-              <ul>
-                <li>
-                  <a href="#">Trang chủ</a>
-                </li>
-                <li>
-                  <a href="#">Trang chủ</a>
-                </li>
-                <li>
-                  <a href="#">Trang chủ</a>
-                </li>
-                <li>
-                  <a href="#">Trang chủ</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 footer-links">
-              <h4>Liên kết</h4>
-              <ul>
-                <li>
-                  <!-- <i nz-icon nzType="right" nzTheme="outline"></i> -->
-                  <a href="#">Trang chủ</a>
-                </li>
-                <li>
-                  <a href="#">Trang chủ</a>
-                </li>
-                <li>
-                  <a href="#">Trang chủ</a>
-                </li>
-                <li>
-                  <a href="#">Trang chủ</a>
-                </li>
-              </ul>
+              <div class="col-lg-2 col-md-6 col-sm-6 footer-links">
+                <h4>Liên kết</h4>
+                <ul>
+                  <li>
+                    <a href="#">Trang chủ</a>
+                  </li>
+                  <li>
+                    <a href="#">Trang chủ</a>
+                  </li>
+                  <li>
+                    <a href="#">Trang chủ</a>
+                  </li>
+                  <li>
+                    <a href="#">Trang chủ</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 footer-links">
+                <h4>Liên kết</h4>
+                <ul>
+                  <li>
+                    <!-- <i nz-icon nzType="right" nzTheme="outline"></i> -->
+                    <a href="#">Trang chủ</a>
+                  </li>
+                  <li>
+                    <a href="#">Trang chủ</a>
+                  </li>
+                  <li>
+                    <a href="#">Trang chủ</a>
+                  </li>
+                  <li>
+                    <a href="#">Trang chủ</a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="footer-bottom container d-md-flex py-4">
-        <div class="mr-md-auto text-center text-md-left">
-          <div class="copyright">
-            © Copyright
-            <strong><span>ANSV</span></strong>
-            . All Rights Reserved
+        <div class="footer-bottom container d-md-flex py-4">
+          <div class="mr-md-auto text-center text-md-left">
+            <div class="copyright">
+              © Copyright
+              <strong><span>ANSV</span></strong>
+              . All Rights Reserved
+            </div>
+            <div class="credit">
+              Designed by
+              <a href="#" style="color: #f27700">ANSV</a>
+            </div>
           </div>
-          <div class="credit">
-            Designed by
-            <a href="#" style="color: #f27700">ANSV</a>
+          <div class="text-center text-md-right pt-3 pt-md-0">
+            <a href="">Liên hệ</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="">Dịch vụ</a>
           </div>
         </div>
-        <div class="text-center text-md-right pt-3 pt-md-0">
-          <a href="">Liên hệ</a>
-          &nbsp;&nbsp;|&nbsp;&nbsp;
-          <a href="">Dịch vụ</a>
-        </div>
-      </div>
-    </footer>
-  </div>
-</body>
+      </footer>
+    </div>
+  </body>
+</html>

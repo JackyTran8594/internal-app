@@ -1,13 +1,11 @@
 * {
   font-size: 16px;
   box-sizing: border-box;
-  scroll-behavior: smooth !important;
+  // scroll-behavior: smooth !important;
   // overflow-x: hidden;
 }
 
-body,
 html {
-  // overflow-x: hidden;
   scroll-behavior: smooth !important;
 }
 
@@ -19,8 +17,68 @@ a:hover {
   text-decoration: none;
 }
 
-.hide {
-  animation: modalFadeOut 0.5s ease;
+.reveal {
+  position: relative;
+  opacity: 0;
+}
+
+.reveal.active {
+  opacity: 1;
+}
+
+.active.fade-top {
+  animation: fade-top 0.8s ease-in-out;
+}
+.active.fade-bottom {
+  animation: fade-bottom 0.8s ease-in-out;
+}
+.active.fade-left {
+  animation: fade-left 0.8s ease-in-out;
+}
+.active.fade-right {
+  animation: fade-right 0.8s ease-in-out;
+}
+
+@keyframes fade-top {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-bottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-left {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-right {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .container::before,
@@ -536,64 +594,72 @@ a:hover {
   transition: 0.3s;
 }
 
-/* The popup chat - hidden by default */
 .chat-popup {
+  visibility: hidden;
   opacity: 0;
   position: fixed;
-  bottom: 100px;
+  bottom: 95px;
   right: 15px;
   z-index: 8;
   border-radius: 5px;
   box-shadow: 0px 2px 15px rgb(0 0 0 / 10%);
   transition: all 0.4s ease-out;
+
+  ul {
+    list-style: none;
+    background: #e5e5e5;
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    min-height: 300px;
+    height: 300px;
+    overflow-y: scroll;
+  }
+}
+
+.chat-bottom {
+  height: 50px;
+  padding: 5px;
+  display: flex;
+  background-color: #f27700;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  align-items: center;
+
+  .sendText {
+    border: 1px solid #f27700;
+    border-radius: 20px;
+    height: 85%;
+    width: 90%;
+    padding: 0 1em;
+  }
+}
+
+.sendBtn {
+  display: flex;
+  background: none;
+  border: 0;
+  align-items: center;
+  color: white;
+
+  i {
+    font-size: 1.2rem;
+  }
 }
 
 .expand {
+  visibility: visible;
   transition: all 0.4s ease-in;
   opacity: 1;
 }
 
-/* Add styles to the form container */
-.form-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: white;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+.shrink {
+  visibility: hidden;
+  transition: all 0.4s ease-out;
+  opacity: 0;
 }
 
-/* Full-width textarea */
-.form-container textarea {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-  resize: none;
-  min-height: 200px;
-}
-
-/* When the textarea gets focus, do something */
-.form-container textarea:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/* Set a style for the submit/send button */
-.form-container .btn {
-  background-color: #f27700;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom: 10px;
-  opacity: 0.8;
-  transition: 0.3s;
-}
-
-/* Add some hover effects to buttons */
-.form-container .btn:hover,
+.btn:hover,
 .open-button:hover {
   opacity: 1;
 }
@@ -861,6 +927,13 @@ a:hover {
   }
 }
 
+// PC
+@media only screen and (min-width: 993px) {
+  .mobile-nav {
+    display: none;
+  }
+}
+
 // TH đặc biệt
 @media only screen and (height: 636px) {
   .banner {
@@ -882,12 +955,10 @@ a:hover {
   .mobile-nav {
     position: fixed;
     top: 49px;
-    z-index: 1030;
+    z-index: 1;
     background-color: white;
     width: 100%;
-    display: block !important;
-    opacity: 0;
-    transition: all 0.4s ease-out;
+    box-shadow: 0px 2px 15px rgb(0 0 0 / 10%);
 
     a {
       color: #000;
@@ -898,8 +969,14 @@ a:hover {
     }
 
     li {
+      display: flex;
+      justify-content: center;
       margin-top: 5px;
       padding: 5px 0 5px 10px;
+    }
+
+    li:first-child {
+      margin-top: 10px;
     }
 
     li:last-child {
@@ -908,8 +985,29 @@ a:hover {
   }
 
   .show {
-    transition: all 0.4s ease-in;
+    display: block !important;
+    animation: fade-top 0.8s ease-in-out;
     opacity: 1;
+  }
+
+  .hide {
+    // transition: visibility 0s, opacity 0.5s linear;
+    opacity: 0;
+    transition: all 0.8s ease-in-out;
+  }
+}
+
+// Footer responsive fixed
+@media only screen and (max-width: 768px) {
+  #footer .col-md-6:first-child {
+    margin-bottom: 1.5em;
+  }
+}
+
+// Header tablet responsive fixed
+@media only screen and (max-width: 1112px) and (min-width: 992px) {
+  #navbarNav li {
+    padding: 0;
   }
 }
 

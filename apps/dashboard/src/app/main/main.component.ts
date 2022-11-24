@@ -4,6 +4,7 @@ import {
   HostListener,
   OnInit,
   Renderer2,
+  ViewChild,
 } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Weather } from './service/main';
@@ -50,6 +51,7 @@ export class MainComponent implements OnInit {
   public changeIcon = false;
   offsetFlag = false;
   public isNavOpen = false;
+  public scrollSection = false;
 
   ngOnInit(): void {
     // console.log('on init');
@@ -58,6 +60,14 @@ export class MainComponent implements OnInit {
     this.openForm();
     this.closeForm();
     this.toggleSidebar();
+
+    this.renderer2.listen('document', 'scroll', (event) => {
+      this.getScrollHeight();
+    });
+
+    this.renderer2.listen('document', 'scroll', (event) => {
+      scroll;
+    });
   }
 
   public async getData() {
@@ -77,12 +87,36 @@ export class MainComponent implements OnInit {
     // });
   }
 
-  @HostListener('window:scroll', ['$event'])
-  getScrollHeight(event: any) {
-    console.log(window.pageYOffset, event);
+  // @HostListener('window:scroll', ['$event'])
+
+  getScrollHeight() {
+    // console.log(window.pageYOffset, event);
     if (window.pageYOffset < 300) this.offsetFlag = false;
     else this.offsetFlag = true;
-    console.log('ok');
+    console.log(this.offsetFlag);
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  checkScroll() {
+    const revealElement = (
+      this.element.nativeElement as HTMLElement
+    ).querySelectorAll('.reveal');
+
+    const arrLength = revealElement.length;
+    for (let i = 0; i < arrLength; i++) {
+      const windowHeight = window.innerHeight;
+      const elementTop = revealElement[i].getBoundingClientRect().top;
+
+      if (elementTop < windowHeight - 200) {
+        revealElement[i].classList.add('active');
+      }
+      // else {
+      //   revealElement[i].classList.remove('active');
+      // }
+    }
+
+    // const revealElement = this.element.nativeElement.querySelector('.reveal');
+    // console.log(revealElement);
   }
 
   toggleSidebar() {
@@ -201,7 +235,7 @@ export class MainComponent implements OnInit {
           name: '°C Min',
           type: 'line',
           marker: {
-            symbol: 'spade',
+            symbol: 'triangle',
           },
           data: [
             this.listData.forecast.forecastday[0].day.mintemp_c,
