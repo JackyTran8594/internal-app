@@ -8,7 +8,7 @@ import { appRoutes } from './app.routes';
 import { AuthenticationModule } from 'libs/authentication/src';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { IconsProviderModule } from '@internal-app/theme';
+import { IconsProviderModule, NgZorroModule } from '@internal-app/theme';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -21,6 +21,7 @@ import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzCardModule } from 'ng-zorro-antd/card';
 
 // const NZ_MODULES = [
 //   NzIconModule,
@@ -44,6 +45,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     AuthenticationModule,
     NzTableModule,
     IconsProviderModule.forRoot(),
+    NgZorroModule,
     FormsModule,
     ReactiveFormsModule,
   ],
