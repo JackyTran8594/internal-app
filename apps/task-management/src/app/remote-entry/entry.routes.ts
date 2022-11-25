@@ -8,14 +8,14 @@ export const remoteRoutes: Route[] = [
     component: RemoteEntryComponent,
     children: [
       {
-        path: 'welcome',
+        path: 'nx-welcome',
         component: NxWelcomeComponent,
       },
       {
-        path: 'test',
+        path: 'welcome',
         loadChildren: () => import('./welcome/welcome.module').then((m) => m.WelcomeModule)
       }
-      
+
     ]
   },
 ];

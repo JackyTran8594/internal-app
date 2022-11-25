@@ -12,6 +12,7 @@ import { MainService } from './service/main.service';
 import { DOCUMENT } from '@angular/common';
 import { Inject } from '@angular/core';
 import { ShareService } from '@internal-app/theme';
+import { BehaviorSubject } from 'rxjs';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 
 interface ItemData {
@@ -51,6 +52,9 @@ export class MainComponent implements OnInit {
   public changeIcon = false;
   offsetFlag = false;
   public isNavOpen = false;
+
+  // public isNavOpen: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   public scrollSection = false;
 
   ngOnInit(): void {
@@ -120,8 +124,22 @@ export class MainComponent implements OnInit {
   }
 
   toggleSidebar() {
+    // this.isNavOpen.subscribe(isNavOpen
     this.isNavOpen = !this.isNavOpen;
     console.log(this.isNavOpen);
+    const revealElement =
+      this.element.nativeElement.querySelector('.custom-toggler');
+    const mobileNav = this.element.nativeElement.querySelector('.mobile-nav');
+
+    revealElement.addEventListener('click', function () {
+      const showClass = mobileNav.querySelector('.show');
+      console.log(showClass);
+
+      setTimeout(function () {
+        mobileNav.style.display = 'none';
+        console.log('init');
+      }, 1000);
+    });
   }
 
   openForm() {
