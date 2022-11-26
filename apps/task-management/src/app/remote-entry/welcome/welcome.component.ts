@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome.component.scss'],
 })
 export class WelcomeComponent implements OnInit {
-  
+
   constructor() {
     // do something
   }
@@ -15,5 +15,7 @@ export class WelcomeComponent implements OnInit {
   ngOnInit(): void {
     // do something
   }
-  
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  public dataSet: any[] = [];
+
 }

@@ -9,13 +9,13 @@ import { RouterModule } from '@angular/router';
 import { IconsProviderModule } from './iconsProvider.module';
 import { NZ_I18N, vi_VN } from 'ng-zorro-antd/i18n';
 import vi from '@angular/common/locales/vi';
-import { NgZorroModule } from './ng-zorro.module';
 import { ShareService } from './shared/share.service';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 registerLocaleData(vi);
 
 @NgModule({
-  imports: [CommonModule, RouterModule, IconsProviderModule, NgZorroModule],
+  imports: [CommonModule, RouterModule, IconsProviderModule, NzDropDownModule ],
   declarations: [
     LayoutComponent,
     SidebarComponent,

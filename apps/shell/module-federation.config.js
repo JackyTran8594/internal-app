@@ -1,7 +1,14 @@
-const { shareAll } = require('@nrwl/angular/module-federation');
-
 module.exports = {
   name: 'shell',
-  remotes: ['dashboard','task-management'],
-
+  remotes: ['dashboard', 'task-management'],
+  additionalShared: [
+    'ng-zorro-antd',
+    '@angular/common',
+    '@angular/compiler',
+    '@angular/core',
+    '@angular/forms',
+    'bootstrap',
+    'highcharts',
+    'highcharts-angular',
+  ],
 };

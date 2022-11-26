@@ -7,6 +7,10 @@ import { AuthenticationModule } from '@internal-app/authentication';
 
 export const appRoutes: Route[] = [
   {
+    path: 'task',
+    loadChildren: () => import('task/Module').then((m) => m.RemoteEntryModule),
+  },
+  {
     path: 'pages',
     loadChildren: () =>
       import('./pages/pages.module').then((m) => m.PagesModule),
@@ -14,7 +18,9 @@ export const appRoutes: Route[] = [
   {
     path: 'auth',
     loadChildren: () =>
-      import('@internal-app/authentication').then((m) => m.AuthenticationModule),
+      import('@internal-app/authentication').then(
+        (m) => m.AuthenticationModule
+      ),
   },
   // {
   //   path: '',
