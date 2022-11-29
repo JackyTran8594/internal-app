@@ -14,7 +14,9 @@ export const appRoutes: Route[] = [
   {
     path: 'auth',
     loadChildren: () =>
-      import('@internal-app/authentication').then((m) => m.AuthenticationModule),
+      import('@internal-app/authentication').then(
+        (m) => m.AuthenticationModule
+      ),
   },
   // {
   //   path: '',

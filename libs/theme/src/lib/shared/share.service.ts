@@ -1,23 +1,19 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-@Injectable(
-    {
-        providedIn: 'root'
-    }
-)
+@Injectable({
+  providedIn: 'root',
+})
 export class ShareService {
+  public isCollapsed: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
 
-    public isCollapsed: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);;
+  constructor() {
+    //do something
+  }
 
-    constructor() {
-        //do something
-    }
-
-    inItMenu() {
-        // do something;
-    }
-
-
-
+  inItMenu() {
+    // do something;
+  }
 }

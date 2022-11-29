@@ -1,3 +1,16 @@
+.highcharts-credits {
+  display: none !important;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(242,119,0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.custom-toggler.navbar-toggler {
+  border-color: #f27700;
+}
+
+
 * {
   font-size: 16px;
   box-sizing: border-box;
@@ -29,6 +42,9 @@ a:hover {
 .active.fade-top {
   animation: fade-top 0.8s ease-in-out;
 }
+.active.fade-up {
+  animation: fade-up 0.8s ease-in-out;
+}
 .active.fade-bottom {
   animation: fade-bottom 0.8s ease-in-out;
 }
@@ -47,6 +63,16 @@ a:hover {
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+@keyframes fade-up {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px);
+    opacity: 0;
   }
 }
 @keyframes fade-bottom {
@@ -987,13 +1013,15 @@ a:hover {
   .show {
     display: block !important;
     animation: fade-top 0.8s ease-in-out;
+    z-index: 1;
     opacity: 1;
   }
 
   .hide {
     // transition: visibility 0s, opacity 0.5s linear;
     opacity: 0;
-    transition: all 0.8s ease-in-out;
+    animation: fade-up 0.8s ease-in-out;
+    // z-index: 0;
   }
 }
 

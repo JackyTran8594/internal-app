@@ -4,9 +4,19 @@ module.exports = {
   exposes: {
     './Module': 'apps/dashboard/src/app/remote-entry/entry.module.ts',
   },
-  output: {
-    uniqueName: "dashboard",
-    publicPath: "auto",
-    scriptType: "text/javascript"
-  },
+  additionalShared: [
+    'ng-zorro-antd',
+    '@angular/common',
+    '@angular/compiler',
+    '@angular/core',
+    '@angular/forms',
+    'bootstrap',
+    'highcharts',
+    'highcharts-angular'
+  ],
+  // output: {
+  //   uniqueName: "dashboard",
+  //   publicPath: "auto",
+  //   // scriptType: "text/javascript"
+  // },
 };

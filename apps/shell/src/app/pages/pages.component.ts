@@ -6,7 +6,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   template: `<router-outlet></router-outlet>`,
   styles: [
   ],
-  encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.None
 })
 export class PagesComponent implements OnInit {
 

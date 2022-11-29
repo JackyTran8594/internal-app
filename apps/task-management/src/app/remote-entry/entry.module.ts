@@ -9,11 +9,7 @@ import { ThemeModule } from '@internal-app/theme';
 
 @NgModule({
   declarations: [RemoteEntryComponent, NxWelcomeComponent],
-  imports: [
-    CommonModule, 
-    RouterModule.forChild(remoteRoutes),
-    ThemeModule.forRoot()
-  ],
+  imports: [CommonModule, RouterModule.forChild(remoteRoutes), ThemeModule],
   providers: [],
 })
 export class RemoteEntryModule {}

@@ -9,17 +9,18 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { provideSvgIcons } from '@ngneat/svg-icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IconsProviderModule, NgZorroModule, ThemeModule } from '@internal-app/theme';
 
 @NgModule({
   declarations: [AppComponent, MainComponent],
   imports: [
     BrowserModule,
-    NzIconModule,
     HttpClientModule,
     HighchartsChartModule,
-    NzTableModule,
+    NgZorroModule,
     FormsModule,
     ReactiveFormsModule,
+    ThemeModule,
     RouterModule.forRoot(
       [
         {

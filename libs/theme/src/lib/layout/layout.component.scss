@@ -1,7 +1,10 @@
+@import '../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../../../../../node_modules/ng-zorro-antd/ng-zorro-antd.min.css';
+
 // variables
 $sidebar_width: 20% !default;
 $header_height: 64px !default;
-$breadcrumb_height: 32px !default;
+$breadcrumb_height: 46px !default;
 $footer_height: 64px !default;
 
 @function size($side, $isWidth) {

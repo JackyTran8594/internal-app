@@ -6,7 +6,6 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./breadcrumb.component.scss'],
 })
 export class BreadcrumbComponent implements OnInit {
-
   @Input() breadcrumbs: any;
 
   constructor() {
@@ -18,12 +17,12 @@ export class BreadcrumbComponent implements OnInit {
     this.breadcrumbs = [
       {
         label: 'Home',
-        path:'home'
+        path: 'home',
       },
       {
         label: 'link 1',
-        path:'home'
+        path: 'home',
       },
-    ]
+    ];
   }
 }

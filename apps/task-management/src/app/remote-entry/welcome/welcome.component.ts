@@ -7,13 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome.component.scss'],
 })
 export class WelcomeComponent implements OnInit {
-  
   constructor() {
     // do something
   }
 
+  tabs = ['Board View', 'Table', 'Timeline'];
+
   ngOnInit(): void {
     // do something
   }
-  
+  // eslint-disable-next-line @typescript-eslint/member-ordering
 }

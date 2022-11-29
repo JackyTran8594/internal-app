@@ -13,9 +13,6 @@ import { NzTableModule } from 'ng-zorro-antd/table';
   imports: [
     CommonModule,
     RouterModule.forChild(remoteRoutes),
-    IconsProviderModule,
-    NzTableModule,
-    ThemeModule.forRoot(),
   ],
   providers: [],
 })

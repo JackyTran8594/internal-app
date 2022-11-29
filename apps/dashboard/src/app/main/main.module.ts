@@ -10,8 +10,7 @@ import { provideSvgIcons } from '@ngneat/svg-icon';
   imports: [
     CommonModule,
     MainRoutingModule,
-    IconsProviderModule,
-    NzTableModule,
+    
   ],
   providers: [provideSvgIcons([])],
 })
