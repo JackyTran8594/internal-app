@@ -7,10 +7,6 @@ import { AuthenticationModule } from '@internal-app/authentication';
 
 export const appRoutes: Route[] = [
   {
-    path: 'task',
-    loadChildren: () => import('task/Module').then((m) => m.RemoteEntryModule),
-  },
-  {
     path: 'pages',
     loadChildren: () =>
       import('./pages/pages.module').then((m) => m.PagesModule),

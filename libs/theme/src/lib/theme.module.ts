@@ -15,13 +15,13 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 registerLocaleData(vi);
 
 @NgModule({
-  imports: [CommonModule, RouterModule, IconsProviderModule, NzDropDownModule ],
+  imports: [CommonModule, RouterModule, IconsProviderModule, NzDropDownModule],
   declarations: [
     LayoutComponent,
     SidebarComponent,
     HeaderComponent,
     FooterComponent,
-    BreadcrumbComponent,
+    // BreadcrumbComponent,
   ],
   exports: [
     IconsProviderModule,
@@ -29,7 +29,7 @@ registerLocaleData(vi);
     SidebarComponent,
     HeaderComponent,
     FooterComponent,
-    BreadcrumbComponent,
+    // BreadcrumbComponent,
   ],
   providers: [
     {

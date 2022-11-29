@@ -8,9 +8,14 @@ import { appRoutes } from './app.routes';
 import { AuthenticationModule } from 'libs/authentication/src';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { IconsProviderModule, NgZorroModule, ThemeModule } from '@internal-app/theme';
+import {
+  IconsProviderModule,
+  NgZorroModule,
+  ThemeModule,
+} from '@internal-app/theme';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 // ng zorro
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -42,9 +47,10 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     AuthenticationModule,
     // import forRoot to register icon
     IconsProviderModule.forRoot(),
-    // NgZorroModule.forRoot(),  
+    // NgZorroModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
