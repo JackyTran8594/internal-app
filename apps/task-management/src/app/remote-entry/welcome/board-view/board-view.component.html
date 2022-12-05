@@ -1,9 +1,115 @@
-<!-- <nz-tabset [nzTabBarExtraContent]="extraTemplate">
-  <nz-tab *ngFor="let tab of tabs" [nzTitle]="'Tab ' + tab"
-    >Content of tab {{ tab }}</nz-tab
-  >
-</nz-tabset>
-<ng-template #extraTemplate>
-  <button nz-button>Extra Action</button>
-</ng-template> -->
-board view
+<div
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  (cdkDropListDropped)="dropGroup($event)"
+>
+  <div cdkDropListGroup class="container">
+    <div class="row">
+      <div
+        class="example-container"
+        *ngFor="let list of board; let idx = index"
+        cdkDrag
+      >
+        <div class="task p-3 d-flex">
+          <h2>{{ list.name }}</h2>
+          <div class="btn d-flex">
+            <button class="newTaskBtn">
+              <i
+                nz-icon
+                nzType="ellipsis"
+                nzTheme="outline"
+                nz-dropdown
+                nzTrigger="click"
+                [nzDropdownMenu]="menu"
+              ></i>
+            </button>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+              <ul nz-menu>
+                <li nz-menu-item>1st menu item</li>
+                <li nz-menu-item>2nd menu item</li>
+                <li nz-menu-divider></li>
+                <li nz-menu-item nzDisabled>disabled menu item</li>
+                <li nz-submenu nzTitle="sub menu">
+                  <ul>
+                    <li nz-menu-item>3rd menu item</li>
+                    <li nz-menu-item>4th menu item</li>
+                  </ul>
+                </li>
+                <li nz-submenu nzDisabled nzTitle="disabled sub menu">
+                  <ul>
+                    <li nz-menu-item>3rd menu item</li>
+                    <li nz-menu-item>4th menu item</li>
+                  </ul>
+                </li>
+              </ul>
+            </nz-dropdown-menu>
+            <!-- <button class="newTaskBtn" (click)="addToDo()">
+              <i nz-icon nzType="plus" nzTheme="outline"></i>
+            </button> -->
+          </div>
+        </div>
+
+        <div
+          cdkDropList
+          [cdkDropListData]="list.title"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div
+            class="example-box"
+            *ngFor="let item of list.title; let idx = index"
+            cdkDrag
+          >
+            <div
+              [hidden]="edittodo === idx"
+              (click)="startEditToDo(idx)"
+              style="overflow-wrap: break-word; width: 80%"
+            >
+              {{ item.name }}
+            </div>
+
+            <input
+              [hidden]="edittodo !== idx"
+              style="width: 75%"
+              type="text"
+              class="editToDo"
+              nz-input
+              [(ngModel)]="item.name"
+              (blur)="stopEditToDo()"
+              (keyup.enter)="stopEditToDo()"
+            />
+
+            <div class="btn d-flex">
+              <button class="itemBtn editBtn">
+                <i nz-icon nzType="eye" nzTheme="outline"></i>
+              </button>
+              <button class="itemBtn">
+                <i nz-icon nzType="ellipsis" nzTheme="outline"></i>
+              </button>
+            </div>
+          </div>
+          <ng-container *ngIf="addtodo ? true : false">
+            <div class="example-box">
+              <input
+                nz-input
+                style="width: 100%"
+                type="text"
+                id="inputToDo"
+                (blur)="addToDoArray()"
+                (keyup.enter)="addToDoArray()"
+              />
+            </div>
+          </ng-container>
+          <div
+            class="example-box"
+            role="button"
+            (click)="addToDo()"
+            style="color: rgba(55, 53, 47, 0.8)"
+          >
+            + New
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

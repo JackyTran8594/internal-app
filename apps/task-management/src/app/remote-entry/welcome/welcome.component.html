@@ -6,7 +6,9 @@
     <ng-container *ngIf="tab === 'Table'">
       <internal-app-table-view></internal-app-table-view>
     </ng-container>
-    <ng-container *ngIf="tab === 'Timeline'"> </ng-container>
+    <ng-container *ngIf="tab === 'Timeline'">
+      <internal-app-timeline></internal-app-timeline>
+    </ng-container>
   </nz-tab>
 </nz-tabset>
 <ng-template #extraTemplate>

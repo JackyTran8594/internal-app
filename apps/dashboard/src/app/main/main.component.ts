@@ -65,11 +65,11 @@ export class MainComponent implements OnInit {
     this.closeForm();
     this.toggleSidebar();
 
-    this.renderer2.listen('document', 'scroll', (event) => {
+    this.renderer2.listen('document', 'scroll', () => {
       this.getScrollHeight();
     });
 
-    this.renderer2.listen('document', 'scroll', (event) => {
+    this.renderer2.listen('document', 'scroll', () => {
       scroll;
     });
   }

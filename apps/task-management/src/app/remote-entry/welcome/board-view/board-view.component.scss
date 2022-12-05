@@ -1,0 +1,133 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.container::before,
+.container::after,
+.row::before,
+.row::after {
+  display: table;
+  content: ' ';
+}
+
+.row {
+  justify-content: space-around;
+}
+
+.btn {
+  width: 20%;
+  justify-content: flex-end;
+  padding: 0;
+
+  .newTaskBtn {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: none;
+    background-color: #ebecf0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .itemBtn {
+    height: 100%;
+    opacity: 0;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0px solid #40a9ff;
+    box-shadow: none;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .newTaskBtn:hover {
+    background-color: #091e4214;
+    color: black;
+  }
+
+  .itemBtn:hover {
+    color: #40a9ff;
+  }
+}
+
+.example-container {
+  width: 30%;
+  height: 100%;
+  max-width: 100%;
+  margin: 20px 25px 25px 0;
+  display: flex;
+  vertical-align: top;
+  flex-direction: column;
+  background-color: #ebecf0;
+  padding-bottom: 1em;
+
+  .task {
+    justify-content: space-between;
+    margin-bottom: 1em;
+  }
+}
+
+.example-container:hover .newTaskBtn {
+  opacity: 1;
+}
+
+.example-list {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+  width: 90%;
+  align-self: center;
+}
+
+.example-box {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: pointer;
+  background: white;
+  font-size: 14px;
+}
+
+.example-box:hover .itemBtn {
+  opacity: 1;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
