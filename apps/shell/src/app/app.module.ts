@@ -51,6 +51,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     FormsModule,
     ReactiveFormsModule,
     DragDropModule,
+    HighchartsChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
