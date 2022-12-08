@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { registerLocaleData } from '@angular/common';
 import vn from '@angular/common/locales/en';
+import { BoardTaskFormComponent } from './board-view/board-task-form/board-task-form.component';
 registerLocaleData(vn);
 
 @NgModule({
@@ -20,6 +21,7 @@ registerLocaleData(vn);
     TableViewComponent,
     BoardViewComponent,
     TimelineComponent,
+    BoardTaskFormComponent,
   ],
   imports: [
     CommonModule,

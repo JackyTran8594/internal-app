@@ -20,6 +20,8 @@ import {
   SendOutline,
   SearchOutline,
   PlusOutline,
+  InsuranceOutline,
+  DownCircleOutline,
 } from '@ant-design/icons-angular/icons';
 
 const icons = [
@@ -37,7 +39,9 @@ const icons = [
   SolutionOutline,
   SendOutline,
   SearchOutline,
-  PlusOutline
+  PlusOutline,
+  InsuranceOutline,
+  DownCircleOutline,
 ];
 
 @NgModule({

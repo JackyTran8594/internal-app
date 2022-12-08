@@ -1,0 +1,53 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="title" contenteditable="true">
+        <div class="header-content">Test</div>
+        <div class="mb-4"></div>
+      </div>
+      <div class="property">
+        <div class="child-property d-flex" cdkDrag>
+          <button class="propertyBtn d-flex">
+            <i nz-icon nzType="calendar" nzTheme="outline"></i>
+            <div class="property-name">Date</div>
+          </button>
+          <nz-date-picker
+            class="property-detail"
+            [(ngModel)]="currentDate"
+          ></nz-date-picker>
+        </div>
+        <div class="child-property d-flex" cdkDrag>
+          <button class="propertyBtn d-flex">
+            <i nz-icon nzType="clock-circle" nzTheme="outline"></i>
+            <div class="property-name">Date Created</div>
+          </button>
+          <nz-date-picker
+            class="property-detail"
+            [(ngModel)]="currentDate"
+            nzDisabled
+          ></nz-date-picker>
+        </div>
+        <div class="child-property d-flex" cdkDrag>
+          <button class="propertyBtn d-flex">
+            <i nz-icon nzType="down-circle" nzTheme="outline"></i>
+            <div class="property-name">Status</div>
+          </button>
+          <nz-select class="property-detail" ngModel="ToDo">
+            <nz-option nzValue="ToDo" nzLabel="To Do"></nz-option>
+            <nz-option nzValue="Doing" nzLabel="Doing"></nz-option>
+            <nz-option nzValue="Done" nzLabel="Done"></nz-option>
+          </nz-select>
+        </div>
+        <div class="add-property-btn">
+          <button class="d-flex">+ Add a property</button>
+        </div>
+        <div class="comment d-flex">
+          <div class="avatar">
+            <div class="circle"></div>
+          </div>
+          <input type="text" nz-input placeholder="Add a comment..." />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,8 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 const NZ_MODULES = [
   NzButtonModule,
@@ -16,6 +18,8 @@ const NZ_MODULES = [
   NzTabsModule,
   NzDatePickerModule,
   NzInputModule,
+  NzModalModule,
+  NzSelectModule,
 ];
 
 @NgModule({

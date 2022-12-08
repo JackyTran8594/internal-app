@@ -13,10 +13,14 @@ export const remoteRoutes: Route[] = [
       },
       {
         path: 'welcome',
-        loadChildren: () => import('./welcome/welcome.module').then((m) => m.WelcomeModule)
-      }
-
-    ]
+        loadChildren: () =>
+          import('./welcome/welcome.module').then((m) => m.WelcomeModule),
+      },
+      {
+        path: 'project',
+        loadChildren: () =>
+          import('./project/project.module').then((m) => m.ProjectModule),
+      },
+    ],
   },
 ];
-
