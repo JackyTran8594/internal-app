@@ -1,1 +1,41 @@
-<p>project works!</p>
+<div class="container">
+  <div class="row">
+    <div class="addBtn" style="width: 100%; margin-top: 1.5em">
+      <button nz-button style="float: right">Add</button>
+    </div>
+    <nz-table
+      nzBordered
+      [nzData]="listData"
+      style="width: 100%; margin-top: 1.5em"
+    >
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Parent</th>
+          <th>Revenue</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listData">
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.parentId }}</td>
+          <td>{{ item.revenue }}</td>
+          <td class="d-flex flex-row">
+            <button nz-button class="d-flex align-items-center">
+              <i nz-icon nzType="eye" nzTheme="outline"></i>
+            </button>
+            <button nz-button class="d-flex align-items-center">
+              <i nz-icon nzType="edit" nzTheme="outline"></i>
+            </button>
+            <button nz-button class="d-flex align-items-center">
+              <i nz-icon nzType="delete" nzTheme="outline"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>

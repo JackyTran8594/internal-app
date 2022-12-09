@@ -2,12 +2,19 @@
 import { Observable } from 'rxjs';
 
 export interface Project {
+  pagingData: test;
+}
+
+export interface test {
+  content: [content];
+}
+export interface content {
   attachFile: string;
   createdBy: string;
   createdDate: string;
   customerId: number;
   endDate: string;
-  id: number;
+  id?: number;
   lastModifiedBy: string;
   lastModifiedDate: string;
   name: string;
