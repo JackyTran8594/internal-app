@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="addBtn" style="width: 100%; margin-top: 1.5em">
-      <button nz-button style="float: right">Add</button>
+      <button nz-button style="float: right" (click)="onCreate()">
+        Add New Project
+      </button>
     </div>
     <nz-table
       nzBordered
@@ -24,13 +26,28 @@
           <td>{{ item.parentId }}</td>
           <td>{{ item.revenue }}</td>
           <td class="d-flex flex-row">
-            <button nz-button class="d-flex align-items-center">
+            <button
+              nz-button
+              nzShape="circle"
+              class="d-flex align-items-center justify-content-center mr-1"
+              (click)="onView(item)"
+            >
               <i nz-icon nzType="eye" nzTheme="outline"></i>
             </button>
-            <button nz-button class="d-flex align-items-center">
+            <button
+              nz-button
+              nzShape="circle"
+              class="d-flex align-items-center justify-content-center mr-1"
+              (click)="onUpdate(item)"
+            >
               <i nz-icon nzType="edit" nzTheme="outline"></i>
             </button>
-            <button nz-button class="d-flex align-items-center">
+            <button
+              nz-button
+              nzShape="circle"
+              class="d-flex align-items-center justify-content-center mr-1"
+              (click)="onDelete(item.id)"
+            >
               <i nz-icon nzType="delete" nzTheme="outline"></i>
             </button>
           </td>

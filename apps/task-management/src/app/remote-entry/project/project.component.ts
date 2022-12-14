@@ -2,8 +2,26 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { ProjectFormComponent } from './project-form/project-form.component';
 import { content, Project } from './service/project';
 import { ProjectService } from './service/project.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { DeleteComponent } from './delete/delete.component';
+
+enum ModeModal {
+  CREATE = 'create',
+  UPDATE = 'update',
+  VIEW = 'view',
+}
+
+interface PageObject {
+  pageNumber: number;
+  pageSize: number;
+  size?: number;
+  totalElements: number;
+  totalPages?: number;
+}
 
 @Component({
   selector: 'internal-app-project',
@@ -11,41 +29,33 @@ import { ProjectService } from './service/project.service';
   styleUrls: ['./project.component.scss'],
 })
 export class ProjectComponent implements OnInit {
-  constructor(private service: ProjectService, private router: Router) {}
+  constructor(
+    private service: ProjectService,
+    private router: Router,
+    private modalService: NzModalService,
+    private notifyService: NzNotificationService
+  ) {}
 
   public listData: any;
 
-  public postData: content = {
-    attachFile: 'string',
-    createdBy: 'string',
-    createdDate: '2022-12-09T07:15:55.017Z',
-    customerId: 0,
-    endDate: '2022-12-09T07:15:55.017Z',
-    lastModifiedBy: 'string',
-    lastModifiedDate: '2022-12-09T07:15:55.017Z',
-    name: 'string',
-    parentId: 0,
-    readEndDate: '2022-12-09T07:15:55.017Z',
-    readStartDate: '2022-12-09T07:15:55.017Z',
-    revenue: 0,
-    startDate: '2022-12-09T07:15:55.017Z',
-    status: 'string',
-    totalCost: 0,
-    totalHour: 0,
+  page: PageObject = {
+    pageNumber: 1,
+    pageSize: 10,
+    totalElements: 0,
   };
 
   public pageNumber = 1;
-  public pageSize = 50;
+  public pageSize = 100;
   // public txtSearch = '1';
+
+  modalOptions: any = {
+    nzDuration: 2000,
+  };
 
   ngOnInit(): void {
     this.getProject();
     // this.addProject();
   }
-
-  // afterViewInit(): void {
-  //   this.addProject();
-  // }
 
   public getProject() {
     this.service.getProject(this.pageNumber, this.pageSize).subscribe({
@@ -58,6 +68,127 @@ export class ProjectComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  onCreate(): void {
+    this.modalService
+      .create({
+        nzTitle: 'New Project',
+        nzClassName: 'modal-custom',
+        nzContent: ProjectFormComponent,
+        nzWidth: 'modal-custom',
+        nzCentered: true,
+        nzMaskClosable: false,
+        nzComponentParams: {
+          mode: ModeModal.CREATE,
+          title: 'Thêm yêu cầu',
+        },
+        nzDirection: 'ltr', // left to right
+      })
+      .afterClose.subscribe({
+        next: (res) => {
+          console.log(res);
+          if (res) {
+            this.notifyService.success(
+              'Thành công',
+              'Thêm mới yêu cầu',
+              this.modalOptions
+            );
+          }
+          // this.searchData();
+        },
+        error: (res) => {
+          console.log(res);
+        },
+      });
+  }
+
+  onUpdate(item: content): void {
+    this.modalService
+      .create({
+        nzTitle: 'Update Project',
+        nzClassName: 'modal-custom',
+        nzContent: ProjectFormComponent,
+        nzWidth: 'modal-custom',
+        nzCentered: true,
+        nzMaskClosable: false,
+        nzComponentParams: {
+          mode: ModeModal.UPDATE,
+          id: item.id,
+        },
+        nzDirection: 'ltr', // left to right
+      })
+      .afterClose.subscribe({
+        next: (res) => {
+          console.log(res);
+          if (res) {
+            this.notifyService.success(
+              'Thành công',
+              'Chỉnh sửa yêu cầu',
+              this.modalOptions
+            );
+          }
+          // this.searchData();
+        },
+        error: (res) => {
+          console.log(res);
+        },
+      });
+  }
+
+  onView(item: content): void {
+    this.modalService.create({
+      nzTitle: 'View Project',
+      nzClassName: 'modal-custom',
+      nzContent: ProjectFormComponent,
+      nzWidth: 'modal-custom',
+      nzCentered: true,
+      nzMaskClosable: false,
+      nzComponentParams: {
+        mode: ModeModal.VIEW,
+        title: 'View Project',
+        id: item.id,
+      },
+      nzDirection: 'ltr', // left to right
+    });
+  }
+
+  onDelete(id: number): void {
+    this.modalService
+      .create({
+        nzTitle: 'Delete Project',
+        nzClassName: 'modal-custom',
+        nzContent: DeleteComponent,
+        nzCentered: true,
+        nzMaskClosable: false,
+        nzDirection: 'ltr', // left to right
+      })
+      .afterClose.subscribe({
+        next: (res) => {
+          console.log(res);
+          if (res) {
+            this.service.deleteProject(id).subscribe({
+              next: (res) => {
+                if (res) {
+                  this.notifyService.success(
+                    'Thành công',
+                    'Xóa yêu cầu',
+                    this.modalOptions
+                  );
+                }
+                // this.searchData();
+              },
+              error: (err) => {
+                console.log(err);
+              },
+              complete: () => {},
+            });
+          }
+        },
+        error: (res) => {
+          console.log(res);
+        },
+      });
   }
 
   // public addProject() {

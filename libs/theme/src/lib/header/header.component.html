@@ -1,6 +1,6 @@
 <div class="d-flex flex-row">
   <div class="col-md-6 align-items-center pl-0 pr-0">
-    <div class="header-icon">
+    <div class="header-icon d-flex align-items-center">
       <span (click)="toggleSidebar()">
         <i
           class="trigger"
@@ -9,19 +9,29 @@
           [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
         ></i>
       </span>
-      <a role="button" nzTrigger="click" nz-dropdown [nzDropdownMenu]="create"
-        >Create</a
-      >
-      <nz-dropdown-menu #create="nzDropdownMenu">
-        <ul nz-menu nzSelectable>
-          <li nz-menu-item>
-            <a routerLink="project">New Project</a>
-          </li>
-          <li nz-menu-item>2nd menu item</li>
-          <li nz-menu-item>3rd menu item</li>
-          <li nz-menu-item nzDanger>4th danger item</li>
-        </ul>
-      </nz-dropdown-menu>
+      <div class="project">
+        <a
+          class="projectBtn"
+          role="button"
+          nzTrigger="click"
+          nz-dropdown
+          [nzDropdownMenu]="project"
+          >Project</a
+        >
+        <nz-dropdown-menu #project="nzDropdownMenu">
+          <ul nz-menu nzSelectable>
+            <li nz-menu-item>
+              <a routerLink="project">View Project</a>
+            </li>
+            <li nz-menu-item>1st item</li>
+            <li nz-menu-item>2nd item</li>
+            <li nz-menu-item>3rd item</li>
+          </ul>
+        </nz-dropdown-menu>
+      </div>
+      <div class="createProject">
+        <a class="projectBtn" role="button">Create</a>
+      </div>
     </div>
   </div>
   <div class="col-md-6 align-items-center pl-0 pr-0">

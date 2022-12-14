@@ -1,0 +1,63 @@
+.wrapper {
+  width: 800px;
+  height: calc(100% - 144px);
+  border-radius: 3px;
+}
+
+.property {
+  width: 100%;
+
+  .child-property {
+    align-items: center;
+    margin-bottom: 15px;
+
+    .propertyBtn {
+      align-items: center;
+      width: 250px;
+      height: 40px;
+      border-radius: 3px;
+      padding: 0 6px;
+      transition: background 0.4s ease-in 0s;
+      border: none;
+      background-color: white;
+
+      i {
+        margin-right: 8px;
+        font-size: 16px;
+      }
+
+      .property-name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .propertyBtn:hover {
+      background-color: #ccc;
+    }
+
+    .property-detail {
+      width: 100%;
+      margin-left: 4px;
+      cursor: pointer;
+      border-radius: 3px;
+      min-height: 40px;
+    }
+
+    .property-detail[type='text'] {
+      cursor: text;
+    }
+  }
+}
+
+.checkbox {
+  height: 40px;
+  width: 100%;
+
+  label {
+    width: 190.39px;
+    min-width: 190.39px;
+    padding: 0 6px;
+  }
+}
