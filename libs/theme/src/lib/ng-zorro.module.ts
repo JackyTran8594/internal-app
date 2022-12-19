@@ -7,6 +7,11 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
 const NZ_MODULES = [
   NzButtonModule,
@@ -16,6 +21,11 @@ const NZ_MODULES = [
   NzTabsModule,
   NzDatePickerModule,
   NzInputModule,
+  NzModalModule,
+  NzSelectModule,
+  NzNotificationModule,
+  NzPaginationModule,
+  NzCheckboxModule,
 ];
 
 @NgModule({

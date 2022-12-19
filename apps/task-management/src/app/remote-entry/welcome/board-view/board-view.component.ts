@@ -7,6 +7,8 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { AfterViewChecked, Component, ElementRef, OnInit } from '@angular/core';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { BoardTaskFormComponent } from './board-task-form/board-task-form.component';
 
 interface BoardList {
   id: number;
@@ -17,6 +19,17 @@ interface BoardList {
 interface List {
   id: number;
   name: string;
+}
+
+interface Form {
+  id: number;
+  name: string;
+}
+
+enum ModeModal {
+  CREATE = 'create',
+  UPDATE = 'update',
+  VIEW = 'view',
 }
 
 @Component({
@@ -44,11 +57,11 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
   board: BoardList[] = [
     {
       id: 1,
-      name: 'To do',
+      name: 'TODO',
       title: this.todo,
     },
-    { id: 2, name: 'Doing', title: this.doing },
-    { id: 3, name: 'Done', title: this.done },
+    { id: 2, name: 'DOING', title: this.doing },
+    { id: 3, name: 'DONE', title: this.done },
   ];
 
   public addtodo = false;
@@ -58,9 +71,15 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
   public edittodo: number | null = null;
   public editdoing: number | null = null;
 
-  public t: unknown;
+  public isEdit = false;
 
-  constructor(private element: ElementRef) {}
+  public t: unknown;
+  isVisible = false;
+
+  constructor(
+    private element: ElementRef,
+    private modalService: NzModalService
+  ) {}
 
   ngAfterViewChecked(): void {
     // this.checkInput();
@@ -70,13 +89,25 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
     // this.addToDo();
   }
 
-  // checkInput() {
-  //   const inputToDo = this.element.nativeElement.querySelector('#inputToDo');
-  //   if (inputToDo.value == '') this.addnew = false;
-  //   else this.addnew = true;
+  onKeydown(e: any) {
+    e.preventDefault();
+  }
 
-  //   // console.log(inputToDo.value);
-  // }
+  onView(item: Form): void {
+    this.modalService.create({
+      nzClassName: 'modal-custom',
+      nzContent: BoardTaskFormComponent,
+      nzWidth: 'modal-custom',
+      nzCentered: true,
+      nzMaskClosable: false,
+      nzComponentParams: {
+        mode: ModeModal.VIEW,
+        title: 'Xem chi tiết yêu cầu',
+        id: item.id,
+      },
+      nzDirection: 'ltr', // left to right
+    });
+  }
 
   addToDo() {
     if (this.addtodo == false) this.addtodo = true;
@@ -92,10 +123,12 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
 
   startEditToDo(idx: number) {
     this.edittodo = idx;
+    this.isEdit = true;
   }
 
   stopEditToDo() {
     this.edittodo = null;
+    this.isEdit = false;
   }
 
   startEditDoing(idx: number) {
@@ -111,8 +144,10 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
     const inputValue = inputToDo.value;
     const lastElement = this.todo[this.todo.length - 1];
     console.log(inputValue);
-    this.todo.push({ id: lastElement.id + 1, name: inputValue });
-    this.addtodo = false;
+    if (inputValue) {
+      this.todo.push({ id: lastElement.id + 1, name: inputValue });
+      this.addtodo = false;
+    }
   }
 
   // editToDoArray(t: unknown) {
