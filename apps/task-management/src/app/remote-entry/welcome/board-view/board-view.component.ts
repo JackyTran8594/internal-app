@@ -8,7 +8,11 @@ import {
 } from '@angular/cdk/drag-drop';
 import { AfterViewChecked, Component, ElementRef, OnInit } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { BoardTaskFormComponent } from './board-task-form/board-task-form.component';
+import { DeleteComponent } from './delete/delete.component';
+import { BoardViewService } from './service/board-view.service';
+import { content } from './service/task';
 
 interface BoardList {
   id: number;
@@ -38,6 +42,20 @@ enum ModeModal {
   styleUrls: ['./board-view.component.scss'],
 })
 export class BoardViewComponent implements OnInit, AfterViewChecked {
+  public pageNumber = 1;
+  public pageSize = 999;
+  public txtSearch: string | undefined;
+  public totalElements = 0;
+  public totalPages: number | undefined;
+
+  // public tagList: any;
+  public taskList: any;
+  public taskContent: any;
+
+  modalOptions: any = {
+    nzDuration: 2000,
+  };
+
   todo: List[] = [
     { id: 1, name: 'Test1' },
     { id: 2, name: 'Test2' },
@@ -77,8 +95,10 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
   isVisible = false;
 
   constructor(
+    private service: BoardViewService,
     private element: ElementRef,
-    private modalService: NzModalService
+    private modalService: NzModalService,
+    private notifyService: NzNotificationService
   ) {}
 
   ngAfterViewChecked(): void {
@@ -86,15 +106,51 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit(): void {
-    // this.addToDo();
+    // this.getTag();
+    this.getTask();
   }
 
   onKeydown(e: any) {
     e.preventDefault();
   }
 
-  onView(item: Form): void {
+  // public getTag() {
+  //   this.service
+  //     .getTag(this.pageNumber, this.pageSize, this.txtSearch)
+  //     .subscribe({
+  //       next: (res) => {
+  //         console.log(res);
+  //         this.tagList = res.pagingData.content;
+  //         // console.log(this.listData);
+  //         this.totalElements = res.pagingData.totalElements;
+  //         this.totalPages = res.pagingData.totalPages;
+  //       },
+  //       error: (err) => {
+  //         console.log(err);
+  //       },
+  //     });
+  // }
+
+  public getTask() {
+    this.service
+      .getTask(this.pageNumber, this.pageSize, this.txtSearch)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.taskList = res.pagingData.content;
+          // console.log(this.listData);
+          this.totalElements = res.pagingData.totalElements;
+          this.totalPages = res.pagingData.totalPages;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
+
+  onView(item: content): void {
     this.modalService.create({
+      nzTitle: 'View Task',
       nzClassName: 'modal-custom',
       nzContent: BoardTaskFormComponent,
       nzWidth: 'modal-custom',
@@ -107,6 +163,110 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
       },
       nzDirection: 'ltr', // left to right
     });
+  }
+
+  onCreate(): void {
+    this.modalService
+      .create({
+        nzTitle: 'New Task',
+        nzClassName: 'modal-custom',
+        nzContent: BoardTaskFormComponent,
+        nzWidth: 'modal-custom',
+        nzCentered: true,
+        nzMaskClosable: false,
+        nzComponentParams: {
+          mode: ModeModal.CREATE,
+          title: 'Thêm yêu cầu',
+        },
+        nzDirection: 'ltr', // left to right
+      })
+      .afterClose.subscribe({
+        next: (res) => {
+          console.log(res);
+          if (res) {
+            this.notifyService.success(
+              'Thành công',
+              'Thêm mới yêu cầu',
+              this.modalOptions
+            );
+          }
+          this.getTask();
+        },
+        error: (res) => {
+          console.log(res);
+        },
+      });
+  }
+
+  onUpdate(item: content): void {
+    this.modalService
+      .create({
+        nzTitle: 'Update Task',
+        nzClassName: 'modal-custom',
+        nzContent: BoardTaskFormComponent,
+        nzWidth: 'modal-custom',
+        nzCentered: true,
+        nzMaskClosable: false,
+        nzComponentParams: {
+          mode: ModeModal.UPDATE,
+          id: item.id,
+        },
+        nzDirection: 'ltr', // left to right
+      })
+      .afterClose.subscribe({
+        next: (res) => {
+          console.log(res);
+          if (res) {
+            this.notifyService.success(
+              'Thành công',
+              'Chỉnh sửa yêu cầu',
+              this.modalOptions
+            );
+          }
+          this.getTask();
+        },
+        error: (res) => {
+          console.log(res);
+        },
+      });
+  }
+
+  onDelete(id: number): void {
+    this.modalService
+      .create({
+        nzTitle: 'Delete Project',
+        nzClassName: 'modal-custom',
+        nzContent: DeleteComponent,
+        nzCentered: true,
+        nzMaskClosable: false,
+        nzDirection: 'ltr', // left to right
+      })
+      .afterClose.subscribe({
+        next: (res) => {
+          console.log(res);
+          if (res) {
+            this.service.deleteTask(id).subscribe({
+              next: (res) => {
+                if (res) {
+                  this.notifyService.success(
+                    'Thành công',
+                    'Xóa yêu cầu',
+                    this.modalOptions
+                  );
+                }
+                this.getTask();
+              },
+              error: (err) => {
+                console.log(err);
+              },
+              complete: () => {},
+            });
+          }
+        },
+        error: (res) => {
+          console.log(res);
+        },
+      });
   }
 
   addToDo() {

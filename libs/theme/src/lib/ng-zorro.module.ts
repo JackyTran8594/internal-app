@@ -12,6 +12,14 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzFormModule } from 'ng-zorro-antd/form';
+
+// NgZorro local english language settings
+import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+registerLocaleData(en);
 
 const NZ_MODULES = [
   NzButtonModule,
@@ -26,13 +34,15 @@ const NZ_MODULES = [
   NzNotificationModule,
   NzPaginationModule,
   NzCheckboxModule,
+  NzGridModule,
+  NzFormModule,
 ];
 
 @NgModule({
   imports: [CommonModule, ...NZ_MODULES],
   declarations: [],
   exports: [NZ_MODULES],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
 })
 export class NgZorroModule {
   // static forRoot(): ModuleWithProviders<NgZorroModule> {

@@ -1,53 +1,139 @@
 <div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="title" contenteditable="true">
-        <div class="header-content">Test</div>
-        <div class="mb-4"></div>
-      </div>
-      <div class="property">
-        <div class="child-property d-flex" cdkDrag>
-          <button class="propertyBtn d-flex">
-            <i nz-icon nzType="calendar" nzTheme="outline"></i>
-            <div class="property-name">Date</div>
-          </button>
-          <nz-date-picker
-            class="property-detail"
-            [(ngModel)]="currentDate"
-          ></nz-date-picker>
+  <div class="modal-content">
+    <form
+      nz-form
+      style="width: 100%"
+      [formGroup]="formValidation"
+      method="POST"
+    >
+      <!-- row 1 -->
+      <div nz-row class="d-flex flex-row" [nzGutter]="8">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item nz-row [nzGutter]="2">
+            <nz-form-label nz-col [nzSpan]="6">
+              Name <span style="color: red">*</span>
+            </nz-form-label>
+            <nz-form-control nz-col [nzSpan]="18" nzErrorTip="Bắt buộc!">
+              <input
+                nz-input
+                placeholder="Name"
+                formControlName="name"
+                name="name"
+                required
+              />
+            </nz-form-control>
+          </nz-form-item>
         </div>
-        <div class="child-property d-flex" cdkDrag>
-          <button class="propertyBtn d-flex">
-            <i nz-icon nzType="clock-circle" nzTheme="outline"></i>
-            <div class="property-name">Date Created</div>
-          </button>
-          <nz-date-picker
-            class="property-detail"
-            [(ngModel)]="currentDate"
-            nzDisabled
-          ></nz-date-picker>
-        </div>
-        <div class="child-property d-flex" cdkDrag>
-          <button class="propertyBtn d-flex">
-            <i nz-icon nzType="down-circle" nzTheme="outline"></i>
-            <div class="property-name">Status</div>
-          </button>
-          <nz-select class="property-detail" ngModel="ToDo">
-            <nz-option nzValue="ToDo" nzLabel="To Do"></nz-option>
-            <nz-option nzValue="Doing" nzLabel="Doing"></nz-option>
-            <nz-option nzValue="Done" nzLabel="Done"></nz-option>
-          </nz-select>
-        </div>
-        <div class="add-property-btn">
-          <button class="d-flex">+ Add a property</button>
-        </div>
-        <div class="comment d-flex">
-          <div class="avatar">
-            <div class="circle"></div>
-          </div>
-          <input type="text" nz-input placeholder="Add a comment..." />
+
+        <div nz-col [nzSpan]="12">
+          <nz-form-item nz-row [nzGutter]="2">
+            <nz-form-label nz-col [nzSpan]="6"> Revenue </nz-form-label>
+            <nz-form-control nz-col [nzSpan]="18" nzErrorTip="Bắt buộc!">
+              <input
+                nz-input
+                placeholder="Revenue"
+                formControlName="revenue"
+                name="revenue"
+              />
+            </nz-form-control>
+          </nz-form-item>
         </div>
       </div>
-    </div>
+
+      <!-- row 2 -->
+      <div nz-row class="d-flex flex-row" [nzGutter]="8">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item nz-row [nzGutter]="2">
+            <nz-form-label nz-col [nzSpan]="6"> Start Date </nz-form-label>
+            <nz-form-control nz-col [nzSpan]="18" nzErrorTip="Bắt buộc!">
+              <nz-date-picker
+                style="width: 100%"
+                formControlName="startDate"
+                name="startDate"
+                id="startDate"
+                (keyup.enter)="compareDate()"
+              ></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <div nz-col [nzSpan]="12">
+          <nz-form-item nz-row [nzGutter]="2">
+            <nz-form-label nz-col [nzSpan]="6"> End Date </nz-form-label>
+            <nz-form-control nz-col [nzSpan]="18" nzErrorTip="Bắt buộc!">
+              <nz-date-picker
+                style="width: 100%"
+                formControlName="endDate"
+                name="endDate"
+                id="endDate"
+              ></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <!-- row 3 -->
+      <div nz-row class="d-flex flex-row" [nzGutter]="8">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item nz-row [nzGutter]="2">
+            <nz-form-label nz-col [nzSpan]="6"> Total cost </nz-form-label>
+            <nz-form-control nz-col [nzSpan]="18" nzErrorTip="Bắt buộc!">
+              <input
+                nz-input
+                placeholder="Total Cost"
+                formControlName="totalCost"
+                name="totalCost"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <div nz-col [nzSpan]="12">
+          <nz-form-item nz-row [nzGutter]="2">
+            <nz-form-label nz-col [nzSpan]="6"> Total hour </nz-form-label>
+            <nz-form-control nz-col [nzSpan]="18" nzErrorTip="Bắt buộc!">
+              <input
+                nz-input
+                placeholder="Total Hour"
+                formControlName="totalHour"
+                name="totalHour"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <!-- row 4 -->
+      <div nz-row class="d-flex flex-row" [nzGutter]="8">
+        <div nz-col [nzSpan]="24">
+          <nz-form-item nz-row [nzGutter]="2">
+            <nz-form-label [nzSpan]="3"> Description </nz-form-label>
+            <nz-form-control [nzSpan]="21">
+              <textarea
+                nz-input
+                rows="3"
+                Placeholder="Description"
+                formControlName="description"
+                name="description"
+              ></textarea>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+    </form>
   </div>
+</div>
+
+<div class="d-flex justify-content-center" *nzModalFooter>
+  <button
+    [hidden]="mode === 'view'"
+    nz-button
+    nzType="primary"
+    [disabled]="!formValidation.valid"
+    (click)="handleOk()"
+    [nzLoading]="isConfirmLoading"
+  >
+    Lưu
+  </button>
+  <button nz-button nzType="default" (click)="handleCancel()">Hủy</button>
 </div>

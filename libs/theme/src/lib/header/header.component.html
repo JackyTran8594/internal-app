@@ -14,11 +14,10 @@
           class="projectBtn"
           role="button"
           nzTrigger="click"
-          nz-dropdown
-          [nzDropdownMenu]="project"
+          routerLink="project"
           >Project</a
         >
-        <nz-dropdown-menu #project="nzDropdownMenu">
+        <!-- <nz-dropdown-menu #project="nzDropdownMenu">
           <ul nz-menu nzSelectable>
             <li nz-menu-item>
               <a routerLink="project">View Project</a>
@@ -27,7 +26,7 @@
             <li nz-menu-item>2nd item</li>
             <li nz-menu-item>3rd item</li>
           </ul>
-        </nz-dropdown-menu>
+        </nz-dropdown-menu> -->
       </div>
       <div class="createProject">
         <a class="projectBtn" role="button">Create</a>

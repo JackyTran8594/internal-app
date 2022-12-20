@@ -1,4 +1,4 @@
-<body>
+<div class="wrapper-board-view">
   <div
     cdkDropList
     cdkDropListOrientation="horizontal"
@@ -8,7 +8,7 @@
     <div cdkDropListGroup class="d-flex">
       <div
         class="example-container"
-        *ngFor="let list of board; let idx = index"
+        *ngFor="let list of taskList; let idx = index"
         cdkDrag
         [cdkDragDisabled]="isEdit"
       >
@@ -17,7 +17,7 @@
           class="task p-3 d-flex align-items-center"
           style="border-bottom: 1px solid #c9cbcf"
         >
-          <h2 style="font-size: 1.2rem">{{ list.name }}</h2>
+          <h2 style="font-size: 1.2rem">{{ list.status }}</h2>
           <div class="boardBtn d-flex">
             <button
               class="newTaskBtn py-2 px-3"
@@ -55,19 +55,18 @@
 
         <div
           cdkDropList
-          [cdkDropListData]="list.title"
+          [cdkDropListData]="taskList"
           class="example-list"
           (cdkDropListDropped)="drop($event)"
         >
           <div
             class="example-box"
-            *ngFor="let item of list.title; let idx = index"
+            *ngFor="let item of taskList; let idx = index"
             cdkDrag
             [cdkDragDisabled]="isEdit"
           >
             <div
-              [hidden]="edittodo === idx"
-              (click)="startEditToDo(idx)"
+              (click)="onUpdate(item)"
               placeholder="Untitled"
               style="
                 width: 100%;
@@ -79,28 +78,16 @@
               {{ item.name }}
             </div>
 
-            <textarea
-              nz-input
-              [hidden]="edittodo !== idx"
-              type="text"
-              class="editToDo"
-              [(ngModel)]="item.name"
-              (blur)="stopEditToDo()"
-              (keydown.enter)="onKeydown($event)"
-              (keyup.enter)="stopEditToDo()"
-            >
-            </textarea>
-
             <div class="boardBtn fixBtn d-flex">
               <button class="itemBtn editBtn" (click)="onView(item)">
                 <i nz-icon nzType="eye" nzTheme="outline"> </i>
               </button>
-              <button class="itemBtn">
-                <i nz-icon nzType="ellipsis" nzTheme="outline"></i>
+              <button class="itemBtn" (click)="onDelete(item.id)">
+                <i nz-icon nzType="delete" nzTheme="outline"></i>
               </button>
             </div>
           </div>
-          <ng-container *ngIf="addtodo ? true : false">
+          <!-- <ng-container *ngIf="addtodo ? true : false">
             <div class="example-box">
               <textarea
                 contenteditable="true"
@@ -120,11 +107,11 @@
                 "
               ></textarea>
             </div>
-          </ng-container>
+          </ng-container> -->
           <div
             class="example-box"
             role="button"
-            (click)="addToDo()"
+            (click)="onCreate()"
             style="color: rgba(55, 53, 47, 0.8)"
           >
             + Add Task
@@ -134,7 +121,7 @@
       <!-- <div class="addTaskBtn"></div> -->
     </div>
   </div>
-</body>
+</div>
 
 <!-- <nz-modal
   [(nzVisible)]="isVisible"
