@@ -19,6 +19,7 @@
                 placeholder="Name"
                 formControlName="name"
                 name="name"
+                [readonly]="mode === 'view'"
                 required
               />
             </nz-form-control>
@@ -34,6 +35,7 @@
                 placeholder="Revenue"
                 formControlName="revenue"
                 name="revenue"
+                [readonly]="mode === 'view'"
               />
             </nz-form-control>
           </nz-form-item>
@@ -50,6 +52,7 @@
                 style="width: 100%"
                 formControlName="startDate"
                 name="startDate"
+                [nzDisabled]="mode === 'view'"
               ></nz-date-picker>
             </nz-form-control>
           </nz-form-item>
@@ -63,6 +66,7 @@
                 style="width: 100%"
                 formControlName="endDate"
                 name="endDate"
+                [nzDisabled]="mode === 'view'"
               ></nz-date-picker>
             </nz-form-control>
           </nz-form-item>
@@ -80,6 +84,7 @@
                 placeholder="Total Cost"
                 formControlName="totalCost"
                 name="totalCost"
+                [readonly]="mode === 'view'"
               />
             </nz-form-control>
           </nz-form-item>
@@ -94,6 +99,7 @@
                 placeholder="Total Hour"
                 formControlName="totalHour"
                 name="totalHour"
+                [readonly]="mode === 'view'"
               />
             </nz-form-control>
           </nz-form-item>

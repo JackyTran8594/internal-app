@@ -103,7 +103,7 @@
               nz-button
               nzShape="circle"
               class="d-flex align-items-center justify-content-center mr-1"
-              (click)="onView(item)"
+              [routerLink]="['welcome', item.id]"
             >
               <i nz-icon nzType="eye" nzTheme="outline"></i>
             </button>

@@ -6,7 +6,14 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { BoardViewService } from '../service/board-view.service';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { content } from '../service/task';
@@ -42,7 +49,10 @@ export class BoardTaskFormComponent implements OnInit {
     private service: BoardViewService,
     private modelRef: NzModalRef<BoardTaskFormComponent>,
     private element: ElementRef
-  ) {}
+  ) {
+    let startDate = element.nativeElement.querySelector('#startDate');
+    let endDate = element.nativeElement.querySelector('#endDate');
+  }
 
   get name() {
     return this.formValidation.get('name');
@@ -105,15 +115,17 @@ export class BoardTaskFormComponent implements OnInit {
     }
   }
 
-  compareDate() {
-    let startDate = this.element.nativeElement.querySelector('#startDate');
-    let endDate = this.element.nativeElement.querySelector('#endDate');
-    console.log(startDate, endDate);
-  }
-
   changeChecked() {
     this.checked = !this.checked;
   }
+
+  // dateValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  //   const start = control.get('startDate');
+  //   const end = control.get('endDate');
+  //   console.log("validators called");
+  //   return start !== null && end !== null && start < end
+  //   ? null :{ dateValid:true };
+  // }
 
   getById(id: number) {
     this.service.getTaskById(id).subscribe({

@@ -197,22 +197,22 @@ export class ProjectComponent implements OnInit {
       });
   }
 
-  onView(item: content): void {
-    this.modalService.create({
-      nzTitle: 'View Project',
-      nzClassName: 'modal-custom',
-      nzContent: ProjectFormComponent,
-      nzWidth: 'modal-custom',
-      nzCentered: true,
-      nzMaskClosable: false,
-      nzComponentParams: {
-        mode: ModeModal.VIEW,
-        title: 'View Project',
-        id: item.id,
-      },
-      nzDirection: 'ltr', // left to right
-    });
-  }
+  // onView(item: content): void {
+  //   this.modalService.create({
+  //     nzTitle: 'View Project',
+  //     nzClassName: 'modal-custom',
+  //     nzContent: ProjectFormComponent,
+  //     nzWidth: 'modal-custom',
+  //     nzCentered: true,
+  //     nzMaskClosable: false,
+  //     nzComponentParams: {
+  //       mode: ModeModal.VIEW,
+  //       title: 'View Project',
+  //       id: item.id,
+  //     },
+  //     nzDirection: 'ltr', // left to right
+  //   });
+  // }
 
   onDelete(id: number): void {
     this.modalService

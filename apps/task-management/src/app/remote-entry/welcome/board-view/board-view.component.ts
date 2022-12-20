@@ -7,6 +7,7 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { AfterViewChecked, Component, ElementRef, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { BoardTaskFormComponent } from './board-task-form/board-task-form.component';
@@ -98,7 +99,8 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
     private service: BoardViewService,
     private element: ElementRef,
     private modalService: NzModalService,
-    private notifyService: NzNotificationService
+    private notifyService: NzNotificationService,
+    private route: ActivatedRoute
   ) {}
 
   ngAfterViewChecked(): void {
@@ -108,6 +110,7 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
   ngOnInit(): void {
     // this.getTag();
     this.getTask();
+    this.getIdProject();
   }
 
   onKeydown(e: any) {
@@ -131,6 +134,10 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
   //     });
   // }
 
+  public getIdProject() {
+    return this.route.params.subscribe((params) => params['id']);
+  }
+
   public getTask() {
     this.service
       .getTask(this.pageNumber, this.pageSize, this.txtSearch)
@@ -141,6 +148,7 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
           // console.log(this.listData);
           this.totalElements = res.pagingData.totalElements;
           this.totalPages = res.pagingData.totalPages;
+          console.log(this.taskList);
         },
         error: (err) => {
           console.log(err);
