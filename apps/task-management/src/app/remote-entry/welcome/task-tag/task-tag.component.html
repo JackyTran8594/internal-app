@@ -6,12 +6,12 @@
         <div nz-col [nzSpan]="24">
           <nz-form-item nz-row [nzGutter]="2">
             <nz-form-label nz-col [nzSpan]="3">
-              Name <span style="color: red">*</span>
+              Title <span style="color: red">*</span>
             </nz-form-label>
             <nz-form-control nz-col [nzSpan]="21" nzErrorTip="Bắt buộc!">
               <input
                 nz-input
-                placeholder="Name"
+                placeholder="Title"
                 formControlName="name"
                 name="name"
                 required
@@ -21,7 +21,10 @@
         </div>
       </div>
     </form>
-    <button nz-button>Create new tag</button>
+    <div class="tag-list" *ngFor="let item of listData; let idx = index">
+      {{ item.name }}
+    </div>
+    <button nz-button>Add new tag</button>
   </div>
 </div>
 
@@ -34,5 +37,5 @@
   >
     Lưu
   </button>
-  <button nz-button nzType="default">Hủy</button>
+  <button nz-button nzType="default" (click)="handleCancel()">Hủy</button>
 </div>
