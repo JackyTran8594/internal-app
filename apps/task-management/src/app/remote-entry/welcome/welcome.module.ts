@@ -13,6 +13,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { registerLocaleData } from '@angular/common';
 import vn from '@angular/common/locales/en';
 import { BoardTaskFormComponent } from './board-view/board-task-form/board-task-form.component';
+import { TaskTagComponent } from '../welcome/task-tag/task-tag.component';
 import { DeleteComponent } from './board-view/delete/delete.component';
 registerLocaleData(vn);
 
@@ -24,6 +25,7 @@ registerLocaleData(vn);
     TimelineComponent,
     BoardTaskFormComponent,
     DeleteComponent,
+    TaskTagComponent,
   ],
   imports: [
     CommonModule,

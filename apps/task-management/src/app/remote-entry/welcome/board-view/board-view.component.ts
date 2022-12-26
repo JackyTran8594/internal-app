@@ -1,3 +1,5 @@
+/* eslint-disable no-debugger */
+/* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { animate, style, transition, trigger } from '@angular/animations';
@@ -16,19 +18,8 @@ import { BoardViewService } from './service/board-view.service';
 import { content } from './service/task';
 
 interface BoardList {
-  id: number;
-  name: string;
-  title: List[];
-}
-
-interface List {
-  id: number;
-  name: string;
-}
-
-interface Form {
-  id: number;
-  name: string;
+  status: string;
+  content: content;
 }
 
 enum ModeModal {
@@ -51,44 +42,11 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
 
   // public tagList: any;
   public taskList: any;
-  public taskContent: any;
+  public taskStatus: any;
 
   modalOptions: any = {
     nzDuration: 2000,
   };
-
-  todo: List[] = [
-    { id: 1, name: 'Test1' },
-    { id: 2, name: 'Test2' },
-  ];
-
-  doing: List[] = [
-    { id: 1, name: 'Test3' },
-    { id: 2, name: 'Test4' },
-  ];
-
-  done: List[] = [
-    { id: 1, name: 'Test5' },
-    { id: 2, name: 'Test6' },
-    { id: 3, name: 'Test7' },
-  ];
-
-  board: BoardList[] = [
-    {
-      id: 1,
-      name: 'TODO',
-      title: this.todo,
-    },
-    { id: 2, name: 'DOING', title: this.doing },
-    { id: 3, name: 'DONE', title: this.done },
-  ];
-
-  public addtodo = false;
-  public adddoing = false;
-  public adddone = false;
-
-  public edittodo: number | null = null;
-  public editdoing: number | null = null;
 
   public isEdit = false;
 
@@ -110,7 +68,6 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
   ngOnInit(): void {
     // this.getTag();
     this.getTask();
-    this.getIdProject();
   }
 
   onKeydown(e: any) {
@@ -135,16 +92,20 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
   // }
 
   public getIdProject() {
-    return this.route.params.subscribe((params) => params['id']);
+    let id = this.route.snapshot.paramMap.get('id');
+    this.txtSearch = `projectId.eq.${id},`;
+    return this.txtSearch;
   }
 
   public getTask() {
+    // this.getIdProject();
     this.service
       .getTask(this.pageNumber, this.pageSize, this.txtSearch)
       .subscribe({
         next: (res) => {
           console.log(res);
           this.taskList = res.pagingData.content;
+          this.taskStatus = res.pagingData.content;
           // console.log(this.listData);
           this.totalElements = res.pagingData.totalElements;
           this.totalPages = res.pagingData.totalPages;
@@ -277,46 +238,46 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
       });
   }
 
-  addToDo() {
-    if (this.addtodo == false) this.addtodo = true;
-  }
+  // addToDo() {
+  //   if (this.addtodo == false) this.addtodo = true;
+  // }
 
-  addDoing() {
-    if (this.adddoing == false) this.adddoing = true;
-  }
+  // addDoing() {
+  //   if (this.adddoing == false) this.adddoing = true;
+  // }
 
-  addDone() {
-    if (this.adddone == false) this.adddone = true;
-  }
+  // addDone() {
+  //   if (this.adddone == false) this.adddone = true;
+  // }
 
-  startEditToDo(idx: number) {
-    this.edittodo = idx;
-    this.isEdit = true;
-  }
+  // startEditToDo(idx: number) {
+  //   this.edittodo = idx;
+  //   this.isEdit = true;
+  // }
 
-  stopEditToDo() {
-    this.edittodo = null;
-    this.isEdit = false;
-  }
+  // stopEditToDo() {
+  //   this.edittodo = null;
+  //   this.isEdit = false;
+  // }
 
-  startEditDoing(idx: number) {
-    this.editdoing = idx;
-  }
+  // startEditDoing(idx: number) {
+  //   this.editdoing = idx;
+  // }
 
-  stopEditDoing() {
-    this.editdoing = null;
-  }
+  // stopEditDoing() {
+  //   this.editdoing = null;
+  // }
 
-  addToDoArray() {
-    const inputToDo = this.element.nativeElement.querySelector('#inputToDo');
-    const inputValue = inputToDo.value;
-    const lastElement = this.todo[this.todo.length - 1];
-    console.log(inputValue);
-    if (inputValue) {
-      this.todo.push({ id: lastElement.id + 1, name: inputValue });
-      this.addtodo = false;
-    }
-  }
+  // addToDoArray() {
+  //   const inputToDo = this.element.nativeElement.querySelector('#inputToDo');
+  //   const inputValue = inputToDo.value;
+  //   const lastElement = this.todo[this.todo.length - 1];
+  //   console.log(inputValue);
+  //   if (inputValue) {
+  //     this.todo.push({ id: lastElement.id + 1, name: inputValue });
+  //     this.addtodo = false;
+  //   }
+  // }
 
   // editToDoArray(t: unknown) {
   //   const editToDo = this.element.nativeElement.querySelectorAll('.editToDo');
@@ -332,27 +293,27 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
   //   // console.log(test);
   // }
 
-  addDoingArray() {
-    const inputToDo = this.element.nativeElement.querySelector('#inputDoing');
-    const inputValue = inputToDo.value;
-    console.log(inputValue);
-    this.doing.push(inputValue);
-    this.adddoing = false;
-  }
+  // addDoingArray() {
+  //   const inputToDo = this.element.nativeElement.querySelector('#inputDoing');
+  //   const inputValue = inputToDo.value;
+  //   console.log(inputValue);
+  //   this.doing.push(inputValue);
+  //   this.adddoing = false;
+  // }
 
-  addDoneArray() {
-    const inputToDo = this.element.nativeElement.querySelector('#inputDone');
-    const inputValue = inputToDo.value;
-    console.log(inputValue);
-    this.done.push(inputValue);
-    this.adddone = false;
-  }
+  // addDoneArray() {
+  //   const inputToDo = this.element.nativeElement.querySelector('#inputDone');
+  //   const inputValue = inputToDo.value;
+  //   console.log(inputValue);
+  //   this.done.push(inputValue);
+  //   this.adddone = false;
+  // }
 
   // hideInput() {
   //   if (this.addnew == true) this.addnew = false;
   // }
 
-  drop(event: CdkDragDrop<List[]>) {
+  drop(event: CdkDragDrop<content[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -371,7 +332,7 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
     }
   }
 
-  dropGroup(event: CdkDragDrop<BoardList[]>) {
-    moveItemInArray(this.board, event.previousIndex, event.currentIndex);
+  dropGroup(event: CdkDragDrop<content[]>) {
+    moveItemInArray(this.taskList, event.previousIndex, event.currentIndex);
   }
 }

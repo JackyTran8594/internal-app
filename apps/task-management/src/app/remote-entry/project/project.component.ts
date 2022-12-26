@@ -2,7 +2,7 @@
 /* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, SkipSelf } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { ProjectFormComponent } from './project-form/project-form.component';
@@ -42,6 +42,7 @@ export class ProjectComponent implements OnInit {
 
   checkedBoxAll = false;
   FilterValue = '';
+  disableRoute = false;
 
   modalOptions: any = {
     nzDuration: 2000,
@@ -75,10 +76,13 @@ export class ProjectComponent implements OnInit {
     console.log(event);
     this.listData.forEach((item: { isChecked: any; id: number }) => {
       item.isChecked = event;
-      if (item.isChecked === true) this.listId.push(item.id);
-      else this.listId = [];
+      if (item.isChecked === true && this.listId.indexOf(item.id) === -1)
+        this.listId.push(item.id);
+      else if (item.isChecked === true && this.listId.indexOf(item.id) !== -1) {
+        return;
+      } else this.listId = [];
       // console.log(item.isChecked);
-      // console.log(this.listId);
+      console.log(this.listId);
     });
   }
 
@@ -197,22 +201,22 @@ export class ProjectComponent implements OnInit {
       });
   }
 
-  // onView(item: content): void {
-  //   this.modalService.create({
-  //     nzTitle: 'View Project',
-  //     nzClassName: 'modal-custom',
-  //     nzContent: ProjectFormComponent,
-  //     nzWidth: 'modal-custom',
-  //     nzCentered: true,
-  //     nzMaskClosable: false,
-  //     nzComponentParams: {
-  //       mode: ModeModal.VIEW,
-  //       title: 'View Project',
-  //       id: item.id,
-  //     },
-  //     nzDirection: 'ltr', // left to right
-  //   });
-  // }
+  onView(item: content): void {
+    this.modalService.create({
+      nzTitle: 'View Project',
+      nzClassName: 'modal-custom',
+      nzContent: ProjectFormComponent,
+      nzWidth: 'modal-custom',
+      nzCentered: true,
+      nzMaskClosable: false,
+      nzComponentParams: {
+        mode: ModeModal.VIEW,
+        title: 'View Project',
+        id: item.id,
+      },
+      nzDirection: 'ltr', // left to right
+    });
+  }
 
   onDelete(id: number): void {
     this.modalService

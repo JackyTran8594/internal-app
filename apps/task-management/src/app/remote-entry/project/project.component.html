@@ -64,6 +64,7 @@
       </ng-template>
     </div>
     <nz-table
+      class="table"
       nzBordered
       nzShowPagination="false"
       [nzData]="listData"
@@ -94,16 +95,32 @@
               (ngModelChange)="isChecked($event, idx)"
             ></label>
           </td>
-          <td>{{ item.id }}</td>
-          <td>{{ item.name }}</td>
-          <td>{{ item.revenue }}</td>
-          <td>{{ item.createdDate | date: 'MM/dd/yyyy' }}</td>
+          <td>
+            {{ item.id }}
+          </td>
+          <td>
+            {{ item.name }}
+          </td>
+          <td>
+            {{ item.revenue }}
+          </td>
+          <td>
+            {{ item.createdDate | date: 'MM/dd/yyyy' }}
+          </td>
           <td class="d-flex flex-row">
             <button
               nz-button
               nzShape="circle"
               class="d-flex align-items-center justify-content-center mr-1"
               [routerLink]="['welcome', item.id]"
+            >
+              <i nz-icon nzType="link" nzTheme="outline"></i>
+            </button>
+            <button
+              nz-button
+              nzShape="circle"
+              class="d-flex align-items-center justify-content-center mr-1"
+              (click)="onView(item)"
             >
               <i nz-icon nzType="eye" nzTheme="outline"></i>
             </button>
@@ -139,7 +156,7 @@
       >
       </nz-pagination>
       <ng-template #total let-total
-        >Tổng số bản ghi: {{ totalElements }}</ng-template
+        >Total Project: {{ totalElements }}</ng-template
       >
     </div>
   </div>
