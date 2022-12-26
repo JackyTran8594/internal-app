@@ -8,6 +8,11 @@ const routes: Routes = [
     component: ProjectComponent,
     // redirectTo: 'welcome',
   },
+  {
+    path: 'welcome/:id',
+    loadChildren: () =>
+      import('../welcome/welcome.module').then((m) => m.WelcomeModule),
+  },
 ];
 
 @NgModule({

@@ -23,6 +23,11 @@ h6 {
   justify-content: flex-start;
 }
 
+.wrapper-board-view {
+  height: 100%;
+  overflow: auto;
+}
+
 .boardBtn {
   width: 10%;
   padding: 0;

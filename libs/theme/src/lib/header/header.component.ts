@@ -7,12 +7,11 @@ import { ShareService } from '../shared/share.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
-  public isCollapsed: boolean
-  public menu: any[] = []
+  public isCollapsed: boolean;
+  public menu: any[] = [];
 
   constructor(private shareService: ShareService) {
-    this.isCollapsed = false;
+    this.isCollapsed = true;
     // do something
   }
 
@@ -25,5 +24,4 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     // do something
   }
-
 }
