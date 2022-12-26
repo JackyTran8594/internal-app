@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { content } from './project';
+import { en_US, NzI18nService } from 'ng-zorro-antd/i18n';
 
 const url = 'http://10.2.6.142:8092/taskManagement/api/project';
 
@@ -10,14 +11,20 @@ const url = 'http://10.2.6.142:8092/taskManagement/api/project';
   providedIn: 'root',
 })
 export class ProjectService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private i18n: NzI18nService) {}
+
+  switchLanguage() {
+    this.i18n.setLocale(en_US);
+  }
 
   public getProject(
     pageNumber: number,
     pageSize: number,
     txtSearch?: string
   ): Observable<any> {
-    return this.http.get(url, { params: { pageNumber, pageSize } });
+    return this.http.get(
+      `${url}?pageNumber=${pageNumber}&pageSize=${pageSize}&search=${txtSearch}`
+    );
   }
 
   public addProject(project: content): Observable<any> {
@@ -34,5 +41,9 @@ export class ProjectService {
 
   public deleteProject(id: number): Observable<any> {
     return this.http.delete(`${url}/${id}`);
+  }
+
+  public deleteSelectedProject(ListId: number[]): Observable<any> {
+    return this.http.post(`${url}/deleteByListId`, ListId);
   }
 }

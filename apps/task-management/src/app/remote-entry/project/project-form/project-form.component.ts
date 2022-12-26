@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-inferrable-types */
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { content } from '../service/project';
@@ -49,11 +51,42 @@ export class ProjectFormComponent implements OnInit {
     return this.formValidation.get('revenue');
   }
 
+  get startDate() {
+    return this.formValidation.get('startDate');
+  }
+
+  get endDate() {
+    return this.formValidation.get('endDate');
+  }
+
+  // get realStartDate() {
+  //   return this.formValidation.get('realStartDate');
+  // }
+
+  // get realEndDate() {
+  //   return this.formValidation.get('realEndDate');
+  // }
+
+  get totalCost() {
+    return this.formValidation.get('totalCost');
+  }
+
+  get totalHour() {
+    return this.formValidation.get('totalHour');
+  }
+
   ngOnInit(): void {
     this.formValidation = this.fb.group({
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.minLength(5)]],
       parentId: ['', []],
-      revenue: ['', []],
+      revenue: ['', [Validators.pattern('^[0-9]*$')]],
+      startDate: ['', []],
+      endDate: ['', []],
+      // realStartDate: ['', []],
+      // realEndDate: ['', []],
+      totalCost: ['', []],
+      totalHour: ['', []],
+      // isChecked: [this.checked, []],
     });
 
     if (this.mode != ModeModal.CREATE) {
@@ -61,6 +94,10 @@ export class ProjectFormComponent implements OnInit {
         this.getById(this.id);
       }
     }
+  }
+
+  changeChecked() {
+    this.checked = !this.checked;
   }
 
   getById(id: number) {
@@ -72,6 +109,13 @@ export class ProjectFormComponent implements OnInit {
           name: res.data.name,
           parentId: res.data.parentId,
           revenue: res.data.revenue,
+          startDate: res.data.startDate,
+          endDate: res.data.endDate,
+          // realStartDate: res.data.realStartDate,
+          // realEndDate: res.data.realEndDate,
+          totalCost: res.data.totalCost,
+          totalHour: res.data.totalHour,
+          // isChecked: res.data.isChecked,
         });
       },
     });

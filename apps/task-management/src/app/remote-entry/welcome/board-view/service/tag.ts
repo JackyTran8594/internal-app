@@ -1,34 +1,26 @@
 /* eslint-disable @typescript-eslint/ban-types */
-
-export interface Project {
-  pagingData: test;
+export interface Tag {
+  pagingData: pagingData;
 }
 
-export interface test {
+export interface pagingData {
   content: [content];
   pageable: pageable;
   totalElements: number;
   totalPages?: number;
   size?: number;
 }
+
 export interface content {
-  attachFile?: string;
   createdBy: string;
   createdDate: string;
-  customerId: number;
-  endDate: string;
-  id?: number;
+  icon?: string;
+  id: number;
   lastModifiedBy: string;
   lastModifiedDate: string;
   name: string;
-  parentId?: number;
-  readEndDate: string;
-  readStartDate: string;
-  revenue?: number;
-  startDate: string;
+  slug: string;
   status: string;
-  totalCost: number;
-  totalHour: number;
   isChecked?: Boolean;
 }
 
