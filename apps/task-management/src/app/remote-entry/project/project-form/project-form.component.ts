@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { content } from '../service/project';
 import { ProjectService } from '../service/project.service';
@@ -52,11 +52,15 @@ export class ProjectFormComponent implements OnInit {
   }
 
   get startDate() {
-    return this.formValidation.get('startDate');
+    return this.formValidation.get('rangeDate')?.value[0];
   }
 
   get endDate() {
-    return this.formValidation.get('endDate');
+    return this.formValidation.get('rangeDate')?.value[1];
+  }
+
+  get rangeDate(): FormArray {
+    return this.formValidation.get('rangeDate') as FormArray;
   }
 
   // get realStartDate() {
@@ -82,6 +86,7 @@ export class ProjectFormComponent implements OnInit {
       revenue: ['', [Validators.pattern('^[0-9]*$')]],
       startDate: ['', []],
       endDate: ['', []],
+      rangeDate: ['', []],
       // realStartDate: ['', []],
       // realEndDate: ['', []],
       totalCost: ['', []],
@@ -111,6 +116,7 @@ export class ProjectFormComponent implements OnInit {
           revenue: res.data.revenue,
           startDate: res.data.startDate,
           endDate: res.data.endDate,
+          rangeDate: [res.data.startDate, res.data.endDate],
           // realStartDate: res.data.realStartDate,
           // realEndDate: res.data.realEndDate,
           totalCost: res.data.totalCost,
@@ -124,6 +130,8 @@ export class ProjectFormComponent implements OnInit {
   handleOk(): void {
     this.isConfirmLoading = true;
     const item: content = this.formValidation.value;
+    item.startDate = this.startDate;
+    item.endDate = this.endDate;
     if (this.mode == ModeModal.CREATE) {
       this.service.addProject(item).subscribe({
         next: (res: content) => {

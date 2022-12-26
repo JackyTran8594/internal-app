@@ -8,12 +8,12 @@
     >
       <!-- row 1 -->
       <div nz-row class="d-flex flex-row" [nzGutter]="8">
-        <div nz-col [nzSpan]="12">
+        <div nz-col [nzSpan]="24">
           <nz-form-item nz-row [nzGutter]="2">
-            <nz-form-label nz-col [nzSpan]="6">
+            <nz-form-label nz-col [nzSpan]="3">
               Name <span style="color: red">*</span>
             </nz-form-label>
-            <nz-form-control nz-col [nzSpan]="18" nzErrorTip="Bắt buộc!">
+            <nz-form-control nz-col [nzSpan]="21" nzErrorTip="Bắt buộc!">
               <input
                 nz-input
                 placeholder="Name"
@@ -25,11 +25,15 @@
             </nz-form-control>
           </nz-form-item>
         </div>
+      </div>
 
-        <div nz-col [nzSpan]="12">
+      <!-- row 2 -->
+
+      <div nz-row class="d-flex flex-row" [nzGutter]="8">
+        <div nz-col [nzSpan]="24">
           <nz-form-item nz-row [nzGutter]="2">
-            <nz-form-label nz-col [nzSpan]="6"> Revenue </nz-form-label>
-            <nz-form-control nz-col [nzSpan]="18" nzErrorTip="Bắt buộc!">
+            <nz-form-label nz-col [nzSpan]="3"> Revenue </nz-form-label>
+            <nz-form-control nz-col [nzSpan]="21" nzErrorTip="Bắt buộc!">
               <input
                 nz-input
                 placeholder="Revenue"
@@ -42,8 +46,25 @@
         </div>
       </div>
 
-      <!-- row 2 -->
+      <!-- row 3 -->
       <div nz-row class="d-flex flex-row" [nzGutter]="8">
+        <div nz-col [nzSpan]="24">
+          <nz-form-item nz-row [nzGutter]="2">
+            <nz-form-label [nzSpan]="3"> Date </nz-form-label>
+            <nz-form-control [nzSpan]="21">
+              <nz-range-picker
+                style="width: 100%"
+                name="rangeDate"
+                formControlName="rangeDate"
+                [nzDisabled]="mode === 'view'"
+              ></nz-range-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <!-- row 2 -->
+      <!-- <div nz-row class="d-flex flex-row" [nzGutter]="8">
         <div nz-col [nzSpan]="12">
           <nz-form-item nz-row [nzGutter]="2">
             <nz-form-label nz-col [nzSpan]="6"> Start Date </nz-form-label>
@@ -53,6 +74,8 @@
                 formControlName="startDate"
                 name="startDate"
                 id="startDate"
+                (click)="getEndDate()"
+                [nzDisabledDate]="disabledStartDate"
                 [nzDisabled]="mode === 'view'"
               ></nz-date-picker>
             </nz-form-control>
@@ -68,14 +91,16 @@
                 formControlName="endDate"
                 name="endDate"
                 id="endDate"
+                (click)="getStartDate()"
+                [nzDisabledDate]="disabledEndDate"
                 [nzDisabled]="mode === 'view'"
               ></nz-date-picker>
             </nz-form-control>
           </nz-form-item>
         </div>
-      </div>
+      </div> -->
 
-      <!-- row 3 -->
+      <!-- row 4 -->
       <div nz-row class="d-flex flex-row" [nzGutter]="8">
         <div nz-col [nzSpan]="12">
           <nz-form-item nz-row [nzGutter]="2">
@@ -108,7 +133,7 @@
         </div>
       </div>
 
-      <!-- row 4 -->
+      <!-- row 5 -->
       <div nz-row class="d-flex flex-row" [nzGutter]="8">
         <div nz-col [nzSpan]="24">
           <nz-form-item nz-row [nzGutter]="2">
@@ -122,6 +147,56 @@
                 name="description"
                 [readonly]="mode === 'view'"
               ></textarea>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <!-- row 6 -->
+      <!-- <div nz-row class="d-flex flex-row" [nzGutter]="8">
+        <div nz-col [nzSpan]="24">
+          <nz-form-item nz-row [nzGutter]="2">
+            <nz-form-label [nzSpan]="3"> Attachment file </nz-form-label>
+            <nz-form-control [nzSpan]="21">
+              <nz-upload
+                nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                [nzHeaders]="{ authorization: 'authorization-text' }"
+                (nzChange)="handleChange($event)"
+                name="attachFile"
+                formControlName="attachFile"
+              >
+                <button nz-button>
+                  <span nz-icon nzType="upload"></span>
+                  Click to Upload
+                </button>
+              </nz-upload>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div> -->
+
+      <!-- row 7 -->
+      <div nz-row class="d-flex flex-row" [nzGutter]="8">
+        <div nz-col [nzSpan]="24">
+          <nz-form-item nz-row [nzGutter]="2">
+            <nz-form-label [nzSpan]="3">
+              <button
+                nz-button
+                nzShape="circle"
+                class="d-flex align-items-center justify-content-center mr-1"
+                (click)="onTag()"
+              >
+                <i nz-icon nzType="tags" nzTheme="outline"></i>
+              </button>
+            </nz-form-label>
+            <nz-form-control [nzSpan]="21">
+              <!-- <button
+                nz-button
+                nzShape="circle"
+                class="d-flex align-items-center justify-content-center mr-1"
+              >
+                <i nz-icon nzType="tags" nzTheme="outline"></i>
+              </button> -->
             </nz-form-control>
           </nz-form-item>
         </div>

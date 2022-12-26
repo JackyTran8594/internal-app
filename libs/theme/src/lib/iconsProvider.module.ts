@@ -26,6 +26,8 @@ import {
   DollarOutline,
   FilterOutline,
   SortAscendingOutline,
+  LinkOutline,
+  TagsOutline,
 } from '@ant-design/icons-angular/icons';
 
 const icons = [
@@ -50,6 +52,8 @@ const icons = [
   DollarOutline,
   FilterOutline,
   SortAscendingOutline,
+  LinkOutline,
+  TagsOutline,
 ];
 
 @NgModule({

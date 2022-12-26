@@ -1,0 +1,38 @@
+<div class="tag-wrapper">
+  <div class="modal-content">
+    <form nz-form class="tag-list" [formGroup]="formValidation" method="POST">
+      <!-- row 1 -->
+      <div nz-row class="d-flex flex-row" [nzGutter]="8">
+        <div nz-col [nzSpan]="24">
+          <nz-form-item nz-row [nzGutter]="2">
+            <nz-form-label nz-col [nzSpan]="3">
+              Name <span style="color: red">*</span>
+            </nz-form-label>
+            <nz-form-control nz-col [nzSpan]="21" nzErrorTip="Bắt buộc!">
+              <input
+                nz-input
+                placeholder="Name"
+                formControlName="name"
+                name="name"
+                required
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+    </form>
+    <button nz-button>Create new tag</button>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center" *nzModalFooter>
+  <button
+    nz-button
+    nzType="primary"
+    [disabled]="!formValidation.valid"
+    [nzLoading]="isConfirmLoading"
+  >
+    Lưu
+  </button>
+  <button nz-button nzType="default">Hủy</button>
+</div>

@@ -14,6 +14,7 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 
 // NgZorro local english language settings
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
@@ -36,6 +37,7 @@ const NZ_MODULES = [
   NzCheckboxModule,
   NzGridModule,
   NzFormModule,
+  NzUploadModule,
 ];
 
 @NgModule({

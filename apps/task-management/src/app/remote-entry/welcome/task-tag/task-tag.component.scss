@@ -1,0 +1,11 @@
+.tag-wrapper {
+  width: 800px;
+  height: calc(100% - 144px);
+  border-radius: 3px;
+}
+
+.modal-content {
+  display: grid;
+  grid-template-rows: none;
+  border: none;
+}
