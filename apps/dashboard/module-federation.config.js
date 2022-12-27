@@ -14,9 +14,9 @@ module.exports = {
     'highcharts',
     'highcharts-angular'
   ],
-  // output: {
-  //   uniqueName: "dashboard",
-  //   publicPath: "auto",
-  //   // scriptType: "text/javascript"
-  // },
+  output: {
+    uniqueName: "dashboard",
+    publicPath: "auto",
+    scriptType: "text/javascript"
+  },
 };

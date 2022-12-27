@@ -14,10 +14,10 @@ module.exports = {
     'highcharts',
     'highcharts-angular'
   ],
-  // output: {
-  //   uniqueName: "task-management",
-  //   publicPath: "auto",
-  //   scriptType: "text/javascript"
-  // }
+  output: {
+    uniqueName: "task-management",
+    publicPath: "auto",
+    scriptType: "text/javascript"
+  }
   
 };
