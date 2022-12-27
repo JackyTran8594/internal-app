@@ -15,6 +15,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 // NgZorro local english language settings
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
@@ -38,6 +39,7 @@ const NZ_MODULES = [
   NzGridModule,
   NzFormModule,
   NzUploadModule,
+  NzMessageModule,
 ];
 
 @NgModule({
@@ -47,10 +49,10 @@ const NZ_MODULES = [
   providers: [{ provide: NZ_I18N, useValue: en_US }],
 })
 export class NgZorroModule {
-  // static forRoot(): ModuleWithProviders<NgZorroModule> {
-  //   return {
-  //     ngModule: NgZorroModule,
-  //     providers: [],
-  //   };
-  // }
+  static forRoot(): ModuleWithProviders<NgZorroModule> {
+    return {
+      ngModule: NgZorroModule,
+      providers: [],
+    };
+  }
 }

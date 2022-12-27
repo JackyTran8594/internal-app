@@ -13,8 +13,8 @@ import { NzModalRef } from 'ng-zorro-antd/modal';
 import { content } from '../service/task';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { TaskTagComponent } from '../../task-tag/task-tag.component';
-// import { NzMessageService } from 'ng-zorro-antd/message';
-// import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 
 enum ModeModal {
   CREATE = 'create',
@@ -28,6 +28,7 @@ enum ModeModal {
   styleUrls: ['./board-task-form.component.scss'],
 })
 export class BoardTaskFormComponent implements OnInit {
+  public fileAction: string | null = null;
   formValidation!: FormGroup;
   isConfirmLoading = false;
   checked = false;
@@ -49,7 +50,7 @@ export class BoardTaskFormComponent implements OnInit {
     private fb: FormBuilder,
     private service: BoardViewService,
     private modalService: NzModalService,
-    // private msg: NzMessageService,
+    private msg: NzMessageService,
     private modelRef: NzModalRef<BoardTaskFormComponent>
   ) {}
 
@@ -97,6 +98,10 @@ export class BoardTaskFormComponent implements OnInit {
     return this.formValidation.get('description');
   }
 
+  get attachFile() {
+    return this.formValidation.get('attachFile');
+  }
+
   ngOnInit(): void {
     this.formValidation = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(5)]],
@@ -110,6 +115,7 @@ export class BoardTaskFormComponent implements OnInit {
       totalCost: ['', []],
       totalHour: ['', []],
       description: ['', []],
+      attachFile: ['', []],
     });
 
     // this.formValidation.setValue({
@@ -124,16 +130,18 @@ export class BoardTaskFormComponent implements OnInit {
     }
   }
 
-  // handleChange(info: NzUploadChangeParam): void {
-  //   if (info.file.status !== 'uploading') {
-  //     console.log(info.file, info.fileList);
-  //   }
-  //   if (info.file.status === 'done') {
-  //     this.msg.success(`${info.file.name} file uploaded successfully`);
-  //   } else if (info.file.status === 'error') {
-  //     this.msg.error(`${info.file.name} file upload failed.`);
-  //   }
-  // }
+  handleChange(info: NzUploadChangeParam): void {
+    if (info.file.status !== 'uploading') {
+      console.log(info.file, info.fileList);
+    }
+    if (info.file.status === 'done') {
+      this.msg.success(`${info.file.name} file uploaded successfully`);
+    } else if (info.file.status === 'error') {
+      this.msg.error(`${info.file.name} file upload failed.`);
+    }
+
+    this.fileAction = info.file.name;
+  }
 
   getById(id: number) {
     this.service.getTaskById(id).subscribe({
@@ -152,6 +160,7 @@ export class BoardTaskFormComponent implements OnInit {
           totalCost: res.data.totalCost,
           totalHour: res.data.totalHour,
           description: res.data.description,
+          attachFile: res.data.attachFile,
           // isChecked: res.data.isChecked,
         });
       },
@@ -214,62 +223,16 @@ export class BoardTaskFormComponent implements OnInit {
     return console.log(this.startValue);
   }
 
-  onTag(): void {
+  onCreateTag(): void {
     this.modalService.create({
       nzTitle: 'Tag',
+      nzFooter: null,
       nzClassName: 'modal-custom',
       nzContent: TaskTagComponent,
       nzWidth: 'modal-custom',
       nzCentered: true,
       nzMaskClosable: false,
-      // nzComponentParams: {
-      //   mode: ModeModal.CREATE,
-      //   title: 'Thêm yêu cầu',
-      // },
       nzDirection: 'ltr', // left to right
     });
-    // .afterClose.subscribe({
-    //   next: (res) => {
-    //     console.log(res);
-    //     if (res) {
-    //       this.notifyService.success(
-    //         'Thành công',
-    //         'Thêm mới yêu cầu',
-    //         this.modalOptions
-    //       );
-    //     }
-    //     this.getProject();
-    //   },
-    //   error: (res) => {
-    //     console.log(res);
-    //   },
-    // });
   }
-
-  // getEndDate() {
-  //   // debugger;
-  //   this.endValue = this.formValidation.get('endDate')?.value;
-  //   console.log(this.endValue);
-  //   return this.endValue;
-  // }
-
-  // public disabledStartDate = (current: Date): boolean => {
-  //   console.log('1111');
-  //   debugger;
-  //   if (this.endValue?.toString() === '' || this.endValue === null)
-  //     return false;
-  //   else {
-  //     // console.log(current);
-  //     let r = this.endValue! <= current;
-  //     // console.log(r);
-  //     return r;
-  //   }
-  // };
-
-  // public disabledEndDate = (current: Date): boolean => {
-  //   // debugger;
-  //   if (this.startValue?.toString() === '' || this.startValue === null)
-  //     return false;
-  //   return this.startValue! >= current;
-  // };
 }
