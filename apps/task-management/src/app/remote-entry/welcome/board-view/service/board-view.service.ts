@@ -7,7 +7,7 @@ import { content } from './task';
 
 // const urlTag = 'http://10.2.6.142:8092/api/tag';
 
-const urlTask = 'http://10.2.6.142:8092/api/task';
+const urlTask = 'http://10.2.6.142:8092/taskManagement/api/task';
 
 @Injectable({
   providedIn: 'root',

@@ -15,6 +15,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { TaskTagComponent } from '../../task-tag/task-tag.component';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
+import { ActivatedRoute } from '@angular/router';
 
 enum ModeModal {
   CREATE = 'create',
@@ -39,6 +40,8 @@ export class BoardTaskFormComponent implements OnInit {
 
   @Input() id!: number;
 
+  @Input() projectId!: number;
+
   isVisible = false;
 
   error = '';
@@ -51,6 +54,7 @@ export class BoardTaskFormComponent implements OnInit {
     private service: BoardViewService,
     private modalService: NzModalService,
     private msg: NzMessageService,
+    private route: ActivatedRoute,
     private modelRef: NzModalRef<BoardTaskFormComponent>
   ) {}
 
@@ -123,6 +127,8 @@ export class BoardTaskFormComponent implements OnInit {
     //   endDate: this.endDate,
     // });
 
+    console.log(this.projectId);
+
     if (this.mode != ModeModal.CREATE) {
       if (this.id) {
         this.getById(this.id);
@@ -141,6 +147,13 @@ export class BoardTaskFormComponent implements OnInit {
     }
 
     this.fileAction = info.file.name;
+  }
+
+  public getIdProject() {
+    let id: number = 0;
+    console.log(this.route.snapshot.paramMap.get('id'));
+    id = parseInt(this.route.snapshot.paramMap.get('id')!);
+    return console.log(id);
   }
 
   getById(id: number) {
@@ -168,10 +181,12 @@ export class BoardTaskFormComponent implements OnInit {
   }
 
   handleOk(): void {
+    debugger;
     this.isConfirmLoading = true;
     const item: content = this.formValidation.value;
     item.startDate = this.startDate;
     item.endDate = this.endDate;
+    item.projectId = this.projectId;
     if (this.mode == ModeModal.CREATE) {
       this.service.addTask(item).subscribe({
         next: (res: content) => {

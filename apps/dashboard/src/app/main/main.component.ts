@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Component,
   ElementRef,
@@ -63,7 +65,6 @@ export class MainComponent implements OnInit {
     this.getData();
     this.openForm();
     this.closeForm();
-    this.toggleSidebar();
 
     this.renderer2.listen('document', 'scroll', () => {
       this.getScrollHeight();
@@ -111,7 +112,7 @@ export class MainComponent implements OnInit {
       const windowHeight = window.innerHeight;
       const elementTop = revealElement[i].getBoundingClientRect().top;
 
-      if (elementTop < windowHeight - 200) {
+      if (elementTop < windowHeight - 300) {
         revealElement[i].classList.add('active');
       }
       // else {
@@ -123,23 +124,51 @@ export class MainComponent implements OnInit {
     // console.log(revealElement);
   }
 
-  toggleSidebar() {
-    // this.isNavOpen.subscribe(isNavOpen
-    this.isNavOpen = !this.isNavOpen;
-    console.log(this.isNavOpen);
-    const revealElement =
-      this.element.nativeElement.querySelector('.custom-toggler');
-    const mobileNav = this.element.nativeElement.querySelector('.mobile-nav');
-
-    revealElement.addEventListener('click', function () {
-      const showClass = mobileNav.querySelector('.show');
-      console.log(showClass);
-
-      setTimeout(function () {
-        mobileNav.style.display = 'none';
-        console.log('init');
-      }, 1000);
+  scrollToElement($element: any): void {
+    console.log($element);
+    $element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
     });
+  }
+
+  // cssDisplayNone() {
+  //   // debugger;
+  //   let mobile = this.element.nativeElement.querySelector('.mobile-nav');
+  //   let n: ReturnType<typeof setTimeout>;
+  //   if (mobile.classList.contains('d-none')) {
+  //     mobile.classList.remove('hide');
+  //     mobile.classList.remove('d-none');
+  //     mobile.classList.add('show');
+  //     mobile.classList.add('d-block');
+  //   } else if (mobile.classList.contains('d-block')) {
+  //     mobile.classList.remove('show');
+  //     mobile.classList.remove('d-block');
+  //     mobile.classList.add('hide');
+  //     n = setTimeout(() => {
+  //       console.log('t');
+
+  //       return mobile.classList.add('d-none');
+  //     }, 500);
+  //   }
+  // }
+
+  toggleSidebar() {
+    let mobile = this.element.nativeElement.querySelector('.mobile-nav');
+    if (mobile.classList.contains('d-none')) {
+      mobile.classList.remove('hide');
+      mobile.classList.remove('d-none');
+      mobile.classList.add('show');
+      mobile.classList.add('d-block');
+    } else if (mobile.classList.contains('d-block')) {
+      mobile.classList.remove('show');
+      mobile.classList.remove('d-block');
+      mobile.classList.add('hide');
+      setTimeout(() => {
+        return mobile.classList.add('d-none');
+      }, 500);
+    }
   }
 
   openForm() {

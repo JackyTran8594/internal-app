@@ -4,14 +4,14 @@ import { RouterModule } from '@angular/router';
 import { RemoteEntryComponent } from './entry.component';
 
 export const remoteRoutes: Route[] = [
+  // {
+  //   path: '',
+  //   pathMatch: 'full',
+  //   // component: RemoteEntryComponent,
+  //   redirectTo: 'main',
+  // },
   {
     path: '',
-    pathMatch: 'full',
-    // component: RemoteEntryComponent,
-    redirectTo: 'main',
-  },
-  {
-    path: 'main',
     loadChildren: () => import('../main/main.module').then((m) => m.MainModule),
   },
 ];

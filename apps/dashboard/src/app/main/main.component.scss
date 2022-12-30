@@ -10,7 +10,6 @@
   border-color: #f27700;
 }
 
-
 * {
   font-size: 16px;
   box-sizing: border-box;
@@ -508,11 +507,11 @@ a:hover {
   }
 }
 
-// Table HNAG
+// Upcoming project
 
-.table-HNAG {
-  .table-head {
-    margin-bottom: 3em;
+.U-Project {
+  .project-head {
+    margin-bottom: 4em;
 
     h4 {
       position: relative;
@@ -545,42 +544,34 @@ a:hover {
     }
   }
 
-  #basicTable {
-    width: 100%;
+  .project-content {
+    position: relative;
+    height: auto;
 
-    .dish {
-      span {
-        font-size: 1.3rem;
-        padding-left: 5px;
-      }
+    .item {
+      box-shadow: #d2d2d2 0px 0px 15px;
+      border-radius: 4px;
+      padding: 3em;
+      margin-bottom: 4em;
     }
 
-    th {
-      width: 20%;
-    }
+    .icon {
+      position: absolute;
+      background-color: #2094e6;
+      padding: 1.3em;
+      position: absolute;
+      border-radius: 50%;
+      margin-top: -2.05em;
+      top: 0;
+      justify-content: center;
+      align-items: center;
 
-    td {
-      width: 20%;
-
-      img {
-        margin-bottom: 1em;
-        width: 15%;
-        height: 15%;
+      i {
+        font-size: 1.5rem;
+        color: white;
       }
     }
   }
-
-  // .editable-cell {
-  //   position: relative;
-  //   padding: 5px 12px;
-  //   cursor: pointer;
-  // }
-
-  // .editable-row:hover .editable-cell {
-  //   border: 1px solid #d9d9d9;
-  //   border-radius: 4px;
-  //   padding: 4px 11px;
-  // }
 }
 
 // Popup chat
@@ -953,10 +944,29 @@ a:hover {
   }
 }
 
+// Tablet and Mobile
+
+@media only screen and (max-width: 992px) {
+  .about-us .content1 {
+    padding-top: 1em;
+  }
+}
+
 // PC
-@media only screen and (min-width: 993px) {
+@media only screen and (min-width: 992px) {
   .mobile-nav {
     display: none;
+  }
+
+  .header #navbarNav {
+    li {
+      padding: 0;
+    }
+
+    li a {
+      font-size: 14px;
+      text-transform: uppercase;
+    }
   }
 }
 
@@ -1011,17 +1021,14 @@ a:hover {
   }
 
   .show {
-    display: block !important;
     animation: fade-top 0.8s ease-in-out;
     z-index: 1;
     opacity: 1;
   }
 
   .hide {
-    // transition: visibility 0s, opacity 0.5s linear;
     opacity: 0;
     animation: fade-up 0.8s ease-in-out;
-    // z-index: 0;
   }
 }
 
@@ -1033,11 +1040,11 @@ a:hover {
 }
 
 // Header tablet responsive fixed
-@media only screen and (max-width: 1112px) and (min-width: 992px) {
-  #navbarNav li {
-    padding: 0;
-  }
-}
+// @media only screen and (min-width: 992px) {
+//   #navbarNav li {
+//     padding: 0;
+//   }
+// }
 
 @keyframes modalFadeIn {
   from {

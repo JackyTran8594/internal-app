@@ -159,6 +159,8 @@
             <nz-form-label [nzSpan]="3"> Upload file </nz-form-label>
             <nz-form-control [nzSpan]="21">
               <nz-upload
+                nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                [nzHeaders]="{ authorization: 'authorization-text' }"
                 (nzChange)="handleChange($event)"
                 name="attachFile"
                 formControlName="attachFile"
