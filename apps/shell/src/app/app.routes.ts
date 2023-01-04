@@ -22,6 +22,6 @@ export const appRoutes: Route[] = [
   //   path: '',
   //   component: AppComponent
   // },
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: 'pages/dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: '' },
 ];

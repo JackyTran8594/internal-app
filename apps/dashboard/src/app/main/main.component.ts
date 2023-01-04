@@ -1,18 +1,15 @@
+/* eslint-disable prefer-const */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Component,
   ElementRef,
   HostListener,
   OnInit,
   Renderer2,
-  ViewChild,
 } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Weather } from './service/main';
 import { MainService } from './service/main.service';
-import { DOCUMENT } from '@angular/common';
-import { Inject } from '@angular/core';
-import { ShareService } from '@internal-app/theme';
-import { BehaviorSubject } from 'rxjs';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 
 interface ItemData {
@@ -36,10 +33,11 @@ export class MainComponent implements OnInit {
   editId: string | null = null;
   listOfData: ItemData[] = [];
   public isCollapsed: boolean;
+  isVisible = false;
 
   constructor(
     private service: MainService,
-    private shareService: ShareService,
+    // private modalService: NzModalService,
     // @Inject(DOCUMENT) private document: Document,
     private element: ElementRef,
     private renderer2: Renderer2
@@ -63,7 +61,6 @@ export class MainComponent implements OnInit {
     this.getData();
     this.openForm();
     this.closeForm();
-    this.toggleSidebar();
 
     this.renderer2.listen('document', 'scroll', () => {
       this.getScrollHeight();
@@ -111,7 +108,7 @@ export class MainComponent implements OnInit {
       const windowHeight = window.innerHeight;
       const elementTop = revealElement[i].getBoundingClientRect().top;
 
-      if (elementTop < windowHeight - 200) {
+      if (elementTop < windowHeight - 300) {
         revealElement[i].classList.add('active');
       }
       // else {
@@ -123,23 +120,61 @@ export class MainComponent implements OnInit {
     // console.log(revealElement);
   }
 
-  toggleSidebar() {
-    // this.isNavOpen.subscribe(isNavOpen
-    this.isNavOpen = !this.isNavOpen;
-    console.log(this.isNavOpen);
-    const revealElement =
-      this.element.nativeElement.querySelector('.custom-toggler');
-    const mobileNav = this.element.nativeElement.querySelector('.mobile-nav');
+  // upcomingProjectModel() {
+  //   this.modalService.create({
+  //     nzTitle: 'View Task',
+  //     nzClassName: 'modal-custom',
+  //     nzContent: '<p>Test</p>',
+  //     nzWidth: 'modal-custom',
+  //     nzCentered: true,
+  //     nzMaskClosable: false,
+  //     // nzComponentParams: {
+  //     //   mode: ModeModal.VIEW,
+  //     //   title: 'Xem chi tiết yêu cầu',
+  //     //   id: item.id,
+  //     // },
+  //     nzDirection: 'ltr', // left to right
+  //   });
+  // }
 
-    revealElement.addEventListener('click', function () {
-      const showClass = mobileNav.querySelector('.show');
-      console.log(showClass);
-
-      setTimeout(function () {
-        mobileNav.style.display = 'none';
-        console.log('init');
-      }, 1000);
+  scrollToElement($element: any): void {
+    console.log($element);
+    $element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
     });
+  }
+
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    console.log('Button ok clicked!');
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
+  }
+
+  toggleSidebar() {
+    let mobile = this.element.nativeElement.querySelector('.mobile-nav');
+    if (mobile.classList.contains('d-none')) {
+      mobile.classList.remove('hide');
+      mobile.classList.remove('d-none');
+      mobile.classList.add('show');
+      mobile.classList.add('d-block');
+    } else if (mobile.classList.contains('d-block')) {
+      mobile.classList.remove('show');
+      mobile.classList.remove('d-block');
+      mobile.classList.add('hide');
+      setTimeout(() => {
+        return mobile.classList.add('d-none');
+      }, 500);
+    }
   }
 
   openForm() {
@@ -193,7 +228,7 @@ export class MainComponent implements OnInit {
       yAxis: {
         crosshair: true,
         title: {
-          text: 'Temperature',
+          text: 'Nhiệt độ',
         },
         // labels: {
         //   formatter: function () {
@@ -224,7 +259,7 @@ export class MainComponent implements OnInit {
       },
       series: [
         {
-          name: '°C Max',
+          name: 'Nhiệt độ cao nhất (°C)',
           type: 'line',
           marker: {
             symbol: 'square',
@@ -237,7 +272,7 @@ export class MainComponent implements OnInit {
         },
 
         {
-          name: '°C Average',
+          name: 'Nhiệt độ trung bình (°C)',
           type: 'line',
           marker: {
             symbol: 'diamond',
@@ -250,7 +285,7 @@ export class MainComponent implements OnInit {
         },
 
         {
-          name: '°C Min',
+          name: 'Nhiệt độ thấp nhất (°C)',
           type: 'line',
           marker: {
             symbol: 'triangle',

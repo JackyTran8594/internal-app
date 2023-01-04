@@ -153,10 +153,10 @@
       </div>
 
       <!-- row 6 -->
-      <!-- <div nz-row class="d-flex flex-row" [nzGutter]="8">
+      <div nz-row class="d-flex flex-row" [nzGutter]="8">
         <div nz-col [nzSpan]="24">
           <nz-form-item nz-row [nzGutter]="2">
-            <nz-form-label [nzSpan]="3"> Attachment file </nz-form-label>
+            <nz-form-label [nzSpan]="3"> Upload file </nz-form-label>
             <nz-form-control [nzSpan]="21">
               <nz-upload
                 nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
@@ -164,6 +164,7 @@
                 (nzChange)="handleChange($event)"
                 name="attachFile"
                 formControlName="attachFile"
+                type="file"
               >
                 <button nz-button>
                   <span nz-icon nzType="upload"></span>
@@ -173,7 +174,7 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-      </div> -->
+      </div>
 
       <!-- row 7 -->
       <div nz-row class="d-flex flex-row" [nzGutter]="8">
@@ -184,7 +185,7 @@
                 nz-button
                 nzShape="circle"
                 class="d-flex align-items-center justify-content-center mr-1"
-                (click)="onTag()"
+                (click)="onCreateTag()"
               >
                 <i nz-icon nzType="tags" nzTheme="outline"></i>
               </button>
