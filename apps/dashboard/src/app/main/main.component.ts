@@ -6,15 +6,10 @@ import {
   HostListener,
   OnInit,
   Renderer2,
-  ViewChild,
 } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Weather } from './service/main';
 import { MainService } from './service/main.service';
-import { DOCUMENT } from '@angular/common';
-import { Inject } from '@angular/core';
-import { ShareService } from '@internal-app/theme';
-import { BehaviorSubject } from 'rxjs';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 
 interface ItemData {
@@ -38,10 +33,11 @@ export class MainComponent implements OnInit {
   editId: string | null = null;
   listOfData: ItemData[] = [];
   public isCollapsed: boolean;
+  isVisible = false;
 
   constructor(
     private service: MainService,
-    private shareService: ShareService,
+    // private modalService: NzModalService,
     // @Inject(DOCUMENT) private document: Document,
     private element: ElementRef,
     private renderer2: Renderer2
@@ -124,6 +120,23 @@ export class MainComponent implements OnInit {
     // console.log(revealElement);
   }
 
+  // upcomingProjectModel() {
+  //   this.modalService.create({
+  //     nzTitle: 'View Task',
+  //     nzClassName: 'modal-custom',
+  //     nzContent: '<p>Test</p>',
+  //     nzWidth: 'modal-custom',
+  //     nzCentered: true,
+  //     nzMaskClosable: false,
+  //     // nzComponentParams: {
+  //     //   mode: ModeModal.VIEW,
+  //     //   title: 'Xem chi tiết yêu cầu',
+  //     //   id: item.id,
+  //     // },
+  //     nzDirection: 'ltr', // left to right
+  //   });
+  // }
+
   scrollToElement($element: any): void {
     console.log($element);
     $element.scrollIntoView({
@@ -133,26 +146,19 @@ export class MainComponent implements OnInit {
     });
   }
 
-  // cssDisplayNone() {
-  //   // debugger;
-  //   let mobile = this.element.nativeElement.querySelector('.mobile-nav');
-  //   let n: ReturnType<typeof setTimeout>;
-  //   if (mobile.classList.contains('d-none')) {
-  //     mobile.classList.remove('hide');
-  //     mobile.classList.remove('d-none');
-  //     mobile.classList.add('show');
-  //     mobile.classList.add('d-block');
-  //   } else if (mobile.classList.contains('d-block')) {
-  //     mobile.classList.remove('show');
-  //     mobile.classList.remove('d-block');
-  //     mobile.classList.add('hide');
-  //     n = setTimeout(() => {
-  //       console.log('t');
+  showModal(): void {
+    this.isVisible = true;
+  }
 
-  //       return mobile.classList.add('d-none');
-  //     }, 500);
-  //   }
-  // }
+  handleOk(): void {
+    console.log('Button ok clicked!');
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
+  }
 
   toggleSidebar() {
     let mobile = this.element.nativeElement.querySelector('.mobile-nav');
@@ -222,7 +228,7 @@ export class MainComponent implements OnInit {
       yAxis: {
         crosshair: true,
         title: {
-          text: 'Temperature',
+          text: 'Nhiệt độ',
         },
         // labels: {
         //   formatter: function () {
@@ -253,7 +259,7 @@ export class MainComponent implements OnInit {
       },
       series: [
         {
-          name: '°C Max',
+          name: 'Nhiệt độ cao nhất (°C)',
           type: 'line',
           marker: {
             symbol: 'square',
@@ -266,7 +272,7 @@ export class MainComponent implements OnInit {
         },
 
         {
-          name: '°C Average',
+          name: 'Nhiệt độ trung bình (°C)',
           type: 'line',
           marker: {
             symbol: 'diamond',
@@ -279,7 +285,7 @@ export class MainComponent implements OnInit {
         },
 
         {
-          name: '°C Min',
+          name: 'Nhiệt độ thấp nhất (°C)',
           type: 'line',
           marker: {
             symbol: 'triangle',

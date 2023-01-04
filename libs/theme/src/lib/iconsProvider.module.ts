@@ -28,6 +28,10 @@ import {
   SortAscendingOutline,
   LinkOutline,
   TagsOutline,
+  LaptopOutline,
+  BookOutline,
+  ArrowRightOutline,
+  SettingOutline,
 } from '@ant-design/icons-angular/icons';
 
 const icons = [
@@ -54,6 +58,10 @@ const icons = [
   SortAscendingOutline,
   LinkOutline,
   TagsOutline,
+  LaptopOutline,
+  BookOutline,
+  ArrowRightOutline,
+  SettingOutline,
 ];
 
 @NgModule({

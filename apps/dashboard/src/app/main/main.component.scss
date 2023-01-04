@@ -21,6 +21,22 @@ html {
   scroll-behavior: smooth !important;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+}
+
+.row {
+  display: --webkit-box;
+  display: --webkit-flex;
+  display: --ms-flexbox;
+  display: flex;
+}
+
 ul {
   list-style-type: none;
 }
@@ -150,7 +166,7 @@ a:hover {
 
     li a:hover {
       color: #f27700;
-      transition: all 0.3s ease 70ms;
+      transition: all 0.3s ease;
     }
   }
 }
@@ -424,8 +440,15 @@ a:hover {
     }
   }
 
+  .fix-flex-height {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+  }
+
   .item {
     background: #fff;
+    color: #000;
     text-align: center;
     padding: 1.9em 1.6em;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.07);
@@ -434,19 +457,57 @@ a:hover {
     border: 5px solid rgba(0, 0, 0, 0.07);
     -webkit-transition: all 0.5s ease 0;
     transition: all 0.5s ease 0;
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
 
     .icon {
       display: inline-block;
       font-size: 1.5rem;
       margin-bottom: 0.8em;
-      color: #2094e6;
+      // color: #2094e6;
       width: 60px;
       height: 60px;
       line-height: 50px;
       border-radius: 50px;
+      transition: all 0.5s ease;
+      align-self: center;
 
-      i {
-        font-size: 2rem;
+      // i {
+      //   font-size: 2rem;
+      // }
+
+      img {
+        width: 65%;
+        height: 65%;
+        background: transparent;
+      }
+    }
+
+    .link-direct {
+      justify-content: flex-start;
+
+      a {
+        color: #000;
+        position: relative;
+        transition: all 0.5s ease;
+      }
+
+      a:after {
+        content: '';
+        position: absolute;
+        background-color: #fff;
+        height: 1px;
+        width: 0;
+        right: 0;
+        bottom: 0;
+        transition: all 0.5s ease;
+      }
+
+      a:hover:after {
+        width: 100%;
+        right: auto;
+        height: 1px;
       }
     }
   }
@@ -454,18 +515,26 @@ a:hover {
   .item:hover {
     background: #2094e6;
     color: #fff;
-    cursor: pointer;
+    // cursor: pointer;
     box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
-    -webkit-transition: all 0.5s ease 70ms;
-    transition: all 0.5s ease 70ms;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
+  .item:hover .icon {
+    color: #2094e6;
+  }
+
+  .item:hover .link-direct a {
+    color: white;
   }
 
   .item:hover .item,
   .item:hover span.icon {
     background: #fff;
     border-radius: 10px;
-    -webkit-transition: all 0.5s ease 70ms;
-    transition: all 0.5s ease 70ms;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
   }
 }
 
@@ -546,29 +615,75 @@ a:hover {
 
   .project-content {
     position: relative;
-    height: auto;
+    display: flex;
+    flex-direction: column;
 
-    .item {
-      box-shadow: #d2d2d2 0px 0px 15px;
-      border-radius: 4px;
-      padding: 3em;
-      margin-bottom: 4em;
-    }
+    .fix-flex-height {
+      display: flex;
+      flex: 1 0 auto;
+      flex-direction: column;
 
-    .icon {
-      position: absolute;
-      background-color: #2094e6;
-      padding: 1.3em;
-      position: absolute;
-      border-radius: 50%;
-      margin-top: -2.05em;
-      top: 0;
-      justify-content: center;
-      align-items: center;
+      .item {
+        box-shadow: #d2d2d2 0px 0px 15px;
+        border-radius: 4px;
+        padding: 3em;
+        margin-bottom: 4em;
+        display: flex;
+        flex: 1 0 auto;
+        flex-direction: column;
 
-      i {
-        font-size: 1.5rem;
-        color: white;
+        .description {
+          flex-grow: 1;
+        }
+
+        .link-direct {
+          justify-content: flex-start;
+
+          a {
+            color: #000;
+            position: relative;
+            transition: all 0.5s ease;
+          }
+
+          a:hover {
+            color: #2094e6;
+          }
+
+          a:after {
+            content: '';
+            position: absolute;
+            background-color: #fff;
+            height: 1px;
+            width: 0;
+            right: 0;
+            bottom: 0;
+            transition: all 0.5s ease;
+          }
+
+          a:hover:after {
+            background-color: #2094e6;
+            width: 100%;
+            right: auto;
+            height: 1px;
+          }
+        }
+      }
+
+      .icon {
+        position: absolute;
+        background-color: #2094e6;
+        padding: 1.3em;
+        position: absolute;
+        border-radius: 50%;
+        margin-top: -2.05em;
+        top: 0;
+        justify-content: center;
+        align-items: center;
+
+        i {
+          font-size: 1.5rem;
+          color: white;
+        }
       }
     }
   }
@@ -847,20 +962,6 @@ a:hover {
       }
     }
   }
-
-  // About-us
-
-  .about-us {
-    .content1 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      h1 {
-        font-size: 2.5rem;
-      }
-    }
-  }
 }
 
 // Mobile
@@ -915,30 +1016,6 @@ a:hover {
 
       .image {
         display: none !important;
-      }
-    }
-  }
-
-  // About-us
-
-  .about-us {
-    .content1 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      h1 {
-        font-size: 2.5rem;
-      }
-    }
-  }
-
-  // Table HNAG
-
-  #basicTable {
-    .dish {
-      span {
-        font-size: 0.8rem !important;
       }
     }
   }

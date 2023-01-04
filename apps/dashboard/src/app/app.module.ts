@@ -3,13 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
-import { NzIconModule } from 'ng-zorro-antd/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { HighchartsChartModule } from 'highcharts-angular';
-import { NzTableModule } from 'ng-zorro-antd/table';
 import { provideSvgIcons } from '@ngneat/svg-icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconsProviderModule, NgZorroModule, ThemeModule } from '@internal-app/theme';
+import { NgZorroModule, ThemeModule } from '@internal-app/theme';
 
 @NgModule({
   declarations: [AppComponent, MainComponent],
