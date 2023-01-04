@@ -14,28 +14,26 @@
                 placeholder="Title"
                 formControlName="name"
                 name="name"
-                required
               />
             </nz-form-control>
           </nz-form-item>
         </div>
       </div>
     </form>
-    <div class="tag-list" *ngFor="let item of listData; let idx = index">
-      {{ item.name }}
-    </div>
-    <button nz-button>Add new tag</button>
-  </div>
-</div>
+    <ul class="tag-list" *ngFor="let item of listData; let idx = index">
+      <li>
+        {{ item.name }}
+        <button
+          nz-button
+          nzShape="circle"
+          class="d-flex align-items-center justify-content-center mr-1"
+          (click)="onDelete(item.id)"
+        >
+          <i nz-icon nzType="delete" nzTheme="outline"></i>
+        </button>
+      </li>
+    </ul>
 
-<div class="d-flex justify-content-center" *nzModalFooter>
-  <button
-    nz-button
-    nzType="primary"
-    [disabled]="!formValidation.valid"
-    [nzLoading]="isConfirmLoading"
-  >
-    Lưu
-  </button>
-  <button nz-button nzType="default" (click)="handleCancel()">Hủy</button>
+    <button nz-button (click)="createTag()">Add new tag</button>
+  </div>
 </div>

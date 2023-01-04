@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable no-debugger */
 /* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-empty-function */
@@ -97,8 +98,13 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
     return this.txtSearch;
   }
 
+  public getIdProjectTask() {
+    let id = this.route.snapshot.paramMap.get('id');
+    return parseInt(id!);
+  }
+
   public getTask() {
-    // this.getIdProject();
+    this.getIdProject();
     this.service
       .getTask(this.pageNumber, this.pageSize, this.txtSearch)
       .subscribe({
@@ -146,6 +152,7 @@ export class BoardViewComponent implements OnInit, AfterViewChecked {
         nzComponentParams: {
           mode: ModeModal.CREATE,
           title: 'Thêm yêu cầu',
+          projectId: this.getIdProjectTask(),
         },
         nzDirection: 'ltr', // left to right
       })

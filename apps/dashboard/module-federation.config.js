@@ -12,7 +12,8 @@ module.exports = {
     '@angular/forms',
     'bootstrap',
     'highcharts',
-    'highcharts-angular'
+    'highcharts-angular',
+    '@ant-design/icons-angular'
   ],
   output: {
     uniqueName: "dashboard",

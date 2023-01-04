@@ -8,6 +8,7 @@ import { TableViewComponent } from './table-view/table-view.component';
 import { BoardViewComponent } from './board-view/board-view.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { registerLocaleData } from '@angular/common';
@@ -37,6 +38,7 @@ registerLocaleData(vn);
     // NzDatePickerModule,
     HighchartsChartModule,
     ReactiveFormsModule,
+    NzUploadModule,
   ],
 })
 export class WelcomeModule {}

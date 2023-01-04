@@ -10,5 +10,6 @@ module.exports = {
     'bootstrap',
     'highcharts',
     'highcharts-angular',
+    '@ant-design/icons-angular'
   ],
 };
