@@ -1,10 +1,13 @@
-### STAGE 1: builder
-FROM  node:16.10-alpine AS builder
+### STAGE 1: BASE
+FROM  node:16.10-alpine AS base
 LABEL Name=internalapp Version=0.0.1
 WORKDIR /app
 # Copy files to virtual directory
 COPY package*.json nx.json tsconfig*.json nginx.conf decorate-angular-cli.js  ./
 # Run command in Virtual directory
+RUN npm install
+
+FROM base AS buider
 RUN npm cache clean --force
 # Copy files from local machine to virtual directory in docker image
 # COPY . .
