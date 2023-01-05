@@ -3,7 +3,7 @@ FROM  node:14.17.3-alpine AS builder
 LABEL Name=internalapp Version=0.0.1
 WORKDIR /app
 # Copy files to virtual directory
-COPY package*.json nx.json tsconfig*.json nginx.conf decorate-angular-cli.js  ./
+COPY . .
 # Run command in Virtual directory
 RUN npm cache clean --force
 RUN npm install
