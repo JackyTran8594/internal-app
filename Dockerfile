@@ -3,7 +3,7 @@ FROM  node:16.10-alpine AS builder
 LABEL Name=internalapp Version=0.0.1
 WORKDIR /app
 # Copy files to virtual directory
-# COPY package.json package-lock.json ./
+COPY package.json package-lock.json ./
 # Run command in Virtual directory
 RUN npm cache clean --force
 # Copy files from local machine to virtual directory in docker image
