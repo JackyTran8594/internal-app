@@ -158,7 +158,7 @@
           <nz-form-item nz-row [nzGutter]="2">
             <nz-form-label [nzSpan]="3"> Upload file </nz-form-label>
             <nz-form-control [nzSpan]="21">
-              <nz-upload
+              <!-- <nz-upload
                 nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                 [nzHeaders]="{ authorization: 'authorization-text' }"
                 (nzChange)="handleChange($event)"
@@ -170,7 +170,19 @@
                   <span nz-icon nzType="upload"></span>
                   Click to Upload
                 </button>
-              </nz-upload>
+              </nz-upload> -->
+              <input
+                type="file"
+                formControlName="attachFile"
+                name="attachFile"
+                multiple
+                [hidden]="mode === 'view'"
+              />
+              <span
+                formControlName="attachFile"
+                name="attachFile"
+                [hidden]="mode !== 'view'"
+              ></span>
             </nz-form-control>
           </nz-form-item>
         </div>
