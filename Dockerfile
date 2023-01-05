@@ -12,6 +12,7 @@ RUN npm cache clean --force
 # Copy files from local machine to virtual directory in docker image
 # COPY . .
 # RUN rm -f node_modules/@angular/compiler-cli/ngcc/__ngcc_lock_file__
+COPY . .
 RUN npm install -g nx@15.0.5
 RUN nx run-many --target=build --all=true
 
