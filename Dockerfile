@@ -6,10 +6,9 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 # Run command in Virtual directory
 RUN npm cache clean --force
-RUN npm install nx@15.1.1
 # Copy files from local machine to virtual directory in docker image
 COPY . .
-RUN npm install
+RUN npm ci
 RUN npx nx run-many --target=build --all=true
 
 ### STAGE 2: RUN
