@@ -9,7 +9,7 @@ RUN npm cache clean --force
 # Copy files from local machine to virtual directory in docker image
 COPY . .
 RUN npm install
-RUN nx run-many --target=build --all=true
+RUN npx nx run-many --target=build --all=true
 
 ### STAGE 2: RUN
 FROM  nginx:1.17.1-alpine AS ngi
