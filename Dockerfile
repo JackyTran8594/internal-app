@@ -1,5 +1,5 @@
 ### STAGE 1: BASE
-FROM  node:16.10-alpine AS base
+FROM  node:14.17.3-alpine AS base
 LABEL Name=internalapp Version=0.0.1
 WORKDIR /app
 # Copy files to virtual directory
