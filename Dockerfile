@@ -24,7 +24,7 @@ RUN ls -la /app/*
 
 ### STAGE 2: RUN
 FROM  nginx:1.17.1-alpine AS ngi
-COPY --from=builder /app/ /usr/share/nginx/html
-COPY /nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/dist/apps /usr/share/nginx/html
+COPY --from=builder /app/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
