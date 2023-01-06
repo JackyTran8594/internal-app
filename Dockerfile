@@ -2,8 +2,9 @@
 FROM  node:14.17.3-alpine AS builder
 LABEL Name=internalapp Version=0.0.1
 WORKDIR /app
+COPY package*.json decorate-angular-cli.js nginx.conf nx.json tsconfig.base.json jest*.ts jest*.js /app/
 # Copy files to virtual directory
-COPY . .
+# COPY . .
 # Run command in Virtual directory
 RUN npm cache clean --force
 RUN npm install
