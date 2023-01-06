@@ -22,7 +22,7 @@
 ### STAGE 2: RUN
 FROM  nginx:1.17.1-alpine AS ngi
 COPY /dist/apps /usr/share/nginx/html
-COPY rm /etc/nginx/conf.d/default.conf  
+RUN rm /etc/nginx/conf.d/default.conf  
 COPY /nginx.conf /etc/nginx/conf.d 
 RUN ls -la /usr/share/nginx/html 
 RUN ls -la /etc/nginx/conf.d 
