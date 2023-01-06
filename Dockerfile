@@ -3,7 +3,9 @@ FROM  alpine:latest AS builder
 LABEL Name=internalapp Version=0.0.1
 WORKDIR /app
 # Copy files to virtual directory
-COPY dist ./
+COPY dist /app/
+RUN ls -la /app/*
+
 
 ### STAGE 2: RUN
 FROM  nginx:1.17.1-alpine AS ngi
