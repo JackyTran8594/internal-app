@@ -7,9 +7,9 @@ WORKDIR /app
 COPY . .
 RUN ls -la /app/*
 # Run command in Virtual directory
+RUN npm install -g nx@15.0.5
 RUN npm cache clean --force
 RUN npm install
-RUN npm install -g nx@15.0.5
 RUN nx run-many --target=build --all=true
 
 # FROM base AS builder
