@@ -10,7 +10,10 @@ RUN ls -la /app/*
 RUN npm install -g nx@15.0.5
 RUN npm cache clean --force
 RUN npm install
-RUN nx run-many --target=build --all=true
+# RUN nx run-many --target=build --all=true
+RUN nx serve --devRemotes=dashboard,task-management
+
+EXPOSE 4200
 
 # FROM base AS builder
 # # Copy files from local machine to virtual directory in docker image
@@ -19,7 +22,7 @@ RUN nx run-many --target=build --all=true
 # COPY . .
 # RUN npm install -g nx@15.0.5
 
-### STAGE 2: RUN
-FROM  nginx:1.17.1-alpine AS ngi
-COPY --from=builder /app/dist/apps /user/share/nginx/html
-COPY /nginx.conf /etc/nginx/conf.d/default.conf
+# ### STAGE 2: RUN
+# FROM  nginx:1.17.1-alpine AS ngi
+# COPY --from=builder /app/dist/apps /user/share/nginx/html
+# COPY /nginx.conf /etc/nginx/conf.d/default.conf
