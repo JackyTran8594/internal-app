@@ -8,7 +8,7 @@ COPY . .
 RUN ls -la /app/*
 # Run command in Virtual directory
 RUN npm install -g nx@15.0.5
-RUN npm install -g angular@14.2.0
+RUN npm install -g @angular/cli@14.2.0
 RUN npm cache clean --force
 RUN npm install
 # RUN nx run-many --target=build --all=true
@@ -24,5 +24,5 @@ RUN ls -la /app/*
 
 ### STAGE 2: RUN
 FROM  nginx:1.17.1-alpine AS ngi
-COPY --from=builder /app/dist/apps /user/share/nginx/html
+COPY --from=builder /app/dist/apps /urs/share/nginx/html
 COPY /nginx.conf /etc/nginx/conf.d/default.conf
