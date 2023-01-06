@@ -8,7 +8,7 @@ COPY . .
 RUN ls -la /app/*
 # Run command in Virtual directory
 RUN npm install -g nx@15.0.5
-# RUN npm install -g angular@14.2.0
+RUN npm install -g angular@14.2.0
 RUN npm cache clean --force
 RUN npm install
 # RUN nx run-many --target=build --all=true
