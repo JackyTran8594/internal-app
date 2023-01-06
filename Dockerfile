@@ -11,3 +11,4 @@ RUN ls -la /app/*
 FROM  nginx:1.17.1-alpine AS ngi
 COPY --from=builder /app /user/share/nginx/html
 COPY /nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
