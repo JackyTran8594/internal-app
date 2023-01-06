@@ -3,7 +3,7 @@ FROM  alpine:latest AS builder
 LABEL Name=internalapp Version=0.0.1
 WORKDIR /app
 # Copy files to virtual directory
-COPY dist/apps /app/
+COPY dist nginx.conf /app/
 RUN ls -la /app/*
 
 
