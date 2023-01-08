@@ -11,7 +11,7 @@
 FROM  nginx:1.17.1-alpine AS ngi
 COPY dist/apps/task-management /usr/share/nginx/html
 RUN rm -rf /etc/nginx/conf.d/default.conf
-COPY dist/apps/task-management/nginx.conf /etc/nginx/conf.d/default.conf
+COPY apps/task-management/nginx.conf /etc/nginx/conf.d/default.conf
 RUN ls -la /usr/share/nginx/html/
 RUN ls -la /etc/nginx/conf.d/default.conf   
 
