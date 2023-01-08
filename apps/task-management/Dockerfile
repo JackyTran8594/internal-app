@@ -4,7 +4,7 @@ LABEL Name=internalapp Version=0.0.1
 WORKDIR /app
 # Copy files to virtual directory
 COPY . .
-RUN ls -la /app/
+# RUN ls -la /app/
 
 
 ### STAGE 2: RUN
