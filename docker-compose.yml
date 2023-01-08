@@ -1,4 +1,4 @@
-version: '3.4'
+version: "3.7"
 
 services:
   shell:
@@ -6,8 +6,8 @@ services:
     build:
       context: ./shell
       dockerfile: ./Dockerfile
-    port:
-      -"4200:4200"
+    ports:
+      - "4200:4200"
     networks:
       - microfrontend    
   dashboard:
@@ -15,8 +15,8 @@ services:
     build:
       context: ./dashboard
       dockerfile: ./Dockerfile
-    port:
-      -"4201:4201"
+    ports:
+      - "4201:4201"
     depends_on:
       - shell
     networks:
@@ -26,8 +26,8 @@ services:
     build:
       context: ./task-management
       dockerfile: ./Dockerfile
-    port:
-      -"4202:4202"
+    ports:
+      - "4202:4202"
     depends_on:
       - dashboard
     networks:
