@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+  shell:
+    image: internalapp-shell
+    build:
+      context: ./shell
+      dockerfile: ./Dockerfile
+    ports:
+      -"4200:4200"
+    networks:
+      - microfrontend    
+  dashboard:
+    image: internalapp-dashboard
+    build:
+      context: ./dashboard
+      dockerfile: ./Dockerfile
+    ports:
+      -"4201:4201"
+    depends_on:
+      - shell
+    networks:
+      - microfrontend
+  task-management:
+    image: internalapp-task-management
+    build:
+      context: ./task-management
+      dockerfile: ./Dockerfile
+    ports:
+      -"4202:4202"
+    depends_on:
+      - dashboard
+    networks:
+      - microfrontend
+
+networks:
+  microservices:
+    name: microfrontend
