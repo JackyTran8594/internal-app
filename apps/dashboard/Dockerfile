@@ -1,7 +1,8 @@
 # ### STAGE 1: builder
 FROM  alpine:3.14 AS builder
 LABEL Name=internalapp Version=0.0.1
-COPY apps dist /app/
+COPY apps /app/
+COPY dist /app/
 # WORKDIR /app/
 # Copy files to virtual directory
 # COPY . .
