@@ -4,7 +4,7 @@ services:
   shell:
     image: internalapp-shell
     build:
-      context: ./shell
+      context: ./apps/shell
       dockerfile: ./Dockerfile
     ports:
       - "4200:4200"
@@ -13,7 +13,7 @@ services:
   dashboard:
     image: internalapp-dashboard
     build:
-      context: ./dashboard
+      context: ./apps/dashboard
       dockerfile: ./Dockerfile
     ports:
       - "4201:4201"
@@ -24,7 +24,7 @@ services:
   task-management:
     image: internalapp-task-management
     build:
-      context: ./task-management
+      context: ./apps/task-management
       dockerfile: ./Dockerfile
     ports:
       - "4202:4202"
