@@ -10,12 +10,12 @@
 ### STAGE 2: RUN
 FROM  nginx:1.17.1-alpine AS ngi
 WORKDIR /app
-COPY dist apps/dashboard /app/
+COPY . .
 COPY app/dist/apps/dashboard /usr/share/nginx/html
 RUN rm -rf /etc/nginx/conf.d/default.conf
-COPY app/dashboard/nginx.conf /etc/nginx/conf.d
+COPY app/apps/dashboard/nginx.conf /etc/nginx/conf.d
 RUN ls -la /usr/share/nginx/html/
-RUN ls -la /etc/nginx/conf.d/default.conf   
+RUN ls -la /etc/nginx/conf.d
 
 EXPOSE 4201
 
