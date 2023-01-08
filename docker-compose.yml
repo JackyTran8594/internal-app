@@ -5,7 +5,7 @@ services:
     image: internalapp-shell
     build:
       context: ./apps/shell
-      dockerfile: ./Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "4200:4200"
     networks:
@@ -14,7 +14,7 @@ services:
     image: internalapp-dashboard
     build:
       context: ./apps/dashboard
-      dockerfile: ./Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "4201:4201"
     depends_on:
@@ -25,7 +25,7 @@ services:
     image: internalapp-task-management
     build:
       context: ./apps/task-management
-      dockerfile: ./Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "4202:4202"
     depends_on:
