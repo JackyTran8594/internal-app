@@ -12,9 +12,9 @@ FROM  nginx:1.17.1-alpine AS ngi
 # WORKDIR /app
 # COPY . .
 # RUN ls -la /app/
-COPY --from=builder dist/apps/task-management /usr/share/nginx/html
+COPY --from=builder /app/dist/apps/task-management /usr/share/nginx/html
 RUN rm -rf /etc/nginx/conf.d/default.conf
-COPY --from=builder apps/task-management/nginx.conf /etc/nginx/conf.d
+COPY --from=builder /app/apps/task-management/nginx.conf /etc/nginx/conf.d
 RUN ls -la /usr/share/nginx/html/
 RUN ls -la /usr/share/nginx/html/
 RUN ls -la /etc/nginx/conf.d/
