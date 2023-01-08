@@ -1,5 +1,5 @@
 # ### STAGE 1: builder
-FROM  allpine:latest AS builder
+FROM  alpine:3.14 AS builder
 LABEL Name=internalapp Version=0.0.1
 WORKDIR /app
 # Copy files to virtual directory
