@@ -6,7 +6,7 @@ services:
     build:
       context: ./shell
       dockerfile: ./Dockerfile
-    ports:
+    port:
       -"4200:4200"
     networks:
       - microfrontend    
@@ -15,7 +15,7 @@ services:
     build:
       context: ./dashboard
       dockerfile: ./Dockerfile
-    ports:
+    port:
       -"4201:4201"
     depends_on:
       - shell
@@ -26,7 +26,7 @@ services:
     build:
       context: ./task-management
       dockerfile: ./Dockerfile
-    ports:
+    port:
       -"4202:4202"
     depends_on:
       - dashboard
