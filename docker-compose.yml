@@ -34,5 +34,5 @@ services:
       - microfrontend
 
 networks:
-  microservices:
+  microfrontend:
     name: microfrontend
