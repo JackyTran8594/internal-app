@@ -11,7 +11,7 @@ COPY . .
 FROM  nginx:1.17.1-alpine AS ngi
 # WORKDIR /app
 # COPY . .
-RUN ls -la /app/
+# RUN ls -la /app/
 COPY --from=builder dist/apps/dashboard /usr/share/nginx/html
 RUN rm -rf /etc/nginx/conf.d/default.conf
 COPY --from=builder apps/dashboard/nginx.conf /etc/nginx/conf.d
