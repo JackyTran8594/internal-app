@@ -12,8 +12,8 @@
 ### STAGE 2: RUN
 FROM  nginx:1.19.0-alpine AS ngi
 WORKDIR /app
-COPY ./apps/ ./
-COPY ./dist/ ./
+COPY apps ./
+COPY dist ./
 RUN ls -la /app/*
 # COPY --from=builder /app/dist/apps/dashboard /usr/share/nginx/html
 # RUN rm -rf /etc/nginx/conf.d/default.conf

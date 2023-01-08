@@ -11,8 +11,8 @@
 ### STAGE 2: RUN
 FROM  nginx:1.19.0-alpine AS ngi
 WORKDIR /app
-COPY ./apps/ ./
-COPY ./dist/ ./
+COPY apps ./
+COPY dist ./
 RUN ls -la /app/*
 # RUN ls -la /app/
 # COPY --from=builder /app/dist/apps/task-management /usr/share/nginx/html
