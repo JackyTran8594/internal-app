@@ -10,7 +10,7 @@ RUN ls -la /app/*
 RUN npm install -g nx@15.0.5
 RUN npm cache clean --force
 RUN npm install
-RUN nx deploy shell
+RUN nx run-many --target=build --all=true
 
 ### STAGE 2:RUN ###
 # Defining nginx image to be used
