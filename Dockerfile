@@ -15,7 +15,7 @@ RUN nx deploy shell
 
 ### STAGE 2:RUN ###
 # Defining nginx image to be used
-FROM nginx:alpine AS ngi
+FROM nginx:1.17.1-alpine AS ngi
 # Copying compiled code and nginx config to different folder
 # NOTE: This path may change according to your project's output folder 
 COPY --from=build /app/dist/apps /usr/share/nginx/html
