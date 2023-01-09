@@ -9,14 +9,21 @@ WORKDIR /app
 COPY . .
 RUN ls -la /app/*
 RUN npm install -g nx@15.0.5
-RUN npm install
 RUN npm cache clean --force
+RUN npm install
 RUN nx deploy shell
 
 ### STAGE 2:RUN ###
 # Defining nginx image to be used
-FROM nginx:1.17.1-alpine AS ngi
+FROM nginx:alpine AS ngi
 # Copying compiled code and nginx config to different folder
 # NOTE: This path may change according to your project's output folder 
 COPY --from=build /app/dist/apps /usr/share/nginx/html
-COPY /nginx.conf  /etc/nginx/conf.d/default.conf
+RUN rm -rf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/default.conf  /etc/nginx/conf.d/
+RUN ls -la /usr/share/nginx/html/*
+RUN ls -la /etc/nginx/conf.d/*
+CMD ["nginx", "-g", "daemon off;"]
+RUN chmod -R 777 /usr/share/nginx/html/shell /usr/share/nginx/html/dashboard /usr/share/nginx/html/task-management
+# RUN sudo nginx -t
+EXPOSE 80

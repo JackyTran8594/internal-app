@@ -98,7 +98,7 @@
       "executor": "nx:run-commands",
       "outputs": [],
       "options": {
-        "command": "rm -rf production && mkdir production && cp -r dist/apps/shell/* production && cp -r dist/apps/{dashboard,task-management} production && http-server -p 4200 -a localhost production"
+        "command": "nx run-many --target=build --all=true"
       }
     }
   },
