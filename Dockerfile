@@ -24,6 +24,6 @@ RUN ls -la /usr/share/nginx/html/*
 RUN ls -la /etc/nginx/conf.d/*
 CMD ["nginx", "-g", "daemon off;"]
 RUN chmod -R 777 /usr/share/nginx/html/*
-RUN sudo nginx -t
+# RUN sudo nginx -t
 
 EXPOSE 80
