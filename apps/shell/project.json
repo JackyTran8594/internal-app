@@ -98,7 +98,7 @@
       "executor": "nx:run-commands",
       "outputs": [],
       "options": {
-        "command": "nx run-many --target=build --all=true && cd /app/dist/apps/shell && http-server -p 4200 -a localhost shell"
+        "command": "nx run-many --target=build --all=true"
       }
     }
   },
