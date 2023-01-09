@@ -10,12 +10,12 @@ RUN ls -la /app/*
 RUN npm install -g nx@15.0.5
 RUN npm cache clean --force
 RUN npm install
-RUN nx run-many --target=build --all=true
+RUN nx deploy shell
 
-### STAGE 2:RUN ###
-# Defining nginx image to be used
-FROM nginx:1.17.1-alpine AS ngi
-# Copying compiled code and nginx config to different folder
-# NOTE: This path may change according to your project's output folder 
-COPY --from=build /app/dist/apps /usr/share/nginx/html
-COPY /nginx.conf  /etc/nginx/conf.d/default.conf
+# ### STAGE 2:RUN ###
+# # Defining nginx image to be used
+# FROM nginx:1.17.1-alpine AS ngi
+# # Copying compiled code and nginx config to different folder
+# # NOTE: This path may change according to your project's output folder 
+# COPY --from=build /app/dist/apps /usr/share/nginx/html
+# COPY /nginx.conf  /etc/nginx/conf.d/default.conf
