@@ -19,7 +19,7 @@ FROM nginx:1.17.1-alpine AS ngi
 # NOTE: This path may change according to your project's output folder 
 COPY --from=build /app/dist/apps /usr/share/nginx/html
 RUN rm -rf /etc/nginx/conf.d/default.conf
-COPY --from=build nginx.conf  /etc/nginx/conf.d/
+COPY --from=build /app/nginx.conf  /etc/nginx/conf.d/
 RUN ls -la /usr/share/nginx/html/*
 RUN ls -la /etc/nginx/conf.d/*
 CMD ["nginx", "-g", "daemon off;"]
