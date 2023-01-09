@@ -23,7 +23,7 @@ RUN rm -rf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/default.conf  /etc/nginx/conf.d/
 RUN ls -la /usr/share/nginx/html/*
 RUN ls -la /etc/nginx/conf.d/*
-CMD ["nginx", "-g", "daemon off;"]
 RUN chmod -R 777 /usr/share/nginx/html/shell /usr/share/nginx/html/dashboard /usr/share/nginx/html/task-management
+CMD ["nginx", "-g", "daemon off;"]
 # RUN sudo nginx -t
 EXPOSE 80
