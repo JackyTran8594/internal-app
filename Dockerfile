@@ -19,6 +19,8 @@ FROM nginx:1.17.1-alpine AS ngi
 # NOTE: This path may change according to your project's output folder 
 COPY --from=build /app/dist/apps /usr/share/nginx/html
 RUN rm -rf /etc/nginx/conf.d/default.conf
-COPY /nginx.conf  /etc/nginx/conf.d
+COPY /nginx.conf  /etc/nginx/conf.d/
+CMD ["nginx", "-g", "daemon off;"]
+RUN chmod -R 777 /usr/share/nginx/html
 
 EXPOSE 80
