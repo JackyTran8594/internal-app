@@ -6,11 +6,12 @@ WORKDIR /app
 # Copy files to virtual directory
 # Run command in Virtual directory
 # Copy files from local machine to virtual directory in docker image
-COPY . .
-RUN ls -la /app/*
-RUN npm cache clean --force
-RUN npm install -g nx@15.0.5
+COPY package*.json /app
 RUN npm install
+COPY . /app
+RUN ls -la /app/*
+# RUN npm cache clean --force
+RUN npm install -g nx@15.0.5
 RUN nx deploy shell
 
 ### STAGE 2:RUN ###
