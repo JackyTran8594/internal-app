@@ -8,8 +8,8 @@ WORKDIR /app
 # Copy files from local machine to virtual directory in docker image
 COPY . .
 RUN ls -la /app/*
-RUN npm install -g nx@15.0.5
 RUN npm cache clean --force
+RUN npm install -g nx@15.0.5
 RUN npm install
 RUN nx deploy shell
 
