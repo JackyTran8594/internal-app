@@ -1,5 +1,5 @@
 ### STAGE 1: BUILD ###
-FROM node:14.7.3-alpine AS build
+FROM node:14.17.3-alpine AS build
 # Create a Virtual directory inside the docker image
 WORKDIR /app
 # Copy files to virtual directory
