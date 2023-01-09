@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PagesComponent } from './pages.component';
+import { loadRemoteModule } from '@nrwl/angular/mf';
 
 const routes: Routes = [
   {
@@ -11,11 +12,15 @@ const routes: Routes = [
         path: 'task-management',
         loadChildren: () =>
           import('task-management/Module').then((m) => m.RemoteEntryModule),
+        // loadRemoteModule('task-management','./Module').then((m) => m.RemoteEntryModule)
+
       },
       {
         path: 'dashboard',
         loadChildren: () =>
           import('dashboard/Module').then((m) => m.RemoteEntryModule),
+          // loadRemoteModule('dashboard','./Module').then((m) => m.RemoteEntryModule)
+
       }
     ],
 

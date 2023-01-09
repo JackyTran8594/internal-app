@@ -5,7 +5,9 @@ import { Observable } from 'rxjs';
 import { content } from './project';
 import { en_US, NzI18nService } from 'ng-zorro-antd/i18n';
 
-const url = 'http://10.2.6.142:8092/taskManagement/api/project';
+// const url = 'http://10.2.6.142:8092/taskManagement/api/project';
+const url = 'http://localhost:8055/taskManagement/api/project';
+
 
 @Injectable({
   providedIn: 'root',
@@ -22,9 +24,13 @@ export class ProjectService {
     pageSize: number,
     txtSearch?: string
   ): Observable<any> {
-    return this.http.get(
-      `${url}?pageNumber=${pageNumber}&pageSize=${pageSize}&search=${txtSearch}`
-    );
+    let path = '';
+    if(txtSearch) {
+      path =  `${url}?pageNumber=${pageNumber}&pageSize=${pageSize}&search=${txtSearch}`;
+    } else {
+      path = `${url}?pageNumber=${pageNumber}&pageSize=${pageSize}`;
+    }
+    return this.http.get(path);
   }
 
   public addProject(project: content): Observable<any> {
