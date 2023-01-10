@@ -12,7 +12,7 @@ RUN ls -la /app/*
 # RUN npm cache clean --force
 RUN npm install -g nx@15.0.5
 # RUN nx deploy shell
-RUN nx deploy-prod shell
+RUN nx serve shell --devRemotes=dashboard,task-management
 
 
 # ### STAGE 2:RUN ###
