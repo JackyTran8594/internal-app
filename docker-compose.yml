@@ -8,7 +8,10 @@ services:
       dockerfile: Dockerfile
   shell:
     image: nginx:1.17.1-alpine
-    command: "COPY --from=base /app/dist/apps/shell /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
+    # command: "COPY --from=internalapp-base /app/dist/apps/shell /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
+    build: 
+      context: ./
+      dockerfile: DockerfileShell
     ports:
       - "4200:80"
     # volumes:
@@ -19,7 +22,10 @@ services:
       - microfrontend    
   dashboard:
     image: nginx:1.17.1-alpine
-    command: "COPY --from=base /app/dist/apps/dashboard /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
+    # command: "COPY --from=internalapp-base /app/dist/apps/dashboard /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
+    build: 
+      context: ./
+      dockerfile: DockerfileDashboard
     ports:
       - "4201:80"
     # volumes:
@@ -30,7 +36,10 @@ services:
       - microfrontend    
   task-management:
     image: nginx:1.17.1-alpine
-    command: "COPY --from=base /app/dist/apps/task-management /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
+    # command: "COPY --from=base /app/dist/apps/task-management /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
+    build: 
+      context: ./
+      dockerfile: DockerfileTaskManagement
     ports:
       - "4202:80"
     # volumes:
