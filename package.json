@@ -12,7 +12,6 @@
     "prebuild": "npm run svg",
     "svg": "svg-generator"
   },
- 
   "svgGenerator": {
     "outputPath": "./src/app/svg",
     "srcPath": "./src/assets/svg",

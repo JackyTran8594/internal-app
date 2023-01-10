@@ -25,6 +25,6 @@ RUN ls -la /usr/share/nginx/html/
 RUN ls -la /usr/share/nginx/html/
 RUN ls -la /etc/nginx/conf.d/
 
-EXPOSE 4201
+EXPOSE 4202
 
 
