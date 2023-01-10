@@ -13,6 +13,8 @@ services:
       - "4200:80"
     # volumes:
     #   - ./src:/usr/share/nginx/html
+    depends_on:
+      - base
     networks:
       - microfrontend    
   dashboard:
