@@ -3,12 +3,12 @@ version: "3.7"
 services:
   internalapp:
     image: internalapp-image
-    container_name: internalapp-
+    container_name: internalapp
     build: 
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "4200:80"
+      - "4200:4200"
     # networks:
     #   - microfrontend  
   # shell:
