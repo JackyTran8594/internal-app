@@ -1,14 +1,10 @@
 version: "3.7"
 
 services:
-  base:
-    image: internalapp-base
-    build: 
-      context: ./
-      dockerfile: Dockerfile
   shell:
     image: nginx:1.17.1-alpine
     # command: "COPY --from=internalapp-base /app/dist/apps/shell /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
+    container_name: internalapp-shell
     build: 
       context: ./
       dockerfile: DockerfileShell
@@ -23,6 +19,7 @@ services:
   dashboard:
     image: nginx:1.17.1-alpine
     # command: "COPY --from=internalapp-base /app/dist/apps/dashboard /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
+    container_name: internalapp-dashboard
     build: 
       context: ./
       dockerfile: DockerfileDashboard
@@ -37,6 +34,7 @@ services:
   task-management:
     image: nginx:1.17.1-alpine
     # command: "COPY --from=base /app/dist/apps/task-management /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
+    container_name: internalapp-task-management
     build: 
       context: ./
       dockerfile: DockerfileTaskManagement
