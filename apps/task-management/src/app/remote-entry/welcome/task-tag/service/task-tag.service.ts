@@ -5,7 +5,7 @@ import { en_US, NzI18nService } from 'ng-zorro-antd/i18n';
 import { Observable } from 'rxjs';
 import { content } from './tag';
 
-const url = 'http://10.2.6.142:8092/api/tag';
+const url = 'http://10.2.6.142:8092/taskManagement/api/tag';
 
 @Injectable({
   providedIn: 'root',

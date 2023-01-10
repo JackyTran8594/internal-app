@@ -5,17 +5,19 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
-import { Component, Input, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BoardViewService } from '../service/board-view.service';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { content } from '../service/task';
+import { tagContent } from '../service/tag';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { TaskTagComponent } from '../../task-tag/task-tag.component';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 import { ActivatedRoute } from '@angular/router';
+import { TaskTagService } from '../../task-tag/service/task-tag.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 enum ModeModal {
   CREATE = 'create',
@@ -29,6 +31,7 @@ enum ModeModal {
   styleUrls: ['./board-task-form.component.scss'],
 })
 export class BoardTaskFormComponent implements OnInit {
+  @ViewChild('inputElement', { static: false }) inputElement?: ElementRef;
   public fileAction: string | null = null;
   formValidation!: FormGroup;
   isConfirmLoading = false;
@@ -49,12 +52,27 @@ export class BoardTaskFormComponent implements OnInit {
   startValue: any;
   endValue: Date | null = null;
 
+  public listData: any;
+  public pageNumber = 1;
+  public pageSize = 999;
+  public txtSearch: string | undefined;
+
+  inputVisible = false;
+  inputValue = '';
+
+  modalOptions: any = {
+    nzDuration: 2000,
+  };
+
   constructor(
     private fb: FormBuilder,
     private service: BoardViewService,
+    private tagService: TaskTagService,
     private modalService: NzModalService,
     private msg: NzMessageService,
     private route: ActivatedRoute,
+    private notifyService: NzNotificationService,
+    private element: ElementRef,
     private modelRef: NzModalRef<BoardTaskFormComponent>
   ) {}
 
@@ -122,10 +140,7 @@ export class BoardTaskFormComponent implements OnInit {
       attachFile: ['', []],
     });
 
-    // this.formValidation.setValue({
-    //   startDate: this.startDate,
-    //   endDate: this.endDate,
-    // });
+    this.getTag();
 
     console.log(this.projectId);
 
@@ -178,6 +193,93 @@ export class BoardTaskFormComponent implements OnInit {
         });
       },
     });
+  }
+
+  public getTag() {
+    this.tagService
+      .getTag(this.pageNumber, this.pageSize, this.txtSearch)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.listData = res.pagingData.content;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
+
+  public createTag() {
+    const item: tagContent = {
+      createdBy: '',
+      createdDate: '',
+      id: 0,
+      lastModifiedBy: '',
+      lastModifiedDate: '',
+      name: '',
+      slug: '',
+      status: '',
+    };
+    const tagName = this.element.nativeElement.querySelector('#addTag').value;
+    item.name = tagName;
+    console.log(tagName);
+
+    this.tagService.addTag(item).subscribe({
+      next: (res: content) => {
+        console.log(res);
+        if (res) {
+          this.inputVisible = false;
+          this.inputValue = '';
+          this.getTag();
+          // this.modelRef.close(res);
+        }
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('done');
+      },
+    });
+  }
+
+  public onDelete(id: number): void {
+    this.tagService.deleteTag(id).subscribe({
+      next: (res) => {
+        if (res) {
+          this.notifyService.success(
+            'Thành công',
+            'Xóa yêu cầu',
+            this.modalOptions
+          );
+        }
+        this.getTag();
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {},
+    });
+  }
+
+  sliceTagName(tag: string): string {
+    const isLongTag = tag.length > 20;
+    return isLongTag ? `${tag.slice(0, 20)}...` : tag;
+  }
+
+  showInput(): void {
+    this.inputVisible = true;
+    setTimeout(() => {
+      this.inputElement?.nativeElement.focus();
+    }, 10);
+  }
+
+  handleInputConfirm(): void {
+    if (this.inputValue && this.listData.indexOf(this.inputValue) === -1) {
+      this.listData = [...this.listData, this.inputValue];
+    }
+    this.inputValue = '';
+    this.inputVisible = false;
   }
 
   handleOk(): void {
@@ -238,16 +340,11 @@ export class BoardTaskFormComponent implements OnInit {
     return console.log(this.startValue);
   }
 
-  onCreateTag(): void {
-    this.modalService.create({
-      nzTitle: 'Tag',
-      nzFooter: null,
-      nzClassName: 'modal-custom',
-      nzContent: TaskTagComponent,
-      nzWidth: 'modal-custom',
-      nzCentered: true,
-      nzMaskClosable: false,
-      nzDirection: 'ltr', // left to right
-    });
-  }
+  // getRandomColor() {
+  //   let length = 6;
+  //   const chars = '0123456789ABCDEF';
+  //   let hex = '#';
+  //   while (length--) hex += chars[(Math.random() * 16) | 0];
+  //   return hex;
+  // }
 }

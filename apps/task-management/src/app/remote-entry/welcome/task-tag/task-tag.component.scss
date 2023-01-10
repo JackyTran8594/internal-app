@@ -9,3 +9,34 @@
   grid-template-rows: none;
   border: none;
 }
+
+.tag-list {
+  list-style: none;
+  padding: 10px;
+
+  .tag-item {
+    display: flex;
+    align-items: center;
+
+    .checkbox {
+      flex: 1;
+    }
+
+    .editcell {
+      flex: 22;
+      cursor: pointer;
+
+      .tag-title {
+        width: 100%;
+      }
+    }
+
+    .delete-btn {
+      flex: 1;
+    }
+  }
+}
+
+.tag-list:hover {
+  background-color: rgba(55, 53, 47, 0.08);
+}

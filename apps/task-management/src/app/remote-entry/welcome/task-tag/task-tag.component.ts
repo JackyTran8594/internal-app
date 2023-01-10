@@ -17,6 +17,7 @@ export class TaskTagComponent implements OnInit {
   formValidation!: FormGroup;
   isConfirmLoading = false;
   isVisible = false;
+  editIdx: number | null = null;
 
   modalOptions: any = {
     nzDuration: 2000,
@@ -121,6 +122,19 @@ export class TaskTagComponent implements OnInit {
           console.log(res);
         },
       });
+  }
+
+  startEdit(idx: number): void {
+    this.editIdx = idx;
+  }
+
+  stopEdit(): void {
+    this.editIdx = null;
+  }
+
+  handleCancel(): void {
+    this.isVisible = false;
+    this.modelRef.close();
   }
 
   // getById(id: number) {

@@ -181,7 +181,7 @@
               <span
                 formControlName="attachFile"
                 name="attachFile"
-                [hidden]="mode !== 'view'"
+                [hidden]="mode === 'view'"
               ></span>
             </nz-form-control>
           </nz-form-item>
@@ -193,23 +193,48 @@
         <div nz-col [nzSpan]="24">
           <nz-form-item nz-row [nzGutter]="2">
             <nz-form-label [nzSpan]="3">
-              <button
+              <!-- <button
                 nz-button
                 nzShape="circle"
                 class="d-flex align-items-center justify-content-center mr-1"
                 (click)="onCreateTag()"
               >
                 <i nz-icon nzType="tags" nzTheme="outline"></i>
-              </button>
+              </button> -->
+              Tags
             </nz-form-label>
             <nz-form-control [nzSpan]="21">
-              <!-- <button
-                nz-button
-                nzShape="circle"
-                class="d-flex align-items-center justify-content-center mr-1"
+              <nz-tag
+                class="editable-tag"
+                *ngFor="let tag of listData; let idx = index"
+                [nzMode]="mode === 'view' ? 'default' : 'closeable'"
+                (nzOnClose)="onDelete(tag.id)"
               >
-                <i nz-icon nzType="tags" nzTheme="outline"></i>
-              </button> -->
+                {{ sliceTagName(tag.name) }}
+              </nz-tag>
+              <nz-tag
+                *ngIf="!inputVisible"
+                class="editable-tag"
+                nzNoAnimation
+                (click)="showInput()"
+                [hidden]="mode === 'view'"
+                style="cursor: pointer"
+              >
+                <span nz-icon nzType="plus"></span>
+                New Tag
+              </nz-tag>
+              <input
+                #inputElement
+                nz-input
+                nzSize="small"
+                *ngIf="inputVisible"
+                type="text"
+                style="width: 78px"
+                id="addTag"
+                (blur)="createTag()"
+                (keydown.enter)="createTag()"
+                required
+              />
             </nz-form-control>
           </nz-form-item>
         </div>
