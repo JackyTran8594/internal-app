@@ -7,7 +7,7 @@ services:
       context: ./
       dockerfile: Dockerfile
   shell:
-    image: nginx:1.17.3-alphine
+    image: nginx:1.17.1-alpine
     command: "COPY --from=base /app/dist/apps/shell /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
     ports:
       - "4200:80"
@@ -16,7 +16,7 @@ services:
     networks:
       - microfrontend    
   dashboard:
-    image: nginx:1.17.3-alphine
+    image: nginx:1.17.1-alpine
     command: "COPY --from=base /app/dist/apps/dashboard /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
     ports:
       - "4201:80"
@@ -27,7 +27,7 @@ services:
     networks:
       - microfrontend    
   task-management:
-    image: nginx:1.17.3-alphine
+    image: nginx:1.17.1-alpine
     command: "COPY --from=base /app/dist/apps/task-management /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
     ports:
       - "4202:80"
