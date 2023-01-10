@@ -1,62 +1,62 @@
 version: "3.7"
 
 services:
-  internalapp:
-    image: internalapp-image
-    container_name: internalapp
+  # internalapp:
+  #   image: internalapp-image
+  #   container_name: internalapp
+  #   build: 
+  #     context: ./
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "4200:4200"
+  #   networks:
+  #     - microfrontend  
+  shell:
+    image: internalapp-shell-image
+    # command: "COPY --from=internalapp-base /app/dist/apps/shell /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
+    container_name: internalapp-shell
     build: 
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: DockerfileShell
     ports:
-      - "4200:4200"
-    # networks:
-    #   - microfrontend  
-#   shell:
-#     image: internalapp-shell-image
-#     # command: "COPY --from=internalapp-base /app/dist/apps/shell /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
-#     container_name: internalapp-shell
-#     build: 
-#       context: ./
-#       dockerfile: DockerfileShell
-#     ports:
-#       - "4200:80"
-#     # volumes:
-#     #   - ./src:/usr/share/nginx/html
-#     # depends_on:
-#     #   - base
-#     networks:
-#       - microfrontend    
-#   dashboard:
-#     image: internalapp-dashboard-image
-#     # command: "COPY --from=internalapp-base /app/dist/apps/dashboard /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
-#     container_name: internalapp-dashboard
-#     build: 
-#       context: ./
-#       dockerfile: DockerfileDashboard
-#     ports:
-#       - "4201:80"
-#     # volumes:
-#     #   - ./src:/usr/share/nginx/html
-#     depends_on:
-#       - shell
-#     networks:
-#       - microfrontend    
-#   task-management:
-#     image: internalapp-task-management-image
-#     # command: "COPY --from=base /app/dist/apps/task-management /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
-#     container_name: internalapp-task-management
-#     build: 
-#       context: ./
-#       dockerfile: DockerfileTaskManagement
-#     ports:
-#       - "4202:80"
-#     # volumes:
-#     #   - ./src:/usr/share/nginx/html
-#     depends_on:
-#       - dashboard
-#     networks:
-#       - microfrontend  
+      - "4200:80"
+    # volumes:
+    #   - ./src:/usr/share/nginx/html
+    # depends_on:
+    #   - base
+    networks:
+      - microfrontend    
+  dashboard:
+    image: internalapp-dashboard-image
+    # command: "COPY --from=internalapp-base /app/dist/apps/dashboard /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
+    container_name: internalapp-dashboard
+    build: 
+      context: ./
+      dockerfile: DockerfileDashboard
+    ports:
+      - "4201:80"
+    # volumes:
+    #   - ./src:/usr/share/nginx/html
+    depends_on:
+      - shell
+    networks:
+      - microfrontend    
+  task-management:
+    image: internalapp-task-management-image
+    # command: "COPY --from=base /app/dist/apps/task-management /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
+    container_name: internalapp-task-management
+    build: 
+      context: ./
+      dockerfile: DockerfileTaskManagement
+    ports:
+      - "4202:80"
+    # volumes:
+    #   - ./src:/usr/share/nginx/html
+    depends_on:
+      - dashboard
+    networks:
+      - microfrontend  
 
-# networks:
-#   microfrontend:
-#     name: microfrontend
+networks:
+  microfrontend:
+    name: microfrontend
