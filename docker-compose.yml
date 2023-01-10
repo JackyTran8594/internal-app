@@ -1,37 +1,42 @@
 version: "3.7"
 
 services:
-  shell:
-    image: internalapp-shell
-    build:
+  base:
+    image: internalapp-base
+    build: 
       context: ./
-      dockerfile: apps/shell/Dockerfile
+      dockerfile: Dockerfile
+  shell:
+    image: nginx:1.17.3-alphine
+    command: "COPY --from=base /app/dist/apps/shell /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
     ports:
-      - "4200:4200"
+      - "4200:80"
+    volumes:
+      -./src:/usr/share/nginx/html
     networks:
       - microfrontend    
   dashboard:
-    image: internalapp-dashboard
-    build:
-      context: ./
-      dockerfile: apps/dashboard/Dockerfile
+    image: nginx:1.17.3-alphine
+    command: "COPY --from=base /app/dist/apps/dashboard /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
     ports:
-      - "4201:4201"
+      - "4201:80"
+    volumes:
+      -./src:/usr/share/nginx/html
     depends_on:
       - shell
     networks:
-      - microfrontend
+      - microfrontend    
   task-management:
-    image: internalapp-task-management
-    build:
-      context: ./
-      dockerfile: apps/task-management/Dockerfile
+    image: nginx:1.17.3-alphine
+    command: "COPY --from=base /app/dist/apps/task-management /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
     ports:
-      - "4202:4202"
+      - "4202:80"
+    volumes:
+      -./src:/usr/share/nginx/html
     depends_on:
       - dashboard
     networks:
-      - microfrontend
+      - microfrontend  
 
 networks:
   microfrontend:
