@@ -1,8 +1,8 @@
 module.exports = {
   name: 'shell',
   remotes: [
-    ['dashboard'],
-   ['task-management']],
+    'dashboard',
+   'task-management'],
   // remotes: [],
   additionalShared: [
     'ng-zorro-antd',
