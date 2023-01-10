@@ -10,7 +10,7 @@ services:
     volumes:
       - ./dist/apps:/usr/share/nginx/html/dist/apps
       - ./dist/apps:/var/www/html/dist/apps
-      - ./app/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - "4200:80"
   #   networks:
