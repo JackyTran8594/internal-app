@@ -11,8 +11,8 @@ services:
     command: "COPY --from=base /app/dist/apps/shell /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
     ports:
       - "4200:80"
-    volumes:
-      - ./src:/usr/share/nginx/html
+    # volumes:
+    #   - ./src:/usr/share/nginx/html
     networks:
       - microfrontend    
   dashboard:
@@ -20,8 +20,8 @@ services:
     command: "COPY --from=base /app/dist/apps/dashboard /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
     ports:
       - "4201:80"
-    volumes:
-      - ./src:/usr/share/nginx/html
+    # volumes:
+    #   - ./src:/usr/share/nginx/html
     depends_on:
       - shell
     networks:
@@ -31,8 +31,8 @@ services:
     command: "COPY --from=base /app/dist/apps/task-management /usr/share/nginx/html && COPY --from=base /app/nginx.conf  /etc/nginx/conf.d/"
     ports:
       - "4202:80"
-    volumes:
-      - ./src:/usr/share/nginx/html
+    # volumes:
+    #   - ./src:/usr/share/nginx/html
     depends_on:
       - dashboard
     networks:
