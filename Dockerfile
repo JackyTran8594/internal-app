@@ -11,7 +11,9 @@ COPY . ./
 RUN ls -la /app/*
 # RUN npm cache clean --force
 RUN npm install -g nx@15.0.5
-RUN nx deploy shell
+# RUN nx deploy shell
+RUN nx deploy-prod shell
+
 
 # ### STAGE 2:RUN ###
 # # Defining nginx image to be used
