@@ -13,7 +13,9 @@ RUN ls -la /app/*
 RUN npm install -g nx@15.0.5
 RUN nx run-many --target=build --all=true
 COPY  dist/apps dist/apps/shell/
-RUN nx deploy shell
+WORKDIR /dist/shell
+RUN http-server -p 4200 -a localhost shell
+# RUN nx deploy shell
 # rm -rf production && mkdir production && cp -r dist/apps/shell/* production && cp -r dist/apps/dashboard production && cp -r dist/app/task-management production &&
 # RUN nx serve shell --devRemotes dashboard,task-management 
 
