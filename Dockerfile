@@ -11,21 +11,24 @@ COPY . ./
 RUN ls -la /app/*
 # RUN npm cache clean --force
 RUN npm install -g nx@15.0.5
+RUN nx run-many --target=build --all=true
 RUN nx deploy shell
 # RUN nx serve shell --devRemotes dashboard,task-management 
 
 
-### STAGE 2:RUN ###
-# Defining nginx image to be used
-FROM nginx:1.17.1-alpine AS ngi
-# Copying compiled code and nginx config to different folder
-# NOTE: This path may change according to your project's output folder 
-COPY --from=build /app/dist/apps/ /usr/share/nginx/html
-# RUN rm -rf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/nginx/nginx.conf  /etc/nginx/conf.d/
-# RUN ls -la /usr/share/nginx/html/*
-# RUN ls -la /etc/nginx/conf.d/*
-RUN chmod -R 777 /usr/share/nginx/html/shell /usr/share/nginx/html/dashboard /usr/share/nginx/html/task-management
-CMD ["nginx", "-g", "daemon off;"]
-# RUN sudo nginx -t
-EXPOSE 80
+# ### STAGE 2:RUN ###
+# # Defining nginx image to be used
+# FROM nginx:1.17.1-alpine AS ngi
+# # Copying compiled code and nginx config to different folder
+# # NOTE: This path may change according to your project's output folder 
+# COPY --from=build /app/dist/apps/shell/ /usr/share/nginx/html
+# COPY --from=build /app/dist/apps/dashboard /usr/share/nginx/html
+# COPY --from=build /app/dist/apps/task-management /usr/share/nginx/html
+# # RUN rm -rf /etc/nginx/conf.d/default.conf
+# COPY --from=build /app/nginx/nginx.conf  /etc/nginx/conf.d/
+# # RUN ls -la /usr/share/nginx/html/*
+# # RUN ls -la /etc/nginx/conf.d/*
+# RUN chmod -R 777 /usr/share/nginx/html/shell /usr/share/nginx/html/dashboard /usr/share/nginx/html/task-management
+# CMD ["nginx", "-g", "daemon off;"]
+# # RUN sudo nginx -t
+# EXPOSE 80
