@@ -43,6 +43,7 @@ $footer_height: 64px !default;
       $sidebar_width: 0%;
       transition: all 0.5s;
       width: $sidebar_width;
+      overflow: hidden;
 
       .sidebar-content ul li a[class*='active'] {
         background-color: transparent !important;
@@ -81,13 +82,13 @@ $footer_height: 64px !default;
       }
 
       .page-content {
-        // overflow-x: scroll;
         width: 100%;
         // toàn màn trừ header và footer, breadcrumb
         // height: calc(
         //   100vh - $header_height - $footer_height - $breadcrumb_height
         // );
         height: calc(100vh - $header_height);
+        overflow: auto;
       }
     }
   }
