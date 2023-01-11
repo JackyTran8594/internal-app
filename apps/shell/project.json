@@ -98,7 +98,7 @@
       "executor": "nx:run-commands",
       "outputs": [],
       "options": {
-        "command": "cd /dist/shell && http-server -p 4200 -a localhost shell"
+        "command": "http-server -p 4200 -a localhost shell"
       }
     },
     "deploy-prod": {
